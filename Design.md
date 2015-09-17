@@ -26,6 +26,7 @@ In the case that erroneous situations come up, a JOptionPane warning message wil
 ![UML Diagram]
 (Images/Mockup_GUI.png)
 
+
 ### Design Details
 Our user interface class will have a dropdown menu to choose between the simulations.  It will also contain any sliders, buttons, and other dropdown menus as made necessary by the simulation being run.  The grid will be shown on this interface.
 
