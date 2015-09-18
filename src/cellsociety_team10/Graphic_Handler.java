@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
 
 public class Graphic_Handler {
 	private static final String APPLICATION_NAME = "Cell Society";
@@ -27,8 +25,9 @@ public class Graphic_Handler {
 	}
 
 	public void set_up_scene() {
-
-		current_stage.setScene(scene_creation());
+		current_scene = scene_creation();
+		root.getStylesheets().add("/cellsociety_team10/Stylesheet.css");
+		current_stage.setScene(current_scene);
 		current_stage.setTitle(APPLICATION_NAME);
 		current_stage.show();
 
@@ -36,10 +35,9 @@ public class Graphic_Handler {
 
 	}
 
+
 	public Scene scene_creation(){
-		current_scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT, Color.GREY);
-		root.getStylesheets().add("/Stylesheet.css");
-		return current_scene;
+		return new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 
 
