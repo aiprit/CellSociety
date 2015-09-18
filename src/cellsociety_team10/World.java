@@ -4,7 +4,7 @@ package cellsociety_team10;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 public class World {
     
@@ -134,7 +134,7 @@ public class World {
      * @param col the column value
      * @return The color of the cell in the simulation. open ocean (unoccupied cells) are blue.
      */
-    public Color getColor(int row, int col){
+    public javafx.scene.paint.Color getColor(int row, int col){
         Animal a = theWorld.get(new Location(row, col));
         if(a == null)
             return oceanColor;
