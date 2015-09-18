@@ -2,10 +2,6 @@ package cellsociety_team10;
 
 import javafx.application.*;
 import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
-
 
 
 public class Main extends Application {
@@ -16,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         full_view_window = primaryStage;
-        Graphic_Controller graphics = new Graphic_Controller(full_view_window);
+        Graphic_Handler graphics = new Graphic_Handler(full_view_window);
 
     }
 

@@ -1,0 +1,7 @@
+Hi all,
+The User_interface basics are in place.  There is a borderpane that is separted into 3 sections:
+    top which is title
+    right which is a vertical box that has buttons
+    left which is a grid pane
+        the grid pane is being really weird and the new button will have to be replaced with the rectangles soon
+controller class is for buttons.
