@@ -22,10 +22,12 @@ public class User_Interface {
     Parser parser;
     private GridPanel panel;
     private Canvas canvas;
-    public boolean start;
+    private boolean status;
+    private double rate;
 
 
     public User_Interface(){
+        status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
         title = new Label("CellSociety");
@@ -63,7 +65,7 @@ public class User_Interface {
         outer_format.setTop(title);
         outer_format.setAlignment(title, Pos.TOP_CENTER);
         outer_format.setAlignment(control_panel, Pos.CENTER_RIGHT);
-        outer_format.setAlignment(canvas, Pos.CENTER_LEFT);
+        //outer_format.setAlignment(canvas, Pos.CENTER_LEFT);
         init_generic_options();
     }
 
@@ -99,7 +101,11 @@ public class User_Interface {
     }
 
     private void init_animation_speed_slider(){
-        Custom_Slider animation_speed_slider = new Custom_Slider(0, 100, 20);
+        Custom_Slider animation_speed_slider = new Custom_Slider(0, 2, 1);
+        animation_speed_slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+            rate = newValue.doubleValue();
+        });
         option_list.add(animation_speed_slider);
     }
 
@@ -115,22 +121,26 @@ public class User_Interface {
         return panel;
     }
 
-    public boolean starter(){
-        return true;
+
+    public boolean get_status(){
+        return status;
     }
 
     private void start(){
-        System.out.print("Start");
-        start = true;
+       status = true;
 
     }
     private void stop(){
-        System.out.print("Stop");
+        status = false;
 
     }
     private void step(){
-        System.out.print("Step");
+
         panel.update();
 
+    }
+
+    public double change_rate(){
+        return rate;
     }
 }
