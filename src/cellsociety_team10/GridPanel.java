@@ -17,9 +17,15 @@ import javax.swing.JPanel;
 
 class GridPanel extends JPanel{
 
+<<<<<<< HEAD
 
 
 
+=======
+    
+    
+	   
+>>>>>>> master
     public  int GridWidth = 400;
     public  int GridHeight = 400;
     private Canvas Canvas;

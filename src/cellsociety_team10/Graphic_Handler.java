@@ -20,6 +20,7 @@ public class Graphic_Handler {
 	public static final int FRAMES_PER_SECOND = 60;
 	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+	private double rate;
 	Timeline animation;
 
 
@@ -29,7 +30,7 @@ public class Graphic_Handler {
 		root = new Group();
 		ui= new User_Interface();
 		set_up_scene();
-
+		rate= ui.change_rate();
 	}
 
 
@@ -58,11 +59,14 @@ public class Graphic_Handler {
 
 
 	public void step(double delay){
-		System.out.println(check_status());
 
 
 		if(check_status()) {
-			change_rate(ui.change_rate());
+			if(ui.change_rate()!= rate){
+				change_rate(ui.change_rate());
+				rate = ui.change_rate();
+			}
+
 			ui.get_panel().update();
 		}
 
@@ -71,10 +75,10 @@ public class Graphic_Handler {
 	public void change_rate(double dub){
 
 		animation.setRate(dub);
-		
-		animation.setCycleCount(Timeline.INDEFINITE);
 
-		animation.play();
+		System.out.println(animation.getCurrentRate());
+		set_up_timeline();
+
 	}
 
 

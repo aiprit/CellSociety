@@ -25,6 +25,7 @@ public class Parser {
     private ArrayList<String> parameter_list;
     private Map<String, Double> parameter_map;
     private int simulation_number;
+
     public Parser(String file_name){
         param_array_maker();
         simulation_names = new ArrayList<String>();
@@ -101,11 +102,7 @@ public class Parser {
 
 
 
-    public ArrayList<String> get_simulation_names(){
-        simulation_names.add("Test1");
-        simulation_names.add("Test2");
-        return simulation_names;
-    }
+
 
 
 

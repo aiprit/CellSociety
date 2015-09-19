@@ -18,9 +18,10 @@ public class DeadBlock extends Block {
 		boolean becomeAlive = becomeAlive();
 		Location loc = getLocation();
 		if (becomeAlive) {
+			Grid<Block> g_blocks = getGrid();
 			removeSelfFromGrid();
 			AliveBlock newAliveBlock = new AliveBlock();
-			newAliveBlock.putSelfInGrid(getGrid(), loc);
+			newAliveBlock.putSelfInGrid(g_blocks, loc);
 		}
 	}
 	
