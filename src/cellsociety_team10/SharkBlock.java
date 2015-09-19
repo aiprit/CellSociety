@@ -13,6 +13,7 @@ public class SharkBlock extends Block {
     private int turnsUntilCanBreed;
     private int myBreedTime;
     private int myStarveTime;
+    private Color blockColor = Color.ORANGE;
     
     public static void setBreedTime(int newBreedTime){
         standardBreedTime = newBreedTime;
@@ -30,15 +31,16 @@ public class SharkBlock extends Block {
         return standardBreedTime;
     }
   
-    public static Color getStandardSharkColor() {
-        return Color.ORANGE;
+    @Override
+    public Color getColor() {
+        return blockColor;
     }
     
     public SharkBlock(){
         super();
         turnsSinceLastAte = 0;
         turnsUntilCanBreed = standardBreedTime;
-        setColor(getStandardSharkColor());
+        setColor(getColor());
         myBreedTime = standardBreedTime + rand.nextInt(10);
         myStarveTime = standardStarveTime + rand.nextInt(5);
     }

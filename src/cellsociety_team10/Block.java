@@ -9,24 +9,22 @@ public class Block
 	private Grid<Block> grid;
 	private Location location;
 	private int direction;
-	private Color color;
+	private Color blockColor;
 
 	public Block()
 	{
-		color = Color.BLUE;
 		direction = Location.NORTH;
 		grid = null;
 		location = null;
 	}
 
-	public Color getColor()
-	{
-		return color;
+	public Color getColor() {
+		return blockColor;
 	}
 
 	public void setColor(Color newColor)
 	{
-		color = newColor;
+		blockColor = newColor;
 	}
 
 	public int getDirection()
@@ -110,7 +108,7 @@ public class Block
 	public String toString()
 	{
 		return getClass().getName() + "[location=" + location + ",direction="
-				+ direction + ",color=" + color + "]";
+				+ direction + ",color=" + blockColor + "]";
 	}
 
 	public char getChar(){

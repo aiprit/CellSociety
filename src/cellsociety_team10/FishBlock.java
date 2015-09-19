@@ -5,13 +5,15 @@ import javafx.scene.paint.Color;
 public class FishBlock extends Block {
 	private static int breedTime = 4;
 	private int turnsUntilCanBreed;
+	private Color blockColor = Color.GREEN;
 
 	public static void setBreedTime(int newBreedTime){
 		breedTime = newBreedTime;
 	}
 
-	public static Color getStandardFishColor() {
-		return Color.GREEN;
+	@Override
+	public Color getColor() {
+		return blockColor;
 	}
 
 	public static int getBreedTime() {
@@ -20,7 +22,7 @@ public class FishBlock extends Block {
 
 	public FishBlock(){
 		super();
-		setColor(getStandardFishColor());
+		setColor(getColor());
 		turnsUntilCanBreed = breedTime + (int) (Math.random() * 3);
 	}
 
