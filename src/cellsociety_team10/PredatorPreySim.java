@@ -7,9 +7,7 @@ import java.util.Collections;
 import javafx.scene.paint.Color;
 
 public class PredatorPreySim extends AbstractSimulation{
-    
-    
-    private Grid<Block> theWorld;
+
     private static Color oceanColor = Color.BLUE; //blue
     
     @Override
@@ -21,21 +19,13 @@ public class PredatorPreySim extends AbstractSimulation{
         super(rows, cols, fractionFish, fractionSharks);
     }
     
-    @Override
-    public void reset(double fractionFish, double fractionSharks){
-        ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
-        for(Location loc : occupiedCells){
-            theWorld.get(loc).removeSelfFromGrid();
-        }
-        Shark.resetNumSharks();
-        Fish.resetNumFish();
-        populateWorld(fractionFish, fractionSharks);
-    }
+
     
 
     @Override
 	public void populateIndefinite(int numFish, int numSharks) {
         ArrayList<Location> locs = new ArrayList<Location>();
+        int a =theWorld.getNumRows();
         for(int r = 0, rLimit = theWorld.getNumRows(); r < rLimit; r++)
             for(int c = 0, cLimit = theWorld.getNumCols(); c < cLimit; c++)
                 locs.add(new Location(r, c));

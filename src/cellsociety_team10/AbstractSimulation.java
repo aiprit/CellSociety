@@ -7,16 +7,21 @@ import java.util.Random;
 import javafx.scene.paint.Color;
 
 public abstract class AbstractSimulation {
-	private String simulationType;
-	private Grid<Block> theWorld;
+	protected String simulationType;
+	protected Grid<Block> theWorld;
 
 	public AbstractSimulation(int rows, int cols, double fraction1, double fraction2) {
 		theWorld = new BoundedGrid<Block>(rows, cols);
 		reset(fraction1, fraction2);
 	}
 
-	public abstract void reset(double fraction1, double fraction2);
-
+	protected void reset(double fraction1, double fraction2){
+	ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
+	for(Location loc : occupiedCells){
+		theWorld.get(loc).removeSelfFromGrid();
+	}
+	populateWorld(fraction1, fraction2);
+}
 	public abstract void loopToPlace(int num, boolean place);
 
 	public abstract void populateDefinite(int num1, int num2);

@@ -59,4 +59,10 @@ public abstract class AbstractGrid<E> implements Grid<E>
             }
             return s + "}";
         }
+    public ArrayList<Location> getOccupiedLocations(Location loc){
+    	
+    	for(Location loc: getAdjacentLocations())
+    	
+    	
+    }
 }
