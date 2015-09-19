@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Shark extends Block {
+public class SharkBlock extends Block {
     private static int standardBreedTime = 20;
     private static int standardStarveTime = 5;
     private static int numSharks = 0;
@@ -43,7 +43,7 @@ public class Shark extends Block {
         return Color.ORANGE;
     }
     
-    public Shark(){
+    public SharkBlock(){
         super();
         turnsSinceLastAte = 0;
         turnsUntilCanBreed = standardBreedTime;
@@ -71,7 +71,7 @@ public class Shark extends Block {
             ArrayList<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
             if(openSpots.size() > 0){
                 Collections.shuffle(openSpots);
-                Shark newShark = new Shark();
+                SharkBlock newShark = new SharkBlock();
                 newShark.putSelfInGrid(getGrid(), openSpots.get(0));
                 turnsUntilCanBreed = myBreedTime;
             }  
@@ -103,7 +103,7 @@ public class Shark extends Block {
         int index = 0;
         while(!eaten && index < neighbors.size()){
             Block possibleFood = getGrid().get(neighbors.get(index));
-            if( possibleFood instanceof Fish){
+            if( possibleFood instanceof FishBlock){
                 eaten = true;
                 turnsSinceLastAte = 0;
                 possibleFood.removeSelfFromGrid();

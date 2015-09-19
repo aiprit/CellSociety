@@ -47,7 +47,7 @@ public class SpreadingFire extends AbstractSimulation{
 
 	@Override
 	public Block chooseBlock(boolean placeBlock) {
-		Block result= placeBlock ? new Fish():new Shark();
+		Block result= placeBlock ? new Flammable():new Burning(probCatch);
 		return result;
 	}
 }
