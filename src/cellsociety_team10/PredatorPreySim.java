@@ -3,23 +3,26 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 import javafx.scene.paint.Color;
 
 public class PredatorPreySim extends AbstractSimulation{
 
     private static Color oceanColor = Color.BLUE; //blue
-    private static int sharkBreedTime, fishBreedTime, sharkStarveTime;
+    private static double sharkBreedTime, fishBreedTime, sharkStarveTime;
     
     @Override
     public Color getEmptyColor() {
         return oceanColor;
     }
     
-    public PredatorPreySim(Object parameters){
-        super(parameters.rows, parameters.cols, parameters.fractionFish, parameters.fractionSharks);
-        sharkBreedTime = parameters.sharkBreedTime;
-        fishBreedTime = parameters.fishBreedTime;
-        sharkStarveTime = parameters.sharkStarveTime;
+    public PredatorPreySim(HashMap<String, Double> map){
+        super(map);
+        sharkBreedTime = map.get("standard_breed_time_shark");
+        fishBreedTime = map.get("standard_breed_time_fish");
+        sharkStarveTime = map.get("standard_starve_time");
+        reset(map.get("percent_sharks"), map.get("percent_fish"));
     }
    
     @Override

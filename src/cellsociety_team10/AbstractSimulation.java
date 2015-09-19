@@ -3,6 +3,7 @@ package cellsociety_team10;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Random;
 
 import javafx.scene.paint.Color;
@@ -12,9 +13,9 @@ public abstract class AbstractSimulation {
 	protected Grid<Block> theWorld;
 	private ArrayList<String> param_list;
 
-	public AbstractSimulation(Object parameters) {
-		theWorld = new BoundedGrid<Block>(parameters.rows, parameters.cols);
-		reset(parameters.fraction1, parameters.fraction2);
+	public AbstractSimulation(HashMap<String, Double> map) {
+		theWorld = new BoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
+
 	}
 
 	public ArrayList<String> get_param_list(){
