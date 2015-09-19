@@ -17,4 +17,8 @@ public class TreeBlock extends Block{
 	public Color getColor() {
 		return blockColor;
 	}
+
+	public void act(){
+		
+	}
 }

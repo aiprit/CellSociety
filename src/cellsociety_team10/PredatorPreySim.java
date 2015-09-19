@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 
 public class PredatorPreySim extends AbstractSimulation{
 
-    private static Color oceanColor = Color.BLUE; //blue
-    private static double sharkBreedTime, fishBreedTime, sharkStarveTime;
+    private Color oceanColor = Color.BLUE; //blue
+    private double sharkBreedTime, fishBreedTime, sharkStarveTime;
     
     @Override
     public Color getEmptyColor() {
