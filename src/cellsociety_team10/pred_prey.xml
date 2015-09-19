@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Simulation>
+<Pred-Prey id = "1">
     <Information>
         <simulation_type>Predator-Prey</simulation_type>
         <name>Wa-Tor World</name>
@@ -16,4 +16,4 @@
     </Parameters>
 
 
-</Simulation>
+</Pred-Prey>

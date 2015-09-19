@@ -1,5 +1,6 @@
 package cellsociety_team10;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +13,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.*;
+import java.util.HashMap;
 
 /**
  * Created by Rob on 9/18/15.
@@ -22,11 +24,14 @@ public class Parser {
     private DocumentBuilderFactory doc_builder_fac;
     private DocumentBuilder doc_builder;
     private Document document;
-
-    public Parser(String file_name){
+    private String[] simulations;
+    private ArrayList<String> parameter_list;
+    private HashMap<String, Double> parameter_map;
+    public Parser(String file_name, String[] simulation_list){
         simulation_names = new ArrayList<String>();
         File xml_file = new File(file_name);
         document_reader_setup(xml_file);
+        simulations = simulation_list;
     }
 
     public void document_reader_setup(File xml_file){
@@ -46,19 +51,27 @@ public class Parser {
     }
 
     public void parse(){
+        doc_normalizer();
         NodeList info = document.getElementsByTagName("Information");
         NodeList parameters = document.getElementsByTagName("Parameters");
-        NodeList grid_info = document.getElementsByTagName("Grid_info");
-        loop_through(info);
+        set_proper_parameters();
+        loop_through_param(parameters);
+    }
+
+    private void set_proper_parameters(){
+        int simulation_number = Integer.parseInt(document.getDocumentElement().getAttribute("id"));
+        parameter_list = simulations[simulation_number].get_param_list();
+
     }
 
 
-    private void loop_through(NodeList nList){
+    private void loop_through_param(NodeList nList){
+
         for (int position = 0; position  < nList.getLength(); position++) {
             Node ind_node = nList.item(position);
             if (ind_node.getNodeType() == Node.ELEMENT_NODE) {
                 Element ind_element = (Element) ind_node;
-                System.out.println(ind_element.getElementsByTagName("author").item(0).getTextContent());
+                parameter_map.put(parameter_list.get(position),Double.parseDouble(ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent()));
             }
         }
     }

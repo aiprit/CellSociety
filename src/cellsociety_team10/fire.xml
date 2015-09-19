@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Simulation>
+<Fire id="2">
     <Information>
         <simulation_type>Fire</simulation_type>
         <name>Spreading of Fire</name>
@@ -15,4 +15,4 @@
 
 
 
-</Simulation>
+</Fire>

@@ -8,20 +8,11 @@ import java.util.Random;
 public class SharkBlock extends Block {
     private static int standardBreedTime = 20;
     private static int standardStarveTime = 5;
-    private static int numSharks = 0;
     private static Random rand = new Random();
     private int turnsSinceLastAte;
     private int turnsUntilCanBreed;
     private int myBreedTime;
     private int myStarveTime;
-  
-    public static int getNumSharks(){
-        return numSharks;
-    }
-    
-    public static void resetNumSharks(){
-        numSharks = 0;
-    }
     
     public static void setBreedTime(int newBreedTime){
         standardBreedTime = newBreedTime;
@@ -50,7 +41,6 @@ public class SharkBlock extends Block {
         setColor(getStandardSharkColor());
         myBreedTime = standardBreedTime + rand.nextInt(10);
         myStarveTime = standardStarveTime + rand.nextInt(5);
-        numSharks++;
     }
     
     public void act(){
@@ -82,18 +72,9 @@ public class SharkBlock extends Block {
         boolean result = true;
         if(turnsSinceLastAte == myStarveTime){
             removeSelfFromGrid();
-            numSharks--;
             result = false;
         }    
         return result;
-    }
-    
-    private void tryMove(){
-        ArrayList<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
-        if(openSpots.size() > 0){
-            Collections.shuffle(openSpots);
-            moveTo(openSpots.get(0)); 
-        }
     }
             
     private boolean ate(){
