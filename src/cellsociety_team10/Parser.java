@@ -85,7 +85,7 @@ public class Parser {
     }
 
     private String get_value_from_xml(Element ind_element, int position){
-        ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent());
+        return ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent();
     }
 
 

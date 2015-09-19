@@ -25,7 +25,7 @@ public class Pred_Prey_Param extends Parameters{
     }
 
     public AbstractSimulation get_sim(){
-        return PredatorPreySim(init_params);
+        return new PredatorPreySim(init_params);
     }
 
 
