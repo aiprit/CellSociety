@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.Random;
 
 public class SharkBlock extends Block {
-    private static int standardBreedTime = 20;
-    private static int standardStarveTime = 5;
+    private static int sharkBreedTime = 20;
+    private static int sharkStarveTime = 5;
     private static Random rand = new Random();
     private int turnsSinceLastAte;
     private int turnsUntilCanBreed;
@@ -16,19 +16,19 @@ public class SharkBlock extends Block {
     private Color blockColor = Color.ORANGE;
     
     public static void setBreedTime(int newBreedTime){
-        standardBreedTime = newBreedTime;
+        sharkBreedTime = newBreedTime;
     }
     
     public static void setStarveTime(int newStarveTime){
-        standardStarveTime = newStarveTime;
+        sharkStarveTime = newStarveTime;
     }
     
     public static int getStarveTime() {
-        return standardStarveTime;
+        return sharkStarveTime;
     }
    
     public static int getBreedTime() {
-        return standardBreedTime;
+        return sharkBreedTime;
     }
   
     @Override
@@ -39,10 +39,10 @@ public class SharkBlock extends Block {
     public SharkBlock(){
         super();
         turnsSinceLastAte = 0;
-        turnsUntilCanBreed = standardBreedTime;
+        turnsUntilCanBreed = sharkBreedTime;
         setColor(getColor());
-        myBreedTime = standardBreedTime + rand.nextInt(10);
-        myStarveTime = standardStarveTime + rand.nextInt(5);
+        myBreedTime = sharkBreedTime + rand.nextInt(10);
+        myStarveTime = sharkStarveTime + rand.nextInt(5);
     }
     
     public void act(){

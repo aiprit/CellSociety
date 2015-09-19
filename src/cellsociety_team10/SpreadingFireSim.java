@@ -43,5 +43,22 @@ public class SpreadingFireSim extends AbstractSimulation{
 		Block result= placeBlock ? new TreeBlock():new FireBlock(probCatch);
 		return result;
 	}
+	
+	@Override
+	public void step() {
+		ArrayList<Location> occupiedLocations = theWorld.getOccupiedLocations();
+		Collections.shuffle(occupiedLocations);
+		ArrayList<Location> fires = new ArrayList<Location>();
+		for(Location loc : occupiedLocations){
+			Block a = theWorld.get(loc);
+			// in case eaten
+			if(a.getChar() != 'T')
+				fires.add(loc);
+		}
+		for (Location loca: fires) {
+			Block a = theWorld.get(loca);
+			a.act();
+		}
+	}
 }
 

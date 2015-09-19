@@ -8,23 +8,14 @@ public class GameOfLifeSim extends AbstractSimulation {
 
 		private static Color emptyColor = Color.BEIGE;
 
-		public GameOfLifeSim(int rows, int cols, double fractionDead, double fractionAlive) {
-			super(rows, cols, fractionDead, fractionAlive);
-		}
-
-
 		@Override
 		public Color getEmptyColor() {
 	        return emptyColor;
 	    }
 		
-<<<<<<< HEAD
 		public GameOfLifeSim(Object parameters) {
 			super(parameters.rows, parameters.cols, parameters.fractionDead, paramaters.fractionAlive);
 		}
-=======
-
->>>>>>> robs_branch
 		
 		public Block chooseBlock(boolean placeBlock) {
 			Block result = placeBlock ? new DeadBlock() : new AliveBlock();

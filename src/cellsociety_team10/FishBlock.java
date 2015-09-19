@@ -3,12 +3,12 @@ package cellsociety_team10;
 import javafx.scene.paint.Color;
 
 public class FishBlock extends Block {
-	private static int breedTime = 4;
+	private static int fishBreedTime = 4;
 	private int turnsUntilCanBreed;
 	private Color blockColor = Color.GREEN;
 
-	public static void setBreedTime(int newBreedTime){
-		breedTime = newBreedTime;
+	public static void setfishBreedTime(int newfishBreedTime){
+		fishBreedTime = newfishBreedTime;
 	}
 
 	@Override
@@ -16,14 +16,14 @@ public class FishBlock extends Block {
 		return blockColor;
 	}
 
-	public static int getBreedTime() {
-		return breedTime;
+	public static int getfishBreedTime() {
+		return fishBreedTime;
 	}
 
 	public FishBlock(){
 		super();
 		setColor(getColor());
-		turnsUntilCanBreed = breedTime + (int) (Math.random() * 3);
+		turnsUntilCanBreed = fishBreedTime + (int) (Math.random() * 3);
 	}
 
 	public void act(){
@@ -33,7 +33,7 @@ public class FishBlock extends Block {
 		if(turnsUntilCanBreed <= 0){
 			FishBlock newFish = new FishBlock();
 			newFish.putSelfInGrid(getGrid(), oldLocation);
-			turnsUntilCanBreed = breedTime;
+			turnsUntilCanBreed = fishBreedTime;
 		}
 	}
 
