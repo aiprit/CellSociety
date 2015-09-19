@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation>
+    <Information>
+        <simulation_type>Fire</simulation_type>
+        <name>Spreading of Fire</name>
+        <author>Angela B. Shiflet</author>
+    </Information>
+
+    <Parameters>
+        <probability_catch> </probability_catch>
+        <percent_fire> </percent_fire>
+        <percent_tree> </percent_tree>
+        <grid_size> </grid_size>
+    </Parameters>
+
+
+
+</Simulation>
