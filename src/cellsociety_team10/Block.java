@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javafx.scene.paint.Color;
-public class Block
+public abstract class Block
 {
 	private Grid<Block> grid;
 	private Location location;
@@ -100,10 +100,7 @@ public class Block
 		grid.put(location, this);
 	}
 
-	public void act()
-	{
-		setDirection(getDirection() + Location.HALF_CIRCLE);
-	}
+	abstract public void act();
 
 	public String toString()
 	{

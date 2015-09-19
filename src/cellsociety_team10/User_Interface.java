@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User_Interface {
     private Group basic_scene;
@@ -24,18 +25,27 @@ public class User_Interface {
     private Canvas canvas;
     private boolean status;
     private double rate;
-
+    HashMap<String,String> sim_map;
+    String current_sim;
 
     public User_Interface(){
+
         status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
         title = new Label("CellSociety");
+        title.setId("title");
         option_list = new ArrayList<Node>();
-        parser = new Parser("src/cellsociety_team10/pred_prey.xml");
-        panel = new GridPanel(parser.parse());
-        canvas = panel.getCanvas();
+        sim_chooser();
 
+    }
+
+    private void sim_chooser(){
+        sim_map = new HashMap<String, String>();
+        sim_map.put("Segregation", "src/cellsociety_team10/segregation.xml");
+        sim_map.put("Predator-Prey", "src/cellsociety_team10/pred_prey.xml");
+        sim_map.put("Spreading-Fire", "src/cellsociety_team10/fire.xml");
+        sim_map.put("Game of Life", "src/cellsociety_team10/game_of_life.xml");
     }
 
     public void set_up_base_scene(Group basic){
@@ -47,7 +57,7 @@ public class User_Interface {
 
     public void outer_border_set_up(){
         outer_format = new BorderPane();
-        outer_format.setPrefSize(Graphic_Handler.SCREEN_HEIGHT, Graphic_Handler.SCREEN_WIDTH);
+        outer_format.setPrefSize(Graphic_Handler.SCREEN_WIDTH, Graphic_Handler.SCREEN_HEIGHT);
         outer_format.setId("pane");
     }
 
@@ -70,11 +80,13 @@ public class User_Interface {
     }
 
     private void init_generic_options(){
+        init_simulation_chooser();
         init_start_button();
         init_stop_button();
         init_step_button();
+        init_reset_button();
         init_animation_speed_slider();
-        init_simulation_chooser();
+
         for(Node option: option_list){
             control_panel.getChildren().add(option);
         }
@@ -99,23 +111,41 @@ public class User_Interface {
         step_button.setOnAction((event) -> step());
         option_list.add(step_button);
     }
+    private void init_reset_button(){
+        Custom_Button reset_button = new Custom_Button("Reset");
+        reset_button.setOnAction((event) -> reset());
+        option_list.add(reset_button);
+    }
 
     private void init_animation_speed_slider(){
+        Label speed = new Label("Speed:");
+        //speed.s
         Custom_Slider animation_speed_slider = new Custom_Slider(0, 2, 1);
         animation_speed_slider.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             rate = newValue.doubleValue();
         });
+        option_list.add(speed);
+
         option_list.add(animation_speed_slider);
     }
 
     private void init_simulation_chooser(){
         ComboBox<String> simulation_choices = new ComboBox<String>();
-        for(String simulation: parser.get_simulation_names()){
+        System.out.println(sim_map.size());
+        simulation_choices.setValue("Choose a simulation:");
+        for(String simulation: sim_map.keySet()){
             simulation_choices.getItems().add(simulation);
+
         }
         option_list.add(simulation_choices);
+        simulation_choices.setOnAction((event) -> {
+            set_sim(simulation_choices.getValue());
+        });
+
     }
+
+
 
     public GridPanel get_panel(){
         return panel;
@@ -138,6 +168,19 @@ public class User_Interface {
 
         panel.update();
 
+    }
+
+    private void reset(){
+        set_sim(current_sim);
+    }
+
+    private void set_sim(String key){
+        current_sim = key;
+        System.out.println(sim_map.get(key));
+        parser = new Parser(sim_map.get(key));
+        panel = new GridPanel(parser.parse());
+        canvas = panel.getCanvas();
+        outer_format.setLeft(canvas);
     }
 
     public double change_rate(){

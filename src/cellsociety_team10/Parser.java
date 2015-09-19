@@ -25,6 +25,7 @@ public class Parser {
     private ArrayList<String> parameter_list;
     private Map<String, Double> parameter_map;
     private int simulation_number;
+
     public Parser(String file_name){
         param_array_maker();
         simulation_names = new ArrayList<String>();
@@ -63,8 +64,7 @@ public class Parser {
         doc_normalizer();
         NodeList info = document.getElementsByTagName("Information");
         NodeList parameters = document.getElementsByTagName("Parameters");
-        System.out.println(info.getLength());
-        System.out.println(parameters.getLength());
+
         set_proper_parameters();
         loop_through_param(parameters);
         return parameter_params.get(simulation_number).get_sim();
@@ -95,17 +95,13 @@ public class Parser {
     }
 
     private String get_value_from_xml(Element ind_element, int position){
-        System.out.println(ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent());
+
         return ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent();
     }
 
 
 
-    public ArrayList<String> get_simulation_names(){
-        simulation_names.add("Test1");
-        simulation_names.add("Test2");
-        return simulation_names;
-    }
+
 
 
 
