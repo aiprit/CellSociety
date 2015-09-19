@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javafx.scene.paint.Color;
 
-public class Fish extends Block {
+public class FishBlock extends Block {
 	private static int breedTime = 4;
     private static int numFish = 0;
     private int turnsUntilCanBreed;
@@ -29,7 +29,7 @@ public class Fish extends Block {
         return breedTime;
     }
     
-    public Fish(){
+    public FishBlock(){
         super();
         setColor(getStandardFishColor());
         turnsUntilCanBreed = breedTime + (int) (Math.random() * 3);
@@ -44,7 +44,7 @@ public class Fish extends Block {
             Collections.shuffle(openSpots);
             moveTo(openSpots.get(0));
             if(turnsUntilCanBreed <= 0){
-                Fish newFish = new Fish();
+                FishBlock newFish = new FishBlock();
                 newFish.putSelfInGrid(getGrid(), oldLocation);
                 turnsUntilCanBreed = breedTime;
             }

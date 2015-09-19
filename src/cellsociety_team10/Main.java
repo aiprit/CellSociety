@@ -24,12 +24,12 @@ public class Main extends Application {
         primaryStage.show();
 
 
-        KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-                e -> graphics.step(SECOND_DELAY));
-        Timeline animation = new Timeline();
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.getKeyFrames().add(frame);
-        animation.play();
+//        KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+//                e -> graphics.step(SECOND_DELAY));
+//        Timeline animation = new Timeline();
+//        animation.setCycleCount(Timeline.INDEFINITE);
+//        animation.getKeyFrames().add(frame);
+//        animation.play();
 
     }
 
