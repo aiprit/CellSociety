@@ -7,7 +7,7 @@ import java.util.Random;
 import javafx.scene.paint.Color;
 
 public class SpreadingFire extends AbstractSimulation{
-	private Grid<Block> theWorld;
+
 	private static Color backColor = Color.YELLOW;
 	private double probCatch;
 	public SpreadingFire(int rows, int cols, double fraction1, double fraction2, double prob) {
@@ -17,22 +17,7 @@ public class SpreadingFire extends AbstractSimulation{
 
 		
 
-	public void loopToPlace(int num, boolean placeTree){
-		int placed = 0;
-		Random r = new Random();
-		ArrayList<Location> locsUsed = new ArrayList<Location>();
-		while(placed < num){
-			int row = r.nextInt(theWorld.getNumRows());
-			int col = r.nextInt(theWorld.getNumCols());
-			Location loc = new Location(row, col);
-			if(theWorld.get(loc) == null){
-				placed++;
-				Block result = placeTree ? new Burning(probCatch) : new Flammable();
-				result.putSelfInGrid(theWorld, loc);
-				locsUsed.add(loc);
-			}
-		} 
-	}
+	
 
 	public void populateDefinite(int num1, int num2){
 		loopToPlace(num1,true);
@@ -54,6 +39,16 @@ public class SpreadingFire extends AbstractSimulation{
 	public Color getEmptyColor() {
 		// TODO Auto-generated method stub
 		return backColor;
+	}
+
+
+
+
+
+	@Override
+	public Block chooseBlock(boolean placeBlock) {
+		Block result= placeBlock ? new Fish():new Shark();
+		return result;
 	}
 }
 

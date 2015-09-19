@@ -22,7 +22,23 @@ public abstract class AbstractSimulation {
 	}
 	populateWorld(fraction1, fraction2);
 }
-	public abstract void loopToPlace(int num, boolean place);
+	public  void loopToPlace(int num, boolean place){
+		int placed = 0;
+		Random r = new Random();
+		ArrayList<Location> locsUsed = new ArrayList<Location>();
+		while(placed < num){
+			int row = r.nextInt(theWorld.getNumRows());
+			int col = r.nextInt(theWorld.getNumCols());
+			Location loc = new Location(row, col);
+			if(theWorld.get(loc) == null){
+				placed++;
+				Block result = chooseBlock(place);
+				result.putSelfInGrid(theWorld, loc);
+				locsUsed.add(loc);
+			}
+		} 
+	}
+	public abstract Block chooseBlock(boolean placeBlock);
 
 	public abstract void populateDefinite(int num1, int num2);
 
@@ -42,6 +58,7 @@ public abstract class AbstractSimulation {
 		else
 			populateIndefinite(num1, num2);
 	}
+
 
 	public void step(){
 		ArrayList<Location> occupiedLocations = theWorld.getOccupiedLocations();
