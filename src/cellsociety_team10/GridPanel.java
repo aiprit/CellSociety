@@ -4,13 +4,11 @@ package cellsociety_team10;
 import javafx.scene.paint.Color;
 import javafx.geometry.Dimension2D;
 import java.awt.Graphics;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
-
 import java.awt.Image;
 
 import javax.swing.JPanel;
@@ -54,8 +52,12 @@ class GridPanel extends JPanel{
         for(int r = 0; r < theWorld.getNumRows(); r++){
             for(int c = 0; c < theWorld.getNumCols(); c++){
                 Color col = theWorld.getColor(r, c);
-                if(col != Color.BLUE){
+                if(col != theWorld.getEmptyColor()){
                 	Background.setFill(col);;
+                	Background.rect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+                }
+                else{
+                	Background.setFill(theWorld.getEmptyColor());;
                 	Background.rect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
                 }
             }
