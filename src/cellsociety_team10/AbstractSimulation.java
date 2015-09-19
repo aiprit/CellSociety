@@ -1,5 +1,6 @@
 package cellsociety_team10;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -9,10 +10,15 @@ import javafx.scene.paint.Color;
 public abstract class AbstractSimulation {
 	protected String simulationType;
 	protected Grid<Block> theWorld;
+	private ArrayList<String> param_list;
 
 	public AbstractSimulation(Object parameters) {
 		theWorld = new BoundedGrid<Block>(parameters.rows, parameters.cols);
 		reset(parameters.fraction1, parameters.fraction2);
+	}
+
+	public ArrayList<String> get_param_list(){
+		return param_list;
 	}
 
 	protected void reset(double fraction1, double fraction2){
