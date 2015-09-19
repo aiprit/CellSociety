@@ -6,8 +6,17 @@
 
 }
 
-.label {
+
+
+
+ #title {
     -fx-font-size: 30pt;
+    -fx-text-fill: white;
+
+}
+
+.label {
+
     -fx-text-fill: white;
 
 }

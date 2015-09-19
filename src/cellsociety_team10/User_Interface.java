@@ -34,6 +34,7 @@ public class User_Interface {
         control_panel = new VBox();
         grid_view = new GridPane();
         title = new Label("CellSociety");
+        title.setId("title");
         option_list = new ArrayList<Node>();
         sim_chooser();
 
@@ -56,7 +57,7 @@ public class User_Interface {
 
     public void outer_border_set_up(){
         outer_format = new BorderPane();
-        outer_format.setPrefSize(Graphic_Handler.SCREEN_HEIGHT, Graphic_Handler.SCREEN_WIDTH);
+        outer_format.setPrefSize(Graphic_Handler.SCREEN_WIDTH, Graphic_Handler.SCREEN_HEIGHT);
         outer_format.setId("pane");
     }
 
@@ -117,17 +118,22 @@ public class User_Interface {
     }
 
     private void init_animation_speed_slider(){
+        Label speed = new Label("Speed:");
+        //speed.s
         Custom_Slider animation_speed_slider = new Custom_Slider(0, 2, 1);
         animation_speed_slider.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             rate = newValue.doubleValue();
         });
+        option_list.add(speed);
+
         option_list.add(animation_speed_slider);
     }
 
     private void init_simulation_chooser(){
         ComboBox<String> simulation_choices = new ComboBox<String>();
         System.out.println(sim_map.size());
+        simulation_choices.setValue("Choose a simulation:");
         for(String simulation: sim_map.keySet()){
             simulation_choices.getItems().add(simulation);
 
