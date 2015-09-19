@@ -23,3 +23,4 @@ public class Fire_Params extends Parameters {
         return new SpreadingFireSim(init_params);
     }
 }
+

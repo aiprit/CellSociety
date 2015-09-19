@@ -22,7 +22,10 @@ public class PredatorPreySim extends AbstractSimulation{
         sharkBreedTime = map.get("standard_breed_time_shark");
         fishBreedTime = map.get("standard_breed_time_fish");
         sharkStarveTime = map.get("standard_starve_time");
-        reset(map.get("percent_sharks"), map.get("percent_fish"));
+       // System.out.println(sharkBreedTime) ;
+        //System.out.println(fishBreedTime);
+       // System.out.println(sharkStarveTime);
+        reset(map.get("percent_fish"),map.get("percent_sharks"));
     }
    
     @Override

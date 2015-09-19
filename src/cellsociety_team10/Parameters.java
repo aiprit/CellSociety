@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 
 abstract public class Parameters {
-    ArrayList<String> list_of_parameters;
-    HashMap<String, Double> init_params;
+    protected ArrayList<String> list_of_parameters;
+    protected HashMap<String, Double> init_params;
 
     String simulation_type;
     String name;
@@ -14,6 +14,7 @@ abstract public class Parameters {
     double grid_size;
 
     public Parameters(){
+        init_params = new HashMap<String, Double>();
         list_of_parameters = new ArrayList<String>();
         list_of_parameters.add("grid_size");
 

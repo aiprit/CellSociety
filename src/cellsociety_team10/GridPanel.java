@@ -18,8 +18,8 @@ class GridPanel extends JPanel{
     
     
 	   
-    public  int GridWidth = 600;
-    public  int GridHeight = 600;
+    public  int GridWidth = 400;
+    public  int GridHeight = 400;
     private Canvas Canvas;
     private Group Root = new Group();
     private GraphicsContext Background;
@@ -28,21 +28,34 @@ class GridPanel extends JPanel{
     private double cellWidth;
     private double cellHeight;
 
-    public GridPanel(int rows, int cols,int width, int height,double fract1,double fract2, double prob){
+    public GridPanel(int width, int height, AbstractSimulation sim){
         GridWidth = width;
         GridHeight = height;
         Canvas = new Canvas(GridWidth,GridHeight);
         Background = Canvas.getGraphicsContext2D();
-        theWorld = new SpreadingFireSim(rows, cols,fract1,fract2,0.5);
+        theWorld = sim;
         myScene = new Scene(Root,GridWidth,GridHeight);
         cellWidth = (double)GridWidth / theWorld.getNumCols();
-        cellHeight = (double) GridHeight / theWorld.getNumRows(); 
-    }
-    
-    public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
-        theWorld = new SpreadingFireSim(rows, cols,fractstate1,fractstate2,0.5);
+        cellHeight = (double) GridHeight / theWorld.getNumRows();
         render();
     }
+
+    public GridPanel(AbstractSimulation sim){
+
+        Canvas = new Canvas(GridWidth,GridHeight);
+        Background = Canvas.getGraphicsContext2D();
+        theWorld = sim;
+        myScene = new Scene(Root,GridWidth,GridHeight);
+        cellWidth = (double)GridWidth / theWorld.getNumCols();
+        cellHeight = (double) GridHeight / theWorld.getNumRows();
+        render();
+        Root.getChildren().add(Canvas);
+    }
+    
+    /*public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
+        //theWorld = new SpreadingFireSim(rows, cols,fractstate1,fractstate2,0.5);
+        render();
+    }*/
     
     
     public void update(){
@@ -55,7 +68,7 @@ class GridPanel extends JPanel{
             for(int c = 0; c < theWorld.getNumCols(); c++){
                 Color col = theWorld.getColor(r, c);
                 if(col != theWorld.getEmptyColor()){
-                	Background.setFill(col);;
+                	Background.setFill(col);
                 	Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
                 }
                 else{
@@ -64,7 +77,11 @@ class GridPanel extends JPanel{
                 }
             }
         }
-        Root.getChildren().add(Canvas);
+
+    }
+
+    public Canvas getCanvas(){
+        return Canvas;
     }
 
   
