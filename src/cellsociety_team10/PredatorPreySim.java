@@ -36,6 +36,13 @@ public class PredatorPreySim extends AbstractSimulation{
             new Shark().putSelfInGrid(theWorld, locs.get(i));
     }
 
+    public  Block chooseBlock(boolean placeBlock){
+    	Block result= placeBlock ? new Fish():new Shark();
+    return result;
+    }
+
+    
+    
     @Override
     public void populateDefinite(int numFish, int numSharks) {
         loopToPlace(numFish, true); 
