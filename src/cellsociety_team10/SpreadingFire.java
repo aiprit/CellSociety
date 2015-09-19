@@ -10,6 +10,8 @@ public class SpreadingFire extends AbstractSimulation{
 
 	private static Color backColor = Color.YELLOW;
 	private double probCatch;
+	
+	
 	public SpreadingFire(int rows, int cols, double fraction1, double fraction2, double prob) {
 		super(rows, cols, fraction1, fraction2);
 		probCatch = prob;
