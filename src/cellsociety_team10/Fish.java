@@ -2,9 +2,9 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
-public class Fish extends Animal {
+public class Fish extends Block {
 	private static int breedTime = 4;
     private static int numFish = 0;
     private int turnsUntilCanBreed;

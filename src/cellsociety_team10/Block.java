@@ -1,15 +1,14 @@
 package cellsociety_team10;
 
-import java.awt.Color;
-
-public class Animal
+import javafx.scene.paint.Color;
+public class Block
 {
-    private Grid<Animal> grid;
+    private Grid<Block> grid;
     private Location location;
     private int direction;
     private Color color;
 
-    public Animal()
+    public Block()
     {
         color = Color.BLUE;
         direction = Location.NORTH;
@@ -39,7 +38,7 @@ public class Animal
             direction += Location.FULL_CIRCLE;
     }
 
-    public Grid<Animal> getGrid()
+    public Grid<Block> getGrid()
     {
         return grid;
     }
@@ -49,15 +48,15 @@ public class Animal
         return location;
     }
 
-    public void putSelfInGrid(Grid<Animal> gr, Location loc)
+    public void putSelfInGrid(Grid<Block> gr, Location loc)
     {
         if (grid != null)
             throw new IllegalStateException(
-                    "This Animal is already contained in a grid.");
+                    "This Block is already contained in a grid.");
 
-        Animal Animal = gr.get(loc);
-        if (Animal != null)
-            Animal.removeSelfFromGrid();
+        Block block = gr.get(loc);
+        if (block != null)
+            block.removeSelfFromGrid();
         gr.put(loc, this);
         grid = gr;
         location = loc;
@@ -67,10 +66,10 @@ public class Animal
     {
         if (grid == null)
             throw new IllegalStateException(
-                    "This Animal is not contained in a grid.");
+                    "This Block is not contained in a grid.");
         if (grid.get(location) != this)
             throw new IllegalStateException(
-                    "The grid contains a different Animal at location "
+                    "The grid contains a different Block at location "
                             + location + ".");
 
         grid.remove(location);
@@ -81,10 +80,10 @@ public class Animal
     public void moveTo(Location newLocation)
     {
         if (grid == null)
-            throw new IllegalStateException("This Animal is not in a grid.");
+            throw new IllegalStateException("This Block is not in a grid.");
         if (grid.get(location) != this)
             throw new IllegalStateException(
-                    "The grid contains a different Animal at location "
+                    "The grid contains a different Block at location "
                             + location + ".");
         if (!grid.isValid(newLocation))
             throw new IllegalArgumentException("Location " + newLocation
@@ -93,7 +92,7 @@ public class Animal
         if (newLocation.equals(location))
             return;
         grid.remove(location);
-        Animal other = grid.get(newLocation);
+        Block other = grid.get(newLocation);
         if (other != null)
             other.removeSelfFromGrid();
         location = newLocation;

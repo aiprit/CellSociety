@@ -46,12 +46,13 @@ public class BoundedGrid<E> extends AbstractGrid<E>
         return theLocations;
     }
 
-    public E get(Location loc)
+    @SuppressWarnings("unchecked")
+	public E get(Location loc)
     {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
-        return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
+        return (E) occupantArray[loc.getRow()][loc.getCol()];
     }
 
     public E put(Location loc, E obj)

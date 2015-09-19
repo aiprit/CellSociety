@@ -1,11 +1,11 @@
 package cellsociety_team10;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Shark extends Animal {
+public class Shark extends Block {
     private static int standardBreedTime = 20;
     private static int standardStarveTime = 5;
     private static int numSharks = 0;
@@ -102,7 +102,7 @@ public class Shark extends Animal {
         boolean eaten = false;
         int index = 0;
         while(!eaten && index < neighbors.size()){
-            Animal possibleFood = getGrid().get(neighbors.get(index));
+            Block possibleFood = getGrid().get(neighbors.get(index));
             if( possibleFood instanceof Fish){
                 eaten = true;
                 turnsSinceLastAte = 0;

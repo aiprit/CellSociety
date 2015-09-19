@@ -10,10 +10,8 @@ public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
     public ArrayList<Location> getValidAdjacentLocations(Location loc)
     {
         ArrayList<Location> locs = new ArrayList<Location>();
-
         int d = Location.NORTH;
-        for (int i = 0, limit = Location.FULL_CIRCLE / Location.RIGHT; i < limit; i++)
-        {
+        for (int i = 0, limit = Location.FULL_CIRCLE / Location.HALF_RIGHT; i < limit; i++) {
             Location neighborLoc = loc.getAdjacentLocation(d);
             if (!isValid(neighborLoc)){
                 // perform wrap around
@@ -27,7 +25,7 @@ public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
                 
             }
             locs.add(neighborLoc);
-            d = d + Location.RIGHT;
+            d = d + Location.HALF_RIGHT;
         }
         return locs;
     }
