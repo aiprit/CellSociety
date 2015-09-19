@@ -17,8 +17,12 @@ import javax.swing.JPanel;
 
 class GridPanel extends JPanel{
 <<<<<<< HEAD
+
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
     
     
 	   
@@ -96,6 +100,9 @@ class GridPanel extends JPanel{
     public AbstractSimulation getWorld(){
         return theWorld;
     }
+<<<<<<< HEAD
+
+=======
 =======
 >>>>>>> robs_branch
 
@@ -175,4 +182,5 @@ class GridPanel extends JPanel{
 =======
 >>>>>>> master
 >>>>>>> robs_branch
+>>>>>>> master
 }
