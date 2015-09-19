@@ -22,7 +22,7 @@ public class SegregationSim extends AbstractSimulation {
 
     public SegregationSim(HashMap<String, Double> map) {
         super(map);
-    	happyPercentage = map.get("happy_percentage");
+    	happyPercentage = map.get("happy_percent");
         reset(map.get("percent_blue"), map.get("percent_red") );
     }
 

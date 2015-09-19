@@ -15,12 +15,14 @@ public class AliveBlock extends Block {
 	}
 	
 	public void act() {
+
 		boolean stayAlive = stayAlive();
 		Location loc = getLocation();
 		if (!stayAlive) {
+			Grid<Block> g_blocks = getGrid();
 			removeSelfFromGrid();
 			DeadBlock newDeadBlock = new DeadBlock();
-			newDeadBlock.putSelfInGrid(getGrid(), loc);
+			newDeadBlock.putSelfInGrid(g_blocks, loc);
 		}
 	}
 	

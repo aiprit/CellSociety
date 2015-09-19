@@ -12,23 +12,7 @@ public class SpreadingFireSim extends AbstractSimulation{
 	private static Color backColor = Color.YELLOW;
 	private double probCatch;
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-=======
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> master
->>>>>>> 16fc013185ce961693826d055078a5bd11bc595f
-<<<<<<< HEAD
-=======
->>>>>>> master
->>>>>>> robs_branch
->>>>>>> master
 	public SpreadingFireSim(HashMap<String, Double> map) {
 		super(map);
 		probCatch = map.get("probability_catch");

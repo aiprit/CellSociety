@@ -35,9 +35,12 @@ public class RedBlock extends Block {
 			}
 			index++;
 		}
-		double samePercentage = sameType / neighbors.size();
-		if (samePercentage >= happyPercentage ) {
-			happy = true;
+		double samePercentage;
+		if (!(neighbors.size() == 0)) {
+			samePercentage = sameType / neighbors.size();
+			if (samePercentage >= happyPercentage ) {
+				happy = true;
+			}
 		}
 		return happy;
 	}
