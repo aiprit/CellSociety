@@ -2,25 +2,28 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 import javafx.scene.paint.Color;
 
 public class SegregationSim extends AbstractSimulation {
-	
+
     private static Color emptyColor = Color.BEIGE; //blue
     private static double happyPercentage;
-    
+
     public double getHappyPercentage() {
     	return happyPercentage;
     }
-    
+
     @Override
     public Color getEmptyColor() {
         return emptyColor;
     }
-    
-    public SegregationSim(Object parameters) {
-    	super(parameters.rows, parameters.cols, parameters.fractionBlue, parameters.fractionRed);
-    	happyPercentage = parameters.happyPercentage;
+
+    public SegregationSim(HashMap<String, Double> map) {
+        super(map);
+    	happyPercentage = map.get("happy_percentage");
+        reset(map.get("percent_blue"), map.get("percent_red") );
     }
 
     public Block chooseBlock(boolean placeBlock) {

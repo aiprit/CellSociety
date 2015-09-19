@@ -2,14 +2,17 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 import javafx.scene.paint.Color;
 
 public class GameOfLifeSim extends AbstractSimulation {
 
 		private static Color emptyColor = Color.BEIGE;
 
-		public GameOfLifeSim(int rows, int cols, double fractionDead, double fractionAlive) {
-			super(rows, cols, fractionDead, fractionAlive);
+		public GameOfLifeSim(HashMap<String, Double> map) {
+			super(map);
+			reset(map.get("percent_alive"), map.get("percent_dead"));
 		}
 
 
@@ -17,14 +20,10 @@ public class GameOfLifeSim extends AbstractSimulation {
 		public Color getEmptyColor() {
 	        return emptyColor;
 	    }
-		
-<<<<<<< HEAD
-		public GameOfLifeSim(Object parameters) {
-			super(parameters.rows, parameters.cols, parameters.fractionDead, paramaters.fractionAlive);
-		}
-=======
 
->>>>>>> robs_branch
+
+
+
 		
 		public Block chooseBlock(boolean placeBlock) {
 			Block result = placeBlock ? new DeadBlock() : new AliveBlock();

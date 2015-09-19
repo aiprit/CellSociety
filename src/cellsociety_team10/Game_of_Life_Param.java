@@ -17,6 +17,6 @@ public class Game_of_Life_Param extends Parameters{
     }
 
     public AbstractSimulation get_sim(){
-        return GameOfLifeSim(init_params);
+        return new GameOfLifeSim(init_params);
     }
 }
