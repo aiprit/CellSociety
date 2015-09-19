@@ -7,19 +7,19 @@ import java.util.HashMap;
 import javafx.scene.paint.Color;
 
 public class SegregationSim extends AbstractSimulation {
-	
+
     private static Color emptyColor = Color.BEIGE; //blue
     private static double happyPercentage;
-    
+
     public double getHappyPercentage() {
     	return happyPercentage;
     }
-    
+
     @Override
     public Color getEmptyColor() {
         return emptyColor;
     }
-    
+
     public SegregationSim(HashMap<String, Double> map) {
         super(map);
     	happyPercentage = map.get("happy_percentage");
