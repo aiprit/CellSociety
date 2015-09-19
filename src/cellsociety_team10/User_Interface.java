@@ -3,6 +3,7 @@ package cellsociety_team10;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -17,6 +18,7 @@ public class User_Interface {
     private Label title;
     private GridPane grid_view;
     private ArrayList<Node> option_list;
+    Parser parser;
 
 
     public User_Interface(){
@@ -24,6 +26,8 @@ public class User_Interface {
         grid_view = new GridPane();
         title = new Label("CellSociety");
         option_list = new ArrayList<Node>();
+        parser = new Parser("src/cellsociety_team10/pred_prey.xml");
+        parser.parse();
     }
 
     public void set_up_base_scene(Group basic){
@@ -74,6 +78,7 @@ public class User_Interface {
         init_stop_button();
         init_step_button();
         init_animation_speed_slider();
+        init_simulation_chooser();
         for(Node option: option_list){
             control_panel.getChildren().add(option);
         }
@@ -81,16 +86,21 @@ public class User_Interface {
 
     private void init_start_button(){
         Custom_Button start_button = new Custom_Button("Start");
+        start_button.setOnAction((event) -> start());
         option_list.add(start_button);
+
     }
+
 
     private void init_stop_button(){
         Custom_Button stop_button = new Custom_Button("Stop");
+        stop_button.setOnAction((event) -> stop());
         option_list.add(stop_button);
     }
 
     private void init_step_button(){
         Custom_Button step_button = new Custom_Button("Step");
+        step_button.setOnAction((event) -> step());
         option_list.add(step_button);
     }
 
@@ -99,4 +109,25 @@ public class User_Interface {
         option_list.add(animation_speed_slider);
     }
 
+    private void init_simulation_chooser(){
+        ComboBox<String> simulation_choices = new ComboBox<String>();
+        for(String simulation: parser.get_simulation_names()){
+            simulation_choices.getItems().add(simulation);
+        }
+        option_list.add(simulation_choices);
+    }
+
+
+
+    private void start(){
+        System.out.print("Start");
+    }
+    private void stop(){
+        System.out.print("Stop");
+
+    }
+    private void step(){
+        System.out.print("Step");
+
+    }
 }
