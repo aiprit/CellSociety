@@ -17,9 +17,7 @@ import javax.swing.JPanel;
 
 class GridPanel extends JPanel{
 
-    
-    
-	   
+
     public  int GridWidth = 400;
     public  int GridHeight = 400;
     private Canvas Canvas;
@@ -53,19 +51,19 @@ class GridPanel extends JPanel{
         render();
         Root.getChildren().add(Canvas);
     }
-    
+
     /*public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
         //theWorld = new SpreadingFireSim(rows, cols,fractstate1,fractstate2,0.5);
         render();
     }*/
-    
-    
+
+
     public void update(){
         theWorld.step();
         render();
     }
-    
-    private void render() {    
+
+    private void render() {
         for(int r = 0; r < theWorld.getNumRows(); r++){
             for(int c = 0; c < theWorld.getNumCols(); c++){
                 Color col = theWorld.getColor(r, c);
@@ -86,11 +84,11 @@ class GridPanel extends JPanel{
         return Canvas;
     }
 
-  
+
     public Scene getScene(){
     	return myScene;
     }
-    
+
     public AbstractSimulation getWorld(){
         return theWorld;
     }

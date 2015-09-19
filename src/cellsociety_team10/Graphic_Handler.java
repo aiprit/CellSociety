@@ -12,7 +12,7 @@ import javafx.util.Duration;
 public class Graphic_Handler {
 	private static final String APPLICATION_NAME = "Cell Society";
 	public static final int SCREEN_WIDTH = 700;
-	public static final int SCREEN_HEIGHT = 700;
+	public static final int SCREEN_HEIGHT = 500;
 	private Stage current_stage;
 	private Scene current_scene;
 	private Group root;
