@@ -2,6 +2,8 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 import javafx.scene.paint.Color;
 
 public class GameOfLifeSim extends AbstractSimulation {
@@ -13,8 +15,9 @@ public class GameOfLifeSim extends AbstractSimulation {
 	        return emptyColor;
 	    }
 		
-		public GameOfLifeSim(Object parameters) {
-			super(parameters.rows, parameters.cols, parameters.fractionDead, paramaters.fractionAlive);
+		public GameOfLifeSim(HashMap<String, Double> map) {
+			super(map);
+			reset(map.get("percent_alive"), map.get("percent_dead"));
 		}
 		
 		public Block chooseBlock(boolean placeBlock) {
