@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Simulation>
+<Segregation id="0">
     <Information>
         <simulation_type>Predator-Prey</simulation_type>
         <name>Wa-Tor World</name>
@@ -15,4 +15,4 @@
 
 
 
-</Simulation>
+</Segregation>
