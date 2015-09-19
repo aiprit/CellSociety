@@ -2,8 +2,8 @@ package cellsociety_team10;
 
 import javafx.scene.paint.Color;
 
-public class Flammable extends Block{
-	public Flammable(){
+public class FlammableBlock extends Block{
+	public FlammableBlock(){
 		super();
 	}
 	 public char getChar(){

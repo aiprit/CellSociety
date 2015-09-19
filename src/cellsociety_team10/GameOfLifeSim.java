@@ -13,8 +13,8 @@ public class GameOfLifeSim extends AbstractSimulation {
 	        return emptyColor;
 	    }
 		
-		public GameOfLifeSim(int rows, int cols, double fractionDead, double fractionAlive) {
-			super(rows, cols, fractionDead, fractionAlive);
+		public GameOfLifeSim(Object parameters) {
+			super(parameters.rows, parameters.cols, parameters.fractionDead, paramaters.fractionAlive);
 		}
 		
 		public Block chooseBlock(boolean placeBlock) {

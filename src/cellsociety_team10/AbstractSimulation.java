@@ -10,19 +10,19 @@ public abstract class AbstractSimulation {
 	protected String simulationType;
 	protected Grid<Block> theWorld;
 
-	public AbstractSimulation(int rows, int cols, double fraction1, double fraction2) {
-		theWorld = new BoundedGrid<Block>(rows, cols);
-		reset(fraction1, fraction2);
+	public AbstractSimulation(Object parameters) {
+		theWorld = new BoundedGrid<Block>(parameters.rows, parameters.cols);
+		reset(parameters.fraction1, parameters.fraction2);
 	}
 
 	protected void reset(double fraction1, double fraction2){
-	ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
-	for(Location loc : occupiedCells){
-		theWorld.get(loc).removeSelfFromGrid();
+		ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
+		for(Location loc : occupiedCells){
+			theWorld.get(loc).removeSelfFromGrid();
+		}
+		populateWorld(fraction1, fraction2);
 	}
-	populateWorld(fraction1, fraction2);
-}
-	public  void loopToPlace(int num, boolean place){
+	public void loopToPlace(int num, boolean place){
 		int placed = 0;
 		Random r = new Random();
 		ArrayList<Location> locsUsed = new ArrayList<Location>();

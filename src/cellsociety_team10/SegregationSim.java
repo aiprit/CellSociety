@@ -18,8 +18,9 @@ public class SegregationSim extends AbstractSimulation {
         return emptyColor;
     }
     
-    public SegregationSim(int rows, int cols, double fractionBlue, double fractionRed) {
-    	super(rows, cols, fractionBlue, fractionRed);
+    public SegregationSim(Object parameters) {
+    	super(parameters.rows, parameters.cols, parameters.fractionBlue, parameters.fractionRed);
+    	happyPercentage = parameters.happyPercentage;
     }
 
     public Block chooseBlock(boolean placeBlock) {
