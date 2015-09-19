@@ -5,14 +5,16 @@ import javafx.scene.paint.Color;
 
 public class BlueBlock extends Block {
 	private static double happyPercentage;
+	private Color blockColor = Color.BLUE;
 	
-	public static Color getStandardBlueBlockColor() {
-		return Color.BLUE;
+	@Override
+	public Color getColor() {
+		return blockColor;
 	}
 	
 	public BlueBlock(double percentage) {
 		super();
-		setColor(getStandardBlueBlockColor());
+		setColor(getColor());
 		happyPercentage = percentage;
 	}
 	

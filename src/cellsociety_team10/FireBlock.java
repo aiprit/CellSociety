@@ -2,13 +2,13 @@ package cellsociety_team10;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import javafx.scene.paint.Color;
 
-public class BurningBlock extends Block{
+public class FireBlock extends Block{
 	private double probCatch; 
+	private Color blockColor = Color.RED;
 
-	public BurningBlock(double prob){
+	public FireBlock(double prob){
 		super();
 		probCatch = prob;
 	}
@@ -19,8 +19,11 @@ public class BurningBlock extends Block{
 		for(int i=0;i<neighbors.size();i++){
 			Block burn = getGrid().get(neighbors.get(i));
 			if(burn.getChar()=='T'){
-				if(r.nextDouble()> probCatch)
-					burn = new BurningBlock(probCatch);
+				if(r.nextDouble()>= probCatch) {
+					burn.removeSelfFromGrid();
+					burn = new FireBlock(probCatch);
+					burn.putSelfInGrid(getGrid(), neighbors.get(i));
+				}
 			}
 		}
 		removeSelfFromGrid();
@@ -32,6 +35,6 @@ public class BurningBlock extends Block{
 
 	@Override
 	public Color getColor() {
-		return Color.RED;
+		return blockColor;
 	}
 }
