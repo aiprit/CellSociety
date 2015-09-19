@@ -33,14 +33,14 @@ class GridPanel extends JPanel{
         GridHeight = height;
         Canvas = new Canvas(GridWidth,GridHeight);
         Background = Canvas.getGraphicsContext2D();
-        theWorld = new SpreadingFire(rows, cols,fract1,fract2,0.5);
+        theWorld = new SpreadingFireSim(rows, cols,fract1,fract2,0.5);
         myScene = new Scene(Root,GridWidth,GridHeight);
         cellWidth = (double)GridWidth / theWorld.getNumCols();
         cellHeight = (double) GridHeight / theWorld.getNumRows(); 
     }
     
     public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
-        theWorld = new SpreadingFire(rows, cols,fractstate1,fractstate2,0.5);
+        theWorld = new SpreadingFireSim(rows, cols,fractstate1,fractstate2,0.5);
         render();
     }
     

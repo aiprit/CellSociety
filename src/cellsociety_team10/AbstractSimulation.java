@@ -12,9 +12,9 @@ public abstract class AbstractSimulation {
 	protected Grid<Block> theWorld;
 	private ArrayList<String> param_list;
 
-	public AbstractSimulation(int rows, int cols, double fraction1, double fraction2) {
-		theWorld = new BoundedGrid<Block>(rows, cols);
-		reset(fraction1, fraction2);
+	public AbstractSimulation(Object parameters) {
+		theWorld = new BoundedGrid<Block>(parameters.rows, parameters.cols);
+		reset(parameters.fraction1, parameters.fraction2);
 	}
 
 	public ArrayList<String> get_param_list(){
@@ -22,13 +22,13 @@ public abstract class AbstractSimulation {
 	}
 
 	protected void reset(double fraction1, double fraction2){
-	ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
-	for(Location loc : occupiedCells){
-		theWorld.get(loc).removeSelfFromGrid();
+		ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
+		for(Location loc : occupiedCells){
+			theWorld.get(loc).removeSelfFromGrid();
+		}
+		populateWorld(fraction1, fraction2);
 	}
-	populateWorld(fraction1, fraction2);
-}
-	public  void loopToPlace(int num, boolean place){
+	public void loopToPlace(int num, boolean place){
 		int placed = 0;
 		Random r = new Random();
 		ArrayList<Location> locsUsed = new ArrayList<Location>();
