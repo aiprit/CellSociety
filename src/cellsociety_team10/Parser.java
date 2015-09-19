@@ -64,8 +64,7 @@ public class Parser {
         doc_normalizer();
         NodeList info = document.getElementsByTagName("Information");
         NodeList parameters = document.getElementsByTagName("Parameters");
-        System.out.println(info.getLength());
-        System.out.println(parameters.getLength());
+
         set_proper_parameters();
         loop_through_param(parameters);
         return parameter_params.get(simulation_number).get_sim();
@@ -96,7 +95,7 @@ public class Parser {
     }
 
     private String get_value_from_xml(Element ind_element, int position){
-        System.out.println(ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent());
+
         return ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent();
     }
 
