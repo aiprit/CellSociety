@@ -10,20 +10,15 @@ public class GameOfLifeSim extends AbstractSimulation {
 
 		private static Color emptyColor = Color.BEIGE;
 
-		public GameOfLifeSim(HashMap<String, Double> map) {
-			super(map);
-			reset(map.get("percent_alive"), map.get("percent_dead"));
-		}
-
-
 		@Override
 		public Color getEmptyColor() {
 	        return emptyColor;
 	    }
-
-
-
-
+		
+		public GameOfLifeSim(HashMap<String, Double> map) {
+			super(map);
+			reset(map.get("percent_alive"), map.get("percent_dead"));
+		}
 		
 		public Block chooseBlock(boolean placeBlock) {
 			Block result = placeBlock ? new DeadBlock() : new AliveBlock();
