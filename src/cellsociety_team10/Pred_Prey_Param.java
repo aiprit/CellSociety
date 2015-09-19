@@ -1,8 +1,5 @@
 package cellsociety_team10;
 
-import javafx.application.Application;
-
-import java.util.HashMap;
 
 /**
  * Created by Rob on 9/19/15.
