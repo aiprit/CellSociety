@@ -19,11 +19,7 @@ public class SegregationSim extends AbstractSimulation {
     public Color getEmptyColor() {
         return emptyColor;
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> master
     public SegregationSim(HashMap<String, Double> map) {
         super(map);
     	happyPercentage = map.get("happy_percentage");
