@@ -35,6 +35,10 @@ public class Graphic_Handler {
 
 	}
 
+	public void step(double delay){
+		//System.out.println("hi");
+	}
+
 
 	public Scene scene_creation(){
 		return new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);

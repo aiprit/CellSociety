@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation>
+    <Information>
+        <simulation_type>Predator-Prey</simulation_type>
+        <name>Wa-Tor World</name>
+        <author>Mike Scott</author>
+    </Information>
+
+    <Parameters>
+        <happy_percent> </happy_percent>
+        <percent_blue> </percent_blue>
+        <percent_red> </percent_red>
+        <grid_size> </grid_size>
+    </Parameters>
+
+
+
+</Simulation>

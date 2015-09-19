@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation>
+    <Information>
+        <simulation_type>Predator-Prey</simulation_type>
+        <name>Wa-Tor World</name>
+        <author>Mike Scott</author>
+    </Information>
+
+    <Parameters>
+        <percent_sharks> </percent_sharks>
+        <percent_fish> </percent_fish>
+        <standard_breed_time_shark> </standard_breed_time_shark>
+        <standard_breed_time_fish> </standard_breed_time_fish>
+        <standard_starve_time> </standard_starve_time>
+        <grid_size> </grid_size>
+    </Parameters>
+
+
+</Simulation>
