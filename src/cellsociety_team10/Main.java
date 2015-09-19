@@ -1,12 +1,17 @@
 package cellsociety_team10;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.*;
 import javafx.stage.*;
+import javafx.util.Duration;
 
 
 public class Main extends Application {
     Stage full_view_window;
-
+    public static final int FRAMES_PER_SECOND = 60;
+    private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
+    private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
 
     @Override
@@ -17,6 +22,14 @@ public class Main extends Application {
         a.update();
         primaryStage.setScene(a.getScene());
         primaryStage.show();
+
+
+        KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+                e -> graphics.step(SECOND_DELAY));
+        Timeline animation = new Timeline();
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.getKeyFrames().add(frame);
+        animation.play();
 
     }
 

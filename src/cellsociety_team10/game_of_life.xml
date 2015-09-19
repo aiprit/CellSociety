@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Simulation>
+    <Information>
+        <simulation_type>Game of Life</simulation_type>
+        <name>Conway's Game of Life</name>
+        <author>John Horton Conway</author>
+    </Information>
+
+    <Parameters>
+        <percent_alive> </percent_alive>
+        <percent_dead> </percent_dead>
+        <grid_size> </grid_size>
+    </Parameters>
+
+
+
+</Simulation>
