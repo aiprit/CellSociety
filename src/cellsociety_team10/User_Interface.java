@@ -3,6 +3,7 @@ package cellsociety_team10;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -19,6 +20,9 @@ public class User_Interface {
     private GridPane grid_view;
     private ArrayList<Node> option_list;
     Parser parser;
+    private GridPanel panel;
+    private Canvas canvas;
+    public boolean start;
 
 
     public User_Interface(){
@@ -27,13 +31,14 @@ public class User_Interface {
         title = new Label("CellSociety");
         option_list = new ArrayList<Node>();
         parser = new Parser("src/cellsociety_team10/pred_prey.xml");
-        parser.parse();
+        panel = new GridPanel(parser.parse());
+        canvas = panel.getCanvas();
+
     }
 
     public void set_up_base_scene(Group basic){
         outer_border_set_up();
         control_panel_set_up();
-        grid_view_setup();
         add_elements_to_pane();
         basic.getChildren().add(outer_format);
     }
@@ -50,26 +55,15 @@ public class User_Interface {
 
     }
 
-    public void grid_view_setup(){
-        grid_view = new GridPane();
-        grid_view.setPrefSize(300, 300);
-        grid_view.setGridLinesVisible(true);
 
-        for(int x = 0 ; x< 10; x++){
-            for(int i = 0; i<10; i++){
-                grid_view.add(new Button(), x, i);
-
-            }
-        }
-    }
 
     public void add_elements_to_pane(){
         outer_format.setRight(control_panel);
-        outer_format.setLeft(grid_view);
+        outer_format.setLeft(canvas);
         outer_format.setTop(title);
         outer_format.setAlignment(title, Pos.TOP_CENTER);
         outer_format.setAlignment(control_panel, Pos.CENTER_RIGHT);
-        outer_format.setAlignment(grid_view, Pos.CENTER_LEFT);
+        outer_format.setAlignment(canvas, Pos.CENTER_LEFT);
         init_generic_options();
     }
 
@@ -117,10 +111,18 @@ public class User_Interface {
         option_list.add(simulation_choices);
     }
 
+    public GridPanel get_panel(){
+        return panel;
+    }
 
+    public boolean starter(){
+        return true;
+    }
 
     private void start(){
         System.out.print("Start");
+        start = true;
+
     }
     private void stop(){
         System.out.print("Stop");
@@ -128,6 +130,7 @@ public class User_Interface {
     }
     private void step(){
         System.out.print("Step");
+        panel.update();
 
     }
 }

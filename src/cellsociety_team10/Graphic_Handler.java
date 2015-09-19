@@ -11,12 +11,13 @@ public class Graphic_Handler {
 	public static final int SCREEN_WIDTH = 700;
 	public static final int SCREEN_HEIGHT = 700;
 	private Stage current_stage;
-	private ArrayList<Scene> simulations;
 	private Scene current_scene;
 	private Group root;
 	private User_Interface ui;
 
+
 	public Graphic_Handler(Stage main_stage){
+
 		current_stage = main_stage;
 		root = new Group();
 		ui= new User_Interface();
@@ -30,13 +31,17 @@ public class Graphic_Handler {
 		current_stage.setScene(current_scene);
 		current_stage.setTitle(APPLICATION_NAME);
 		current_stage.show();
-
 		ui.set_up_base_scene(root);
+
 
 	}
 
 	public void step(double delay){
 		//System.out.println("hi");
+		if(ui.start==true) {
+			ui.get_panel().update();
+		}
+
 	}
 
 

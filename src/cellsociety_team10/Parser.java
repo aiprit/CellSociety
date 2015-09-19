@@ -26,6 +26,7 @@ public class Parser {
     private Map<String, Double> parameter_map;
     private int simulation_number;
     public Parser(String file_name){
+        param_array_maker();
         simulation_names = new ArrayList<String>();
         File xml_file = new File(file_name);
         document_reader_setup(xml_file);
@@ -33,7 +34,13 @@ public class Parser {
     }
 
     private void param_array_maker(){
+        parameter_params = new ArrayList<Parameters>();
+        parameter_params.add(new Segregation_Param());
         parameter_params.add(new Pred_Prey_Param());
+        parameter_params.add(new Fire_Params());
+        parameter_params.add(new Game_of_Life_Param());
+
+
     }
 
     public void document_reader_setup(File xml_file){
@@ -56,6 +63,8 @@ public class Parser {
         doc_normalizer();
         NodeList info = document.getElementsByTagName("Information");
         NodeList parameters = document.getElementsByTagName("Parameters");
+        System.out.println(info.getLength());
+        System.out.println(parameters.getLength());
         set_proper_parameters();
         loop_through_param(parameters);
         return parameter_params.get(simulation_number).get_sim();
@@ -68,6 +77,7 @@ public class Parser {
 
     private void set_proper_parameters(){
         simulation_number = Integer.parseInt(document.getDocumentElement().getAttribute("id"));
+
         parameter_list = parameter_params.get(simulation_number).get_param_list();
         parameter_map = parameter_params.get(simulation_number).get_param_map();
     }
@@ -75,8 +85,8 @@ public class Parser {
 
     private void loop_through_param(NodeList nList){
 
-        for (int position = 0; position  < nList.getLength(); position++) {
-            Node ind_node = nList.item(position);
+        for (int position = 0; position  <parameter_list.size() ; position++) {
+            Node ind_node = nList.item(0);
             if (ind_node.getNodeType() == Node.ELEMENT_NODE) {
                 Element ind_element = (Element) ind_node;
                 parameter_map.put(parameter_list.get(position),Double.parseDouble(get_value_from_xml(ind_element, position)));
@@ -85,6 +95,7 @@ public class Parser {
     }
 
     private String get_value_from_xml(Element ind_element, int position){
+        System.out.println(ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent());
         return ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent();
     }
 
