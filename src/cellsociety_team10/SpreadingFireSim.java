@@ -6,15 +6,15 @@ import java.util.Random;
 
 import javafx.scene.paint.Color;
 
-public class SpreadingFire extends AbstractSimulation{
+public class SpreadingFireSim extends AbstractSimulation{
 
 	private static Color backColor = Color.YELLOW;
 	private double probCatch;
 	
 	
-	public SpreadingFire(int rows, int cols, double fraction1, double fraction2, double prob) {
-		super(rows, cols, fraction1, fraction2);
-		probCatch = prob;
+	public SpreadingFireSim(Object parameters) {
+		super(parameters.rows, parameters.cols, parameters.fraction1, parameters.fraction2);
+		probCatch = parameters.probCatch;
 	}
 
 		
@@ -33,9 +33,9 @@ public class SpreadingFire extends AbstractSimulation{
 				locs.add(new Location(r, c));
 		Collections.shuffle(locs);
 		for(int i = 0; i < num1; i++)
-			new Flammable().putSelfInGrid(theWorld, locs.get(i));
+			new FlammableBlock().putSelfInGrid(theWorld, locs.get(i));
 		for(int i = num1, limit = num1 + num2; i < limit; i++)
-			new Burning(probCatch).putSelfInGrid(theWorld, locs.get(i));
+			new BurningBlock(probCatch).putSelfInGrid(theWorld, locs.get(i));
 	}
 	@Override
 	public Color getEmptyColor() {
@@ -49,7 +49,7 @@ public class SpreadingFire extends AbstractSimulation{
 
 	@Override
 	public Block chooseBlock(boolean placeBlock) {
-		Block result= placeBlock ? new Flammable():new Burning(probCatch);
+		Block result= placeBlock ? new FlammableBlock():new BurningBlock(probCatch);
 		return result;
 	}
 }

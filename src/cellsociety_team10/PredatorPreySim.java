@@ -8,14 +8,18 @@ import javafx.scene.paint.Color;
 public class PredatorPreySim extends AbstractSimulation{
 
     private static Color oceanColor = Color.BLUE; //blue
+    private static int sharkBreedTime, fishBreedTime, sharkStarveTime;
     
     @Override
     public Color getEmptyColor() {
         return oceanColor;
     }
     
-    public PredatorPreySim(int rows, int cols, double fractionFish, double fractionSharks){
-        super(rows, cols, fractionFish, fractionSharks);
+    public PredatorPreySim(Object parameters){
+        super(parameters.rows, parameters.cols, parameters.fractionFish, parameters.fractionSharks);
+        sharkBreedTime = parameters.sharkBreedTime;
+        fishBreedTime = parameters.fishBreedTime;
+        sharkStarveTime = parameters.sharkStarveTime;
     }
    
     @Override
