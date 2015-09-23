@@ -8,8 +8,8 @@ import java.util.Collections;
 
 public abstract class Block
 {
-	private Grid<Block> grid;
-	private Location location;
+	protected Grid<Block> grid;
+	protected Location location;
 	private int direction;
 	private Color blockColor;
 
