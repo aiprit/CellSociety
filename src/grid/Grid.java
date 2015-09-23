@@ -27,4 +27,6 @@ public interface Grid<E>
     ArrayList<Location> getOccupiedAdjacentLocations(Location loc);
 
     ArrayList<E> getNeighbors(Location loc);
+
+	ArrayList<Location> getAllEmptyLocations();
 }
