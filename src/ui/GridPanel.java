@@ -22,7 +22,7 @@ class GridPanel extends JPanel{
     private Scene myScene;
     private double cellWidth;
     private double cellHeight;
-
+    private int sides;
 
 
     public GridPanel(AbstractSimulation sim){
@@ -35,6 +35,7 @@ class GridPanel extends JPanel{
         cellHeight = (double) GridHeight / theWorld.getNumRows();
         render();
         Root.getChildren().add(Canvas);
+
     }
 
     /*public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
@@ -54,6 +55,7 @@ class GridPanel extends JPanel{
                 Color col = theWorld.getColor(r, c);
                 if(col != theWorld.getEmptyColor()){
                 	Background.setFill(col);
+//                	Background.fillPolygon();
                 	Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
                 }
                 else{
