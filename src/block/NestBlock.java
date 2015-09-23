@@ -9,7 +9,6 @@ public class NestBlock extends Block {
 
 	private Color blockColor = Color.WHITE;
 
-
 	public NestBlock(){
 		super();
 		setColor(getColor());
