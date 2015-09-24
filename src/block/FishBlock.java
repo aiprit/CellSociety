@@ -42,10 +42,6 @@ public class FishBlock extends Block {
 		return 'F';
 	}
 
-	public void removeSelfFromGrid(){
-		super.removeSelfFromGrid();
-	}
-
 	public boolean isEdible(){
 		return true;
 	}

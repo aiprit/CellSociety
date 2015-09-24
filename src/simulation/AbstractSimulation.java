@@ -4,6 +4,7 @@ import block.Block;
 import block.Location;
 import grid.BoundedGrid;
 import grid.Grid;
+import grid.InfiniteGrid;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
