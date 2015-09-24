@@ -9,4 +9,4 @@ Also, we refactored any duplicated code that was simply overlooked in the simula
 
 Net IDs: sck13, nrg12
 
-For error corrections, we needed to generalize our objects more.  For instance, we had to change all instances of HashMap to Map.
+For error corrections, we needed to generalize our objects more.  For instance, we had to change all instances of HashMap to Map.  Also, changed all of the ArrayList calls to just Lists.
