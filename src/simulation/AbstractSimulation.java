@@ -19,7 +19,6 @@ public abstract class AbstractSimulation {
 
 	public AbstractSimulation(HashMap<String, Double> map) {
 		theWorld = new BoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
-
 	}
 
 	public ArrayList<String> get_param_list(){

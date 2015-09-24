@@ -51,72 +51,105 @@ class GridPanel extends JPanel{
 	}
 
 	private void render() {
-		int a = 0;
 		for(int r = 0; r < theWorld.getNumRows(); r++){
 			for(int c = 0; c < theWorld.getNumCols(); c++){
 				Color col = theWorld.getColor(r, c);
 				if (col != theWorld.getEmptyColor()) {
 					Background.setFill(col);
-					Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
 				}
 				else {
 					Background.setFill(theWorld.getEmptyColor());
-					Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
 				}
 			}
 		}
-				
-				
-				/*
-				if (r%2==0){    
-					if(col != theWorld.getEmptyColor()){
-						Background.setFill(col);
-						Background.fillPolygon(new double[] {c*cellWidth-cellWidth, c*cellWidth-cellWidth/2, c*cellWidth}, 
-								new double[] {(r-a)*cellHeight, (r-a)*cellHeight-cellHeight, (r-a)*cellHeight}, 3); //upright
-								//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+		
+		/*
+		for(int r = 0; r < theWorld.getNumRows(); r++){
+			double a = 0;
+			for(int c = 0; c < theWorld.getNumCols(); c++){
+				Color col = theWorld.getColor(r, c);
+				if (c%2==0){    
+					if (r % 2 == 0) {
+						if(col != theWorld.getEmptyColor()){
+							Background.setFill(col);
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3); //upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
+						else{
+							Background.setFill(theWorld.getEmptyColor());;
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3);//upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
 					}
-					else{
-						Background.setFill(theWorld.getEmptyColor());;
-						Background.fillPolygon(new double[] {c*cellWidth-cellWidth, c*cellWidth-cellWidth/2, c*cellWidth}, 
-								new double[] {(r-a)*cellHeight, (r-a)*cellHeight-cellHeight, (r-a)*cellHeight}, 3);//upright
-								//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+					else {
+						if(col != theWorld.getEmptyColor()){
+							Background.setFill(col);
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3); //upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
+						else{
+							Background.setFill(theWorld.getEmptyColor());;
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3);//upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
 					}
 				}
 				else {
-					if(col != theWorld.getEmptyColor()){
-						Background.setFill(col);
-						Background.fillPolygon(new double[] {(c-1)*cellWidth-cellWidth/2, (c-1)*cellWidth, (c-1)*cellWidth+cellWidth/2}, 
-								new double[] {(r-1-a)*cellHeight-cellHeight, (r-1-a)*cellHeight, (r-1-a)*cellHeight-cellHeight}, 3);//inverted
-								//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+					if (r%2==0) {
+						if(col != theWorld.getEmptyColor()){
+							Background.setFill(col);
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3); //upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
+						else{
+							Background.setFill(theWorld.getEmptyColor());;
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3);//upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
 					}
-					else{
-						Background.setFill(theWorld.getEmptyColor());;
-						Background.fillPolygon(new double[] {(c-1)*cellWidth-cellWidth/2, (c-1)*cellWidth, (c-1)*cellWidth+cellWidth/2}, 
-								new double[] {(r-1-a)*cellHeight-cellHeight, (r-1-a)*cellHeight, (r-1-a)*cellHeight-cellHeight}, 3);//inverted
-								//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
-					}
+					else {
+						if(col != theWorld.getEmptyColor()){
+							Background.setFill(col);
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3); //upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
+						else{
+							Background.setFill(theWorld.getEmptyColor());;
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3);//upright
+							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
+						}
+					}	
 				}
+				a+=0.5;
 			}
-			if (r%2==1)
-				a++;
 		}
-	*/
-		
-		
-		
-	}
-
-	public Canvas getCanvas(){
-		return Canvas;
+		*/
 	}
 
 
-	public Scene getScene(){
-		return myScene;
-	}
 
-	public AbstractSimulation getWorld(){
-		return theWorld;
-	}
+
+public Canvas getCanvas(){
+	return Canvas;
+}
+
+
+public Scene getScene(){
+	return myScene;
+}
+
+public AbstractSimulation getWorld(){
+	return theWorld;
+}
 
 }
