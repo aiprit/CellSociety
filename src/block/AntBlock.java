@@ -10,7 +10,7 @@ public class AntBlock extends Block {
 	private int numAnts = 0;
 	private boolean hasFood = false;
 	private int antLifeTime = 30;
-	private int turnsSinceAte;
+	private int turnsSinceLastAte;
 	private double foodPheremones;
 	private double homePheremones;
 	private double decreaseRate = 0.9;
@@ -61,7 +61,7 @@ public class AntBlock extends Block {
 
 	private void goToNest() {
 		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		ArrayList<Double> ph;
+		ArrayList<Double> ph = new ArrayList<Double>();
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block possibleAnt = getGrid().get(adjacentSpots.get(i));
 			if (possibleAnt instanceof AntBlock	|| possibleAnt instanceof FoodBlock) {
@@ -71,7 +71,6 @@ public class AntBlock extends Block {
 				hasFood = false;
 			}
 		}
-		ph = new ArrayList<Double>();
 		for (int j = 0; j< adjacentSpots.size();j++) {
 			 GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
 			 ph.add(ground.getHomePheremones());

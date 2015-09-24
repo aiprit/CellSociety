@@ -1,7 +1,6 @@
 package grid;
 
 import block.Location;
-
 import java.util.ArrayList;
 
 public class WrappedBoundedGrid<E> extends BoundedGrid<E> {

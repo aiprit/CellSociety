@@ -114,10 +114,6 @@ public abstract class Block
 		return '.';
 	}
 
-	public boolean isEdible(){
-		return false;
-	}
-
 	public void tryMove() {
 		ArrayList<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
 		if(openSpots.size() > 0){

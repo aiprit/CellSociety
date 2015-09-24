@@ -10,7 +10,7 @@
         <probability_catch>.4</probability_catch>
         <percent_fire>.01</percent_fire>
         <percent_tree>.9</percent_tree>
-        <grid_size>50</grid_size>
+        <grid_size>20</grid_size>
     </Parameters>
 
 

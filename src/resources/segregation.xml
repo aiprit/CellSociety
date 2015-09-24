@@ -10,7 +10,7 @@
         <happy_percent>.3</happy_percent>
         <percent_blue>.2</percent_blue>
         <percent_red>.2</percent_red>
-        <grid_size>100.0</grid_size>
+        <grid_size>25.0</grid_size>
     </Parameters>
 
 
