@@ -3,6 +3,7 @@ package block;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class FireBlock extends Block {
@@ -16,7 +17,7 @@ public class FireBlock extends Block {
 
 	public void act(){
 		Random r = new Random();
-		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
 		for(int i=0;i<neighbors.size();i++){
 			Block burn = getGrid().get(neighbors.get(i));
 			if(burn.getChar()=='T'){

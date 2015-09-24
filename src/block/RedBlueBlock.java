@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Rob on 9/24/15.
@@ -28,7 +29,7 @@ abstract public class RedBlueBlock extends Block{
     }
 
     private boolean happy() {
-        ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+        List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
         boolean happy = false;
         int index = 0;
         double sameType = 0;
@@ -55,7 +56,7 @@ abstract public class RedBlueBlock extends Block{
     abstract public char getChar();
 
     public void tryMove() {
-        ArrayList<Location> openSpots = getGrid().getAllEmptyLocations();
+        List<Location> openSpots = getGrid().getAllEmptyLocations();
         if(openSpots.size() > 0){
             Collections.shuffle(openSpots);
             moveTo(openSpots.get(0));
