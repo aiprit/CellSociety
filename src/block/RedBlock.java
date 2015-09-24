@@ -3,6 +3,7 @@ package block;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RedBlock extends Block {
 	private static double happyPercentage;
@@ -28,7 +29,7 @@ public class RedBlock extends Block {
 		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
 		boolean happy = false;
 		int index = 0;
-		int sameType = 0;
+		double sameType = 0;
 		while (index < neighbors.size()) {
 			Block typeOfBlock = getGrid().get(neighbors.get(index));
 			if (typeOfBlock instanceof RedBlock) {
@@ -47,5 +48,12 @@ public class RedBlock extends Block {
 	}
 	public char getChar() {
 		return 'R';
+	}
+	public void tryMove() {
+		ArrayList<Location> openSpots = getGrid().getAllEmptyLocations();
+		if(openSpots.size() > 0){
+			Collections.shuffle(openSpots);
+			moveTo(openSpots.get(0));
+		}
 	}
 }

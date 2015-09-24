@@ -15,12 +15,12 @@ public class PredatorPreySim extends AbstractSimulation {
 
     private Color oceanColor = Color.BLUE; //blue
     private double sharkBreedTime, fishBreedTime, sharkStarveTime;
-    
+
     @Override
     public Color getEmptyColor() {
         return oceanColor;
     }
-    
+
     public PredatorPreySim(HashMap<String, Double> map){
         super(map);
         sharkBreedTime = map.get("standard_breed_time_shark");
@@ -31,11 +31,10 @@ public class PredatorPreySim extends AbstractSimulation {
        // System.out.println(sharkStarveTime);
         reset(map.get("percent_fish"),map.get("percent_sharks"));
     }
-   
+
     @Override
 	public void populateIndefinite(int numFish, int numSharks) {
         ArrayList<Location> locs = new ArrayList<Location>();
-        int a =theWorld.getNumRows();
         for(int r = 0, rLimit = theWorld.getNumRows(); r < rLimit; r++)
             for(int c = 0, cLimit = theWorld.getNumCols(); c < cLimit; c++)
                 locs.add(new Location(r, c));
@@ -53,10 +52,10 @@ public class PredatorPreySim extends AbstractSimulation {
 
     @Override
     public void populateDefinite(int numFish, int numSharks) {
-        loopToPlace(numFish, true); 
+        loopToPlace(numFish, true);
         loopToPlace(numSharks, false);
     }
-    
-   
-   
+
+
+
 }
