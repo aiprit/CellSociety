@@ -1,12 +1,11 @@
 package grid;
 
 import block.Location;
-
 import java.util.ArrayList;
 
 public class BoundedGrid<E> extends AbstractGrid<E>
 {
-    private Object[][] occupantArray; // the array storing the grid elements
+    protected Object[][] occupantArray; // the array storing the grid elements
 
     public BoundedGrid(int rows, int cols)
     {
@@ -48,6 +47,7 @@ public class BoundedGrid<E> extends AbstractGrid<E>
         return theLocations;
     }
 
+
     @SuppressWarnings("unchecked")
 	public E get(Location loc)
     {
@@ -78,4 +78,6 @@ public class BoundedGrid<E> extends AbstractGrid<E>
         occupantArray[loc.getRow()][loc.getCol()] = null;
         return r;
     }
+
+
 }

@@ -53,4 +53,5 @@ public class SegregationSim extends AbstractSimulation {
         for(int i = numBlueBlocks, limit = numBlueBlocks + numRedBlocks; i < limit; i++)
             new RedBlock(happyPercentage).putSelfInGrid(theWorld, locs.get(i));
 	}
+
 }

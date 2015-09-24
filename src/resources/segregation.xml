@@ -7,10 +7,8 @@
     </Information>
 
     <Parameters>
-        <happy_percent>.6</happy_percent>
-        <percent_blue>.4</percent_blue>
-        <percent_red>.4</percent_red>
-        <grid_size>20</grid_size>
+        <happy_percent>.3</happy_percent><percent_blue>.45</percent_blue>
+        <percent_red>.45</percent_red><grid_size>25.0</grid_size>
     </Parameters>
 
 
