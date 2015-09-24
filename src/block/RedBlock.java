@@ -1,20 +1,20 @@
 package block;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class RedBlock extends Block {
 	private static double happyPercentage;
+	private Color blockColor = Color.RED;
 
-	public static Color getStandardRedBlockColor() {
-		return Color.RED;
+	@Override
+	public Color getColor() {
+		return blockColor;
 	}
 
 	public RedBlock(double percentage) {
 		super();
-		setColor(getStandardRedBlockColor());
+		setColor(getColor());
 		happyPercentage = percentage;
 	}
 
@@ -48,12 +48,5 @@ public class RedBlock extends Block {
 	}
 	public char getChar() {
 		return 'R';
-	}
-	public void tryMove() {
-		ArrayList<Location> openSpots = getGrid().getAllEmptyLocations();
-		if(openSpots.size() > 0){
-			Collections.shuffle(openSpots);
-			moveTo(openSpots.get(0));
-		}
 	}
 }

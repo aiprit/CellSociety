@@ -51,17 +51,13 @@ public class BoundedGrid<E> extends AbstractGrid<E>
     @SuppressWarnings("unchecked")
 	public E get(Location loc)
     {
-        if (!isValid(loc))
-            throw new IllegalArgumentException("Location " + loc
-                    + " is not valid");
+        notValidException(loc);
         return (E) occupantArray[loc.getRow()][loc.getCol()];
     }
 
     public E put(Location loc, E obj)
     {
-        if (!isValid(loc))
-            throw new IllegalArgumentException("Location " + loc
-                    + " is not valid");
+        notValidException(loc);
         if (obj == null)
             throw new NullPointerException("obj == null");
         E oldOccupant = get(loc);
@@ -71,13 +67,16 @@ public class BoundedGrid<E> extends AbstractGrid<E>
 
     public E remove(Location loc)
     {
-        if (!isValid(loc))
-            throw new IllegalArgumentException("Location " + loc
-                    + " is not valid");
+        notValidException(loc);
         E r = get(loc);
         occupantArray[loc.getRow()][loc.getCol()] = null;
         return r;
     }
 
+    private void notValidException(Location loc) {
+    	if (!isValid(loc))
+    		throw new IllegalArgumentException("Location " + loc
+                    + " is not valid");
+    }
 
 }
