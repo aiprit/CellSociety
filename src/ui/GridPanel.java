@@ -51,36 +51,36 @@ class GridPanel extends JPanel{
 	}
 
 	private void render() {
-		for(int r = 0; r < theWorld.getNumRows(); r++){
-			for(int c = 0; c < theWorld.getNumCols(); c++){
-				Color col = theWorld.getColor(r, c);
-				if (col != theWorld.getEmptyColor()) {
-					Background.setFill(col);
-					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
-				}
-				else {
-					Background.setFill(theWorld.getEmptyColor());
-					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
-				}
-			}
-		}
-		
-		/*
+//		for(int r = 0; r < theWorld.getNumRows(); r++){
+//			for(int c = 0; c < theWorld.getNumCols(); c++){
+//				Color col = theWorld.getColor(r, c);
+//				if (col != theWorld.getEmptyColor()) {
+//					Background.setFill(col);
+//					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
+//				}
+//				else {
+//					Background.setFill(theWorld.getEmptyColor());
+//					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
+//				}
+//			}
+//		}
+//
+
 		for(int r = 0; r < theWorld.getNumRows(); r++){
 			double a = 0;
 			for(int c = 0; c < theWorld.getNumCols(); c++){
 				Color col = theWorld.getColor(r, c);
-				if (c%2==0){    
+				if (c%2==0){
 					if (r % 2 == 0) {
 						if(col != theWorld.getEmptyColor()){
 							Background.setFill(col);
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3); //upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
 						else{
 							Background.setFill(theWorld.getEmptyColor());;
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3);//upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
@@ -88,13 +88,13 @@ class GridPanel extends JPanel{
 					else {
 						if(col != theWorld.getEmptyColor()){
 							Background.setFill(col);
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3); //upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
 						else{
 							Background.setFill(theWorld.getEmptyColor());;
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3);//upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
@@ -104,13 +104,13 @@ class GridPanel extends JPanel{
 					if (r%2==0) {
 						if(col != theWorld.getEmptyColor()){
 							Background.setFill(col);
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3); //upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
 						else{
 							Background.setFill(theWorld.getEmptyColor());;
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight-cellHeight, (r)*cellHeight, (r)*cellHeight-cellHeight}, 3);//upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
@@ -118,22 +118,22 @@ class GridPanel extends JPanel{
 					else {
 						if(col != theWorld.getEmptyColor()){
 							Background.setFill(col);
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3); //upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
 						else{
 							Background.setFill(theWorld.getEmptyColor());;
-							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth}, 
+							Background.fillPolygon(new double[] {(c-a+1)*cellWidth-cellWidth, (c-a+1)*cellWidth-cellWidth/2, (c-a+1)*cellWidth},
 									new double[] {(r)*cellHeight, (r)*cellHeight-cellHeight, (r)*cellHeight}, 3);//upright
 							//Background.fillRect(r*cellHeight-cellHeight/2, c*cellWidth-cellWidth/2, cellWidth, cellHeight);
 						}
-					}	
+					}
 				}
 				a+=0.5;
 			}
 		}
-		*/
+
 	}
 
 
