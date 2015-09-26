@@ -1,9 +1,7 @@
 package block;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BlueBlock extends Block {
 	private static double happyPercentage;
@@ -20,14 +18,12 @@ public class BlueBlock extends Block {
 		happyPercentage = percentage;
 	}
 
-
 	public void act() {
 		boolean happy = happy();
 		if (!happy) {
 			tryMove();
 		}
 	}
-
 
 	private boolean happy() {
 		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
@@ -53,12 +49,5 @@ public class BlueBlock extends Block {
 
 	public char getChar() {
 		return 'B';
-	}
-	public void tryMove() {
-		ArrayList<Location> openSpots = getGrid().getAllEmptyLocations();
-		if(openSpots.size() > 0){
-			Collections.shuffle(openSpots);
-			moveTo(openSpots.get(0));
-		}
 	}
 }

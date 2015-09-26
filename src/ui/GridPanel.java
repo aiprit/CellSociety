@@ -51,20 +51,6 @@ class GridPanel extends JPanel{
 	}
 
 	private void render() {
-//		for(int r = 0; r < theWorld.getNumRows(); r++){
-//			for(int c = 0; c < theWorld.getNumCols(); c++){
-//				Color col = theWorld.getColor(r, c);
-//				if (col != theWorld.getEmptyColor()) {
-//					Background.setFill(col);
-//					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
-//				}
-//				else {
-//					Background.setFill(theWorld.getEmptyColor());
-//					Background.fillRect((r+1)*cellHeight-cellHeight/2, (c+1)*cellWidth-cellWidth/2, cellWidth, cellHeight);
-//				}
-//			}
-//		}
-//
 
 		for(int r = 0; r < theWorld.getNumRows(); r++){
 			double a = 0;
