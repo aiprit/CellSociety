@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Segregation id="0">
     <Information>
-        <simulation_type>Predator-Prey</simulation_type>
+        <simulation_type>Segregation</simulation_type>
         <name>Wa-Tor World</name>
         <author>Mike Scott</author>
     </Information>
