@@ -16,6 +16,8 @@ public class FoodBlock extends Block{
 	@Override
 	public void act() {
 		// TODO Auto-generated method stub
-
 	}
+	public char getChar(){
+        return 'F';
+    }
 }
