@@ -45,13 +45,18 @@ class GridPanel{
 	}
 
 	private void render() {
-		if(shittyVariable== null || shittyVariable.equals("rectangle")){
+		Background.setFill(Color.BLACK);
+		if(shittyVariable== null || shittyVariable.equals("Rectangle")){
+			Background.fillRect(0,0,GridWidth,GridHeight);
 			rectangle();
 		}
-		else if(shittyVariable.equals("triangle")){
+		else if(shittyVariable.equals("Triangle")){
+
+			Background.fillRect(0,0,GridWidth,GridHeight);
 			triangle();
 		}
-		else if(shittyVariable.equals("hexagon")){
+		else if(shittyVariable.equals("Hexagon")){
+			Background.fillRect(0,0,GridWidth,GridHeight);
 			hexagon();
 		}
 
@@ -184,6 +189,7 @@ class GridPanel{
 	}
 	public void setShapes(String str){
 		shittyVariable = str;
+		render();
 	}
 
 }
