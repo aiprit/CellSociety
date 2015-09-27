@@ -1,7 +1,9 @@
 package simulation;
 
 import block.Block;
+import block.FishBlock;
 import block.Location;
+import block.SharkBlock;
 import grid.BoundedGrid;
 import grid.Grid;
 import grid.InfiniteGrid;
