@@ -1,10 +1,6 @@
 package block;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import grid.Grid;
 import javafx.scene.paint.Color;
 
 public class AgentBlock extends SugarBlock{
