@@ -24,6 +24,7 @@ public class User_Interface {
     private Group basic_scene;
     private BorderPane outer_format;
     protected VBox control_panel;
+    private ChartPanel chart;
     private Label title;
     private GridPane grid_view;
     private ArrayList<Node> option_list;
@@ -43,6 +44,7 @@ public class User_Interface {
         status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
+
         title = new Label(myResources.getString("Title"));
         title.setId("title");
         option_list = new ArrayList<Node>();
@@ -193,6 +195,7 @@ public class User_Interface {
         System.out.println(sim_map.get(key));
         parser = new Parser(sim_map.get(key));
         panel = new GridPanel(parser.parse());
+        chart = new ChartPanel();
         canvas = panel.getCanvas();
         outer_format.setLeft(canvas);
     }
