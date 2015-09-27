@@ -1,12 +1,10 @@
 package simulation;
 
 import block.Block;
-import block.FishBlock;
 import block.Location;
-import block.SharkBlock;
 import grid.BoundedGrid;
 import grid.Grid;
-import grid.InfiniteGrid;
+import grid.WrappedBoundedGrid;
 import javafx.scene.paint.Color;
 
 import java.util.*;
@@ -17,7 +15,9 @@ public abstract class AbstractSimulation {
 	private ArrayList<String> param_list;
 
 	public AbstractSimulation(HashMap<String, Double> map) {
-		theWorld = new BoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
+		//Class c = map.get("grid_type").getClass();
+		
+		theWorld = new WrappedBoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
 	}
 
 	public ArrayList<String> get_param_list(){
