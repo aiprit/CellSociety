@@ -7,13 +7,13 @@ import java.util.List;
 import javafx.scene.paint.Color;
 
 public class NestBlock extends Block {
-
+	private double lifetime;
 	private Color blockColor = Color.WHITE;
 
-	public NestBlock(){
+	public NestBlock(double life){
 		super();
 		setColor(getColor());
-
+		lifetime = life;
 	}
 
 	public Color getColor() {
@@ -33,7 +33,8 @@ public class NestBlock extends Block {
 				GroundBlock ground = (GroundBlock) getGrid().get(neighbors.get(i));
 				double homePh = ground.getHomePheremones();
 				double foodPh = ground.getFoodPheremones();
-				AntBlock ant = new AntBlock(foodPh, homePh);
+				double[] list= ground.getStaticValues();
+				AntBlock ant = new AntBlock(foodPh, homePh,list[0],list[1],list[1+1],lifetime);
 				possibleAnt.removeSelfFromGrid();
 				ant.putSelfInGrid(getGrid(),neighbors.get(i));
 				break;
@@ -42,6 +43,6 @@ public class NestBlock extends Block {
 
 	}
 	public char getChar(){
-        return 'H';
-    }
+		return 'H';
+	}
 }

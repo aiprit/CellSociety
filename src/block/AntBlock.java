@@ -10,12 +10,13 @@ import javafx.scene.paint.Color;
 public class AntBlock extends GroundBlock {
 	private Color blockColor = Color.BLACK;
 	private boolean hasFood = false;
-	private int antLifeTime = 40;
+	private double antLifeTime;
 	private Location locate;
 	private Location locate1;
-	public AntBlock(double food, double home) {
-		super(food, home);
+	public AntBlock(double food, double home,double max,double decrease,double diffusion,double life) {
+		super(food, home,max,decrease,diffusion);
 		setColor(getColor());
+		antLifeTime =life;
 	}
 
 
@@ -32,12 +33,7 @@ public class AntBlock extends GroundBlock {
 				findFood();
 			}
 
-			if (foodPheremones > 0) {
-				foodPheremones *= decreaseRate;
-			}
-			if (homePheremones > 0) {
-				homePheremones *= decreaseRate;
-			}
+			diffuseanddecrease();
 			antLifeTime--;
 		}
 
@@ -45,8 +41,9 @@ public class AntBlock extends GroundBlock {
 			Grid<Block> a = getGrid();
 			Location loc = getLocation();
 			removeSelfFromGrid();
-			GroundBlock g = new GroundBlock(foodPheremones,homePheremones);
+			GroundBlock g = new GroundBlock(foodPheremones,homePheremones,maxPheremoneValue,decreaseRate,diffusionRate);
 			g.putSelfInGrid(a,loc);
+			diffuseanddecrease();
 		}
 	}
 
@@ -95,11 +92,11 @@ public class AntBlock extends GroundBlock {
 
 
 		if(hasFood){
-			GroundBlock g = new GroundBlock(maxPheremoneValue,homePheremones);
+			GroundBlock g = new GroundBlock(foodPheremones,homePheremones,maxPheremoneValue,decreaseRate,diffusionRate);
 			g.putSelfInGrid(getGrid(),locate1);
 		}
 		else{
-			GroundBlock g =new GroundBlock(foodPheremones,maxPheremoneValue);
+			GroundBlock g =new GroundBlock(foodPheremones,homePheremones,maxPheremoneValue,decreaseRate,diffusionRate);
 			g.putSelfInGrid(getGrid(),locate1);
 		}
 
@@ -128,6 +125,8 @@ public class AntBlock extends GroundBlock {
 				ph.add(ground1.getFoodPheremones());
 			}
 		}
+		if(ph.size() ==0)
+			return;
 		double max = Collections.max(ph);
 		for(int l = 0; l < ph.size(); l++){
 			if(max == ph.get(l))
@@ -144,11 +143,11 @@ public class AntBlock extends GroundBlock {
 		moveTo(locate);
 
 		if(hasFood){
-			GroundBlock g = new GroundBlock(maxPheremoneValue,homePheremones);
+			GroundBlock g = new GroundBlock(foodPheremones,homePheremones,maxPheremoneValue,decreaseRate,diffusionRate);
 			g.putSelfInGrid(getGrid(),locate1);
 		}
 		else{
-			GroundBlock g = new GroundBlock(foodPheremones,maxPheremoneValue);
+			GroundBlock g = new GroundBlock(foodPheremones,homePheremones,maxPheremoneValue,decreaseRate,diffusionRate);
 			g.putSelfInGrid(getGrid(),locate1);
 		}
 	}
