@@ -15,8 +15,15 @@ import parameter.Parameters;
 public class SugarSim1 extends AbstractSimulation{
 	private static Color emptyColor = Color.WHITE;
 	private double sugarhi;
+	private int vision;
+	private int metabolism;
 	public SugarSim1(Parameters parameter){
 		super(parameter);
+		sugarhi = parameter.get_param_map().get("maxsugar");
+		vision =  parameter.get_param_map().get("vision").intValue;
+		metabolism = parameter.get_param_map().get("metabolism").intValue;
+		reset(sugarhi,parameter.get_param_map().get("agent_fract"));
+
 	}
 	@Override
 	public void populateWorld(double maxsugar, double fraction2) {
@@ -47,7 +54,7 @@ public class SugarSim1 extends AbstractSimulation{
         }
 		 Collections.shuffle(locs);
 	        for(int i = 0; i < num2; i++){
-	            /* new AgentBlock(maxsugar,r1.nextInt(4),r1.nextInt(6)).putSelfInGrid(theWorld, locs.get(i)); */
+	             new AgentBlock(maxsugar,r1.nextInt(metabolism),r1.nextInt(vision)).putSelfInGrid(theWorld, locs.get(i)); */
 	            locs.remove(locs.get(i));
 	        }
 	        for(Location sugar:locs){
