@@ -45,13 +45,13 @@ class GridPanel{
 	}
 
 	private void render() {
-		if(shittyVariable.equals("triangle")){
-			triangle();
-		}
-		if(shittyVariable.equals("rectangle")){
+		if(shittyVariable== null || shittyVariable.equals("rectangle")){
 			rectangle();
 		}
-		if(shittyVariable.equals("hexagon")){
+		else if(shittyVariable.equals("triangle")){
+			triangle();
+		}
+		else if(shittyVariable.equals("hexagon")){
 			hexagon();
 		}
 
@@ -119,10 +119,9 @@ class GridPanel{
 			double a = 0;
 			for(int c = 0; c < theWorld.getNumCols(); c++){
 				Color col = theWorld.getColor(r, c);
-				if (c%2==r%2){
+				if (c % 2 == r%2){
 					filltriangle(r,c,col,a);
-				}
-				else {
+				} else {
 					filltriangle(r,c,col,a);
 				}
 				a+=0.5;
