@@ -32,11 +32,6 @@ public class Graphic_Handler {
 		ui= new User_Interface("english");
 		set_up_scene();
 		rate= ui.change_rate();
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 	}
 
 
