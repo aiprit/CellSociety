@@ -6,4 +6,5 @@
 <standard_breed_time_shark>20</standard_breed_time_shark>
 <standard_breed_time_fish>5</standard_breed_time_fish>
 <standard_starve_time>20</standard_starve_time>
+    <grid_type>BoundedGrid</grid_type>
 </Parameters></Predator-Prey>
