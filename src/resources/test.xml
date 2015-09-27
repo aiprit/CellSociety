@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<<<<<<< HEAD
 <Segregation id="0">
 <Parameters><grid_size>50</grid_size>
 <happy_percent>.3</happy_percent>
@@ -6,3 +7,14 @@
 <percent_red>.3</percent_red>
 <grid_type>WrappedBoundedGrid</grid_type>
 </Parameters></Segregation>
+=======
+<Fire id="2">
+	<Parameters>
+		<grid_size>20</grid_size>
+		<grid_type>BoundedGrid</grid_type>
+		<probability_catch>0.5</probability_catch>
+		<percent_fire>.2</percent_fire>
+		<percent_tree>.7</percent_tree>
+	</Parameters>
+</Fire>
+>>>>>>> master
