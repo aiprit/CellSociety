@@ -16,10 +16,11 @@ public class Ants_Param extends Parameters {
     }
 
     public void fill_param_array(){
-        list_of_parameters.add("vision");
-        list_of_parameters.add("metabolism");
-        list_of_parameters.add("maxsugar");
-        list_of_parameters.add("maxsugarblood");
+        list_of_parameters.add("ant_life");
+        list_of_parameters.add("max_pheremones");
+        list_of_parameters.add("diffusion_rate");
+        list_of_parameters.add("decrease_rate");
+        
     }
 
 
