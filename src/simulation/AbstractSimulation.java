@@ -6,6 +6,7 @@ import grid.BoundedGrid;
 import grid.Grid;
 import grid.WrappedBoundedGrid;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.*;
 

@@ -98,12 +98,17 @@ public class Parser {
 
     private void loop_through_param(NodeList nList){
 
-        for (int position = 0; position  <parameter_list.size() ; position++) {
+        for (int position = 0; position  < parameter_list.size() ; position++) {
             Node ind_node = nList.item(0);
             if (ind_node.getNodeType() == Node.ELEMENT_NODE) {
                 Element ind_element = (Element) ind_node;
                 parameter_map.put(parameter_list.get(position),Double.parseDouble(get_value_from_xml(ind_element, position)));
             }
+        }
+        Node ind_node = nList.item(0);
+        if (ind_node.getNodeType() == Node.ELEMENT_NODE) {
+            Element ind_element = (Element) ind_node;
+            parameter_params.get(simulation_number).set_grid_type(ind_element.getElementsByTagName("grid_type").item(0).getTextContent());
         }
     }
 

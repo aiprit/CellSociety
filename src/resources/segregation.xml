@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Segregation id="0">
     <Information>
-        <simulation_type>Predator-Prey</simulation_type>
+        <simulation_type>Segregation</simulation_type>
         <name>Wa-Tor World</name>
         <author>Mike Scott</author>
     </Information>
 
     <Parameters>
-        <happy_percent>.3</happy_percent><percent_blue>.45</percent_blue>
-        <percent_red>.45</percent_red><grid_size>20.0</grid_size>
+        <happy_percent>.3</happy_percent>
+        <percent_blue>.45</percent_blue>
+        <percent_red>.45</percent_red>
+        <grid_size>20.0</grid_size>
         <grid_type>BoundedGrid</grid_type>
     </Parameters>
 
