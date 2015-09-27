@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class Block
 {
-	protected Grid<Block> grid;
+	private Grid<Block> grid;
 	protected Location location;
 	private int direction;
 	private Color blockColor;
@@ -94,8 +94,9 @@ public abstract class Block
 			return;
 		grid.remove(location);
 		Block other = grid.get(newLocation);
-		if (other != null)
+		if (other != null){
 			other.removeSelfFromGrid();
+		}
 		location = newLocation;
 		grid.put(location, this);
 	}

@@ -13,6 +13,7 @@ public class NestBlock extends Block {
 	public NestBlock(){
 		super();
 		setColor(getColor());
+
 	}
 
 	public Color getColor() {
@@ -20,7 +21,7 @@ public class NestBlock extends Block {
 	}
 
 	public void act() {
-		List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> neighbors = getGrid().getValidAdjacentLocations(getLocation());
 		Collections.shuffle(neighbors);
 		for (int i = 0; i < neighbors.size(); i++) {
 			Block possibleAnt = getGrid().get(neighbors.get(i));
@@ -28,16 +29,19 @@ public class NestBlock extends Block {
 					possibleAnt instanceof NestBlock) {
 				continue;
 			}
-			else {
+			if (possibleAnt instanceof GroundBlock){
 				GroundBlock ground = (GroundBlock) getGrid().get(neighbors.get(i));
 				double homePh = ground.getHomePheremones();
 				double foodPh = ground.getFoodPheremones();
 				AntBlock ant = new AntBlock(foodPh, homePh);
-				ant.putSelfInGrid(getGrid(), neighbors.get(i));
-				ant.moveAnts(neighbors.get(i));
+				possibleAnt.removeSelfFromGrid();
+				ant.putSelfInGrid(getGrid(),neighbors.get(i));
 				break;
 			}
 		}
 
 	}
+	public char getChar(){
+        return 'H';
+    }
 }
