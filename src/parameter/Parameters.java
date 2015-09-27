@@ -18,7 +18,7 @@ abstract public class Parameters {
         init_params = new HashMap<String, Double>();
         list_of_parameters = new ArrayList<String>();
         list_of_parameters.add("grid_size");
-        list_of_parameters.add("grid_type");
+
 
     }
 
