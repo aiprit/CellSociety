@@ -59,6 +59,7 @@ public class User_Interface {
         sim_map.put(myResources.getString("SimPP"), myResources.getString("XmlPP"));
         sim_map.put(myResources.getString("SimFire"), myResources.getString("XmlFire"));
         sim_map.put(myResources.getString("SimGOL"), myResources.getString("XmlGOL"));
+        sim_map.put(myResources.getString("SimAnts"),myResources.getString("XmlAnts"));
     }
 
 
