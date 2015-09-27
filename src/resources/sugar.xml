@@ -14,6 +14,8 @@
         <maxsugarblood>20</maxsugarblood>
         <grid_size>20</grid_size>
         <grid_type>BoundedGrid</grid_type>
+        <blue_line></blue_line>
+        <orange_line></orange_line>
     </Parameters>
 
 

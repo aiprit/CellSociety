@@ -17,7 +17,7 @@ public class Graphic_Handler {
 	private Scene current_scene;
 	private Group root;
 	private User_Interface ui;
-	private ChartPanel chart;
+
 	public static final int FRAMES_PER_SECOND = 60;
 	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
@@ -32,7 +32,8 @@ public class Graphic_Handler {
 		ui= new User_Interface("english");
 		set_up_scene();
 		rate= ui.change_rate();
-		chart = new ChartPanel();
+
+
 	}
 
 
@@ -72,6 +73,7 @@ public class Graphic_Handler {
 
 			ui.get_panel().update();
 			ui.get_chart_panel().chart_handler(ui.get_panel().getSum1(), ui.get_panel().getSum2());
+
 		}
 
 	}

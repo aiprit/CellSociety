@@ -10,6 +10,10 @@ abstract public class Parameters {
     protected HashMap<String, Double> init_params;
     protected String grid_type;
     String simulation_type;
+
+    String blue_line;
+
+    String orange_line;
     String name;
     String author;
     double grid_size;
@@ -37,7 +41,23 @@ abstract public class Parameters {
         grid_type = s;
     }
 
-    abstract public void fill_param_array();
+    public void set_blue_line(String blue_line) {
+        this.blue_line = blue_line;
+    }
+
+    public String get_blue_line() {
+        return blue_line;
+    }
+
+    public void set_organge_line(String blue_line) {
+        this.orange_line = blue_line;
+    }
+
+    public String get_organge_line() {
+        return orange_line;
+    }
+
+    abstract protected void fill_param_array();
 
     protected void fill_map(){
         for(String param: list_of_parameters){

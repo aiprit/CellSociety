@@ -27,6 +27,7 @@ public class Parser {
     private ArrayList<String> parameter_list;
     private Map<String, Double> parameter_map;
     private int simulation_number;
+    private Parameters current_sim_param;
 
 
     public Parser(){
@@ -90,9 +91,9 @@ public class Parser {
 
     private void set_proper_parameters(){
         simulation_number = Integer.parseInt(document.getDocumentElement().getAttribute("id"));
-
-        parameter_list = parameter_params.get(simulation_number).get_param_list();
-        parameter_map = parameter_params.get(simulation_number).get_param_map();
+        current_sim_param = parameter_params.get(simulation_number);
+        parameter_list = current_sim_param.get_param_list();
+        parameter_map = current_sim_param.get_param_map();
     }
 
 
@@ -108,13 +109,24 @@ public class Parser {
         Node ind_node = nList.item(0);
         if (ind_node.getNodeType() == Node.ELEMENT_NODE) {
             Element ind_element = (Element) ind_node;
-            parameter_params.get(simulation_number).set_grid_type(ind_element.getElementsByTagName("grid_type").item(0).getTextContent());
+            current_sim_param.set_grid_type(ind_element.getElementsByTagName("grid_type").item(0).getTextContent());
+            current_sim_param.set_blue_line(ind_element.getElementsByTagName("blue_line").item(0).getTextContent());
+            current_sim_param.set_organge_line(ind_element.getElementsByTagName("orange_line").item(0).getTextContent());
         }
+
+
     }
 
     private String get_value_from_xml(Element ind_element, int position){
-
         return ind_element.getElementsByTagName(parameter_list.get(position)).item(0).getTextContent();
+    }
+
+    public String get_blue(){
+        return current_sim_param.get_blue_line();
+    }
+
+    public String get_orange(){
+        return current_sim_param.get_organge_line();
     }
 
 

@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import resources.Parser;
 import xml_creation.XML_Builder;
@@ -30,7 +31,9 @@ public class User_Interface {
     private Label title;
     private GridPane grid_view;
     private ArrayList<Node> option_list;
-    Parser parser;
+    private Parser parser;
+    private HBox info_bar;
+    private Legend legend;
     private GridPanel panel;
     private Canvas canvas;
     private Canvas graph_canvas;
@@ -48,7 +51,7 @@ public class User_Interface {
         status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
-
+        info_bar = new HBox();
         title = new Label(myResources.getString("Title"));
         title.setId("title");
         option_list = new ArrayList<Node>();
@@ -95,7 +98,7 @@ public class User_Interface {
         outer_format.setRight(control_panel);
         outer_format.setLeft(canvas);
         outer_format.setTop(title);
-        outer_format.setBottom(graph_canvas);
+        outer_format.setBottom(info_bar);
         outer_format.setAlignment(title, Pos.TOP_CENTER);
         outer_format.setAlignment(control_panel, Pos.CENTER_RIGHT);
         init_generic_options();
@@ -176,21 +179,6 @@ public class User_Interface {
 
     }
 
-    private void init_grid_cell_chooser(){
-        simulation_choices = new ComboBox<String>();
-
-        simulation_choices.setValue(myResources.getString("SimChoice"));
-        for(String simulation: sim_map.keySet()){
-            simulation_choices.getItems().add(simulation);
-
-        }
-        option_list.add(simulation_choices);
-        simulation_choices.setOnAction((event) -> {
-            set_sim(simulation_choices.getValue());
-
-        });
-
-    }
 
 
 
@@ -236,14 +224,18 @@ public class User_Interface {
 
     private void set_sim(String key){
         current_sim = key;
-        System.out.println(sim_map.get(key));
         parser = new Parser(sim_map.get(key));
         panel = new GridPanel(parser.parse());
         chart = new ChartPanel();
+        legend = new Legend(parser.get_blue(),parser.get_orange());
+        info_bar = new HBox();
+        info_bar.setSpacing(250);
+        outer_format.setBottom(info_bar);
         canvas = panel.getCanvas();
         graph_canvas = chart.get_canvas();
         outer_format.setLeft(canvas);
-        outer_format.setBottom(graph_canvas);
+        info_bar.getChildren().add(graph_canvas);
+        info_bar.getChildren().add(legend.get_legend());
     }
 
     public double change_rate(){
