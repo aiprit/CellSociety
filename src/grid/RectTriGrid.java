@@ -50,17 +50,4 @@ public abstract class RectTriGrid<E> extends AbstractGrid<E>{
 	}
 
 	
-	public List<Location> getAllEmptyLocations(){
-		List<Location> theLocations = new ArrayList<Location>();
-		for (int r = 0; r < getNumRows(); r++)
-		{
-			for (int c = 0; c < getNumCols(); c++)
-			{
-				Location loc = new Location(r, c);
-				if (get(loc) == null)
-					theLocations.add(loc);
-			}
-		}
-		return theLocations;
-	}
 }

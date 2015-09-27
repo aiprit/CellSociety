@@ -10,6 +10,7 @@
         <percent_alive>.4</percent_alive>
         <percent_dead>.4</percent_dead>
         <grid_size>20</grid_size>
+        <grid_type>BoundedGrid</grid_type>
     </Parameters>
 
 
