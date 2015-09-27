@@ -43,12 +43,12 @@ public class AgentBlock extends SugarBlock{
 
 
 	public void moveSugar(){
-			Location
+		/*	Location
 			int loopnum = 1;
 			while(loopnum<vision){
 				north = 
 			}
 		}
-		moveAgent(loc);
+		moveAgent(loc); */
 	}
 }

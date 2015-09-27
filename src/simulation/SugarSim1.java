@@ -46,11 +46,11 @@ public class SugarSim1 extends AbstractSimulation{
         }
 		 Collections.shuffle(locs);
 	        for(int i = 0; i < num2; i++){
-	            new AgentBlock(maxsugar,r1.nextInt(4),r1.nextInt(6)).putSelfInGrid(theWorld, locs.get(i));
+	            /* new AgentBlock(maxsugar,r1.nextInt(4),r1.nextInt(6)).putSelfInGrid(theWorld, locs.get(i)); */
 	            locs.remove(locs.get(i));
 	        }
 	        for(Location sugar:locs){
-	        	new SugarBlock(r1.nextInt(25),maxsugar);
+	        	/* new SugarBlock(r1.nextInt(25),maxsugar); */
 	        }
 	}
 	@Override
