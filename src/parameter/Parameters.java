@@ -1,7 +1,6 @@
 package parameter;
 
 import simulation.AbstractSimulation;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ChartPanel {
     private  static final int GridWidth = 700;
-    private  static final int GridHeight = 200;
+    private  static final int GridHeight = 150;
     private Canvas Canvas;
     private GraphicsContext Background;
     private double Yone, Ytwo;
@@ -71,7 +71,6 @@ public class ChartPanel {
             Yone= Ytwo;
             Ytwo = (double)iterator.next();
             Ytwo = GridHeight*0.7-Ytwo*GridHeight*0.7/(rows*rows);
-            System.out.println(Ytwo);
             if(color.equals(Color.BLUE)){
                 //System.out.println(Ytwo);
             }

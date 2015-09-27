@@ -9,7 +9,7 @@
     <Parameters>
         <percent_fish>.50</percent_fish>
         <percent_sharks>.10</percent_sharks>
-
+		<grid_type>BoundedGrid</grid_type>
         <standard_breed_time_shark>20</standard_breed_time_shark>
         <standard_breed_time_fish>4</standard_breed_time_fish>
         <standard_starve_time>7</standard_starve_time>

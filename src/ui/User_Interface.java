@@ -143,6 +143,7 @@ public class User_Interface {
     private void init_custom_button(){
         Custom_Button custom_button = new Custom_Button("Custom Simulation Maker");
         custom_button.setOnAction((event) -> custom());
+        custom_button.setId("custom");
         option_list.add(custom_button);
     }
 
