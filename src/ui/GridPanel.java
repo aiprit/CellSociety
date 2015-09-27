@@ -49,11 +49,16 @@ class GridPanel{
 	}
 
 	private void render() {
+		rectangle();
 			//triangle();
 		//hexagon();
+<<<<<<< HEAD
 		rectangle();
 		//System.out.println(sum1);
 		//System.out.println(sum2);
+=======
+		
+>>>>>>> origin/master
 	}
 	private void resetcount(){
 		sum1 = 0;
