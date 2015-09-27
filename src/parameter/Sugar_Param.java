@@ -25,7 +25,7 @@ public class Sugar_Param extends Parameters {
     }
 
     public AbstractSimulation get_sim(){
-        return new SugarSim1(init_params);
+        return new SugarSim1(this);
     }
 
 }

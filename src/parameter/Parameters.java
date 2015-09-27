@@ -9,7 +9,7 @@ import java.util.HashMap;
 abstract public class Parameters {
     protected ArrayList<String> list_of_parameters;
     protected HashMap<String, Double> init_params;
-
+    protected String grid_type;
     String simulation_type;
     String name;
     String author;
@@ -29,6 +29,13 @@ abstract public class Parameters {
 
     public HashMap<String, Double>  get_param_map(){
         return init_params;
+    }
+
+    public String get_grid_type(){
+        return grid_type;
+    }
+    public void set_grid_type(String s){
+        grid_type = s;
     }
 
     abstract public void fill_param_array();

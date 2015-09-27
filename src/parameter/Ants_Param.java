@@ -24,6 +24,6 @@ public class Ants_Param extends Parameters {
 
 
     public AbstractSimulation get_sim(){
-        return new ForagingAntsSim(init_params);
+        return new ForagingAntsSim(this);
     }
 }

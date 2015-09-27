@@ -14,13 +14,14 @@ import block.Location;
 import block.NestBlock;
 import block.RedBlock;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 public class ForagingAntsSim extends AbstractSimulation{
 
 	private static Color emptyColor = Color.BROWN;
 
-	public ForagingAntsSim(HashMap<String, Double> map) {
-		super(map);
+	public ForagingAntsSim(Parameters parameter) {
+		super(parameter);
 		reset(1,1);
 	}
 

@@ -8,6 +8,7 @@ import grid.BoundedGrid;
 import grid.Grid;
 import grid.InfiniteGrid;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.*;
 
@@ -16,8 +17,8 @@ public abstract class AbstractSimulation {
 	protected Grid<Block> theWorld;
 	private ArrayList<String> param_list;
 
-	public AbstractSimulation(HashMap<String, Double> map) {
-		theWorld = new BoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
+	public AbstractSimulation(Parameters parameter) {
+		theWorld = new BoundedGrid<Block>(parameter.get_param_map().get("grid_size").intValue(), parameter.get_param_map().get("grid_size").intValue());
 	}
 
 	public ArrayList<String> get_param_list(){

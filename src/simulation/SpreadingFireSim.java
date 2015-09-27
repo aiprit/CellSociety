@@ -5,6 +5,7 @@ import block.FireBlock;
 import block.Location;
 import block.TreeBlock;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,10 +18,10 @@ public class SpreadingFireSim extends AbstractSimulation {
 	private double probCatch;
 
 
-	public SpreadingFireSim(HashMap<String, Double> map) {
-		super(map);
-		probCatch = map.get("probability_catch");
-		reset(map.get("percent_tree"),map.get("percent_fire"));
+	public SpreadingFireSim(Parameters parameter) {
+		super(parameter);
+		probCatch = parameter.get_param_map().get("probability_catch");
+		reset(parameter.get_param_map().get("percent_tree"),parameter.get_param_map().get("percent_fire"));
 	}
 
 	public void populateDefinite(int num1, int num2){
