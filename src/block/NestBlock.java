@@ -33,7 +33,7 @@ public class NestBlock extends Block {
 				double homePh = ground.getHomePheremones();
 				double foodPh = ground.getFoodPheremones();
 				AntBlock ant = new AntBlock(foodPh, homePh);
-				ant.moveAnts(neighbors.get(i), false);
+				ant.moveAnts(neighbors.get(i));
 				break;
 			}
 		}

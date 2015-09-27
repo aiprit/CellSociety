@@ -6,22 +6,15 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 
-public class AntBlock extends Block {
+public class AntBlock extends GroundBlock {
 	private Color blockColor = Color.BLACK;
-	private int numAnts = 0;
 	private boolean hasFood = false;
 	private int antLifeTime = 30;
-	private int turnsSinceLastAte;
-	private double foodPheremones;
-	private double homePheremones;
-	private double decreaseRate = 0.9;
-	private double maxPheremoneValue = 100;
 
 	public AntBlock(double food, double home) {
-		super();
+		super(food, home);
 		setColor(getColor());
-		foodPheremones = food;
-		homePheremones = home;
+
 
 	}
 
@@ -37,27 +30,24 @@ public class AntBlock extends Block {
 		return blockColor;
 	}
 
-	public int getNumAnts() {
-		return numAnts;
-	}
-
-	public void resetNumAnts() {
-		numAnts = 0;
-	}
-
 	public void act() {
-		if (hasFood) {
-			goToNest();
+		if(antLifeTime>0){
+			if (hasFood) {
+				goToNest();
+			}
+			else {
+				findFood();
+			}
+			diffuse();
+			if (foodPheremones > 0) {
+				foodPheremones *= decreaseRate;
+			}
+			if (homePheremones > 0) {
+				homePheremones *= decreaseRate;
+			}
+			antLifeTime--;
 		}
-		else {
-			findFood();
-		}
-		if (foodPheremones > 0) {
-			foodPheremones *= decreaseRate;
-		}
-		if (homePheremones > 0) {
-			homePheremones *= decreaseRate;
-		}
+		removeSelfFromGrid();
 	}
 
 	private void goToNest() {
@@ -73,12 +63,12 @@ public class AntBlock extends Block {
 			}
 		}
 		for (int j = 0; j< adjacentSpots.size();j++) {
-			 GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
-			 ph.add(ground.getHomePheremones());
+			GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
+			ph.add(ground.getHomePheremones());
 		}
 		double max = Collections.max(ph);
 		int maxIndex = ph.indexOf(max);
-		moveTo(adjacentSpots.get(maxIndex));
+		moveAnts(adjacentSpots.get(maxIndex));
 
 	}
 
@@ -98,28 +88,16 @@ public class AntBlock extends Block {
 		}
 		ph = new ArrayList<>();
 		for (int j = 0; j< adjacentSpots.size();j++) {
-			 GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
-			 ph.add(ground.getFoodPheremones());
+			GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
+			ph.add(ground.getFoodPheremones());
 		}
 		double max = Collections.max(ph);
 		int maxIndex = ph.indexOf(max);
-		moveTo(adjacentSpots.get(maxIndex));
+		moveAnts(adjacentSpots.get(maxIndex));
 
 	}
-	public void moveAnts(Location newLocation, boolean hasFood){
-		if (grid == null)
-			throw new IllegalStateException("This Block is not in a grid.");
-		if (grid.get(location) != this)
-			throw new IllegalStateException(
-					"The grid contains a different Block at location "
-							+ location + ".");
-		if (!grid.isValid(newLocation))
-			throw new IllegalArgumentException("Location " + newLocation
-					+ " is not valid.");
-
-		if (newLocation.equals(location))
-			return;
-		grid.remove(location);
+	public void moveAnts(Location newLocation){
+		moveTo(newLocation);
 		if(hasFood){
 			grid.put(location, new GroundBlock(maxPheremoneValue,homePheremones));
 		}
@@ -127,10 +105,6 @@ public class AntBlock extends Block {
 			grid.put(location, new GroundBlock(foodPheremones,maxPheremoneValue));
 
 		}
-		Block other = grid.get(newLocation);
-		if (other != null)
-			other.removeSelfFromGrid();
-		location = newLocation;
-		grid.put(location, this);
+
 	}
 }
