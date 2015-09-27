@@ -19,8 +19,10 @@ public class Sugar_Param extends Parameters {
     public void fill_param_array(){
         list_of_parameters.add("vision");
         list_of_parameters.add("metabolism");
+        list_of_parameters.add("agent_fract");
         list_of_parameters.add("maxsugar");
         list_of_parameters.add("maxsugarblood");
+        list_of_parameters.add("sugargrowth");
 
     }
 

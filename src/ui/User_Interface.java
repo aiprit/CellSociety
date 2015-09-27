@@ -239,7 +239,7 @@ public class User_Interface {
         System.out.println(sim_map.get(key));
         parser = new Parser(sim_map.get(key));
         panel = new GridPanel(parser.parse());
-        chart = new ChartPanel();
+        chart = new ChartPanel(panel.getRows());
         canvas = panel.getCanvas();
         graph_canvas = chart.get_canvas();
         outer_format.setLeft(canvas);

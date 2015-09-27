@@ -5,11 +5,13 @@ import javafx.scene.paint.Color;
 public class SugarBlock extends Block{
 	protected double sugarLvl;
 	protected double maxSugar;
+	private double sugarGrowth;
 	Color blockColor;
-	public SugarBlock(double sugarl,double max){
+	public SugarBlock(double sugarl,double max, double growth){
 		super();
 		sugarLvl = sugarl;
 		maxSugar = max;
+		sugarGrowth= growth;
 
 	}
 	public Color getColor() {
@@ -28,7 +30,8 @@ public class SugarBlock extends Block{
 	}
 	@Override
 	public void act() {
-
+		if(maxSugar>sugarLvl)
+		sugarLvl += sugarGrowth;
 	}
 	public double getSugar(){
 		return sugarLvl;

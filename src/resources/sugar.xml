@@ -10,8 +10,9 @@
         <vision>6</vision>
         <metabolism>4</metabolism>
         <maxsugar>4</maxsugar>
-        <agent_fract> 0.3</agent_fract>
+        <agent_fract> 0.1</agent_fract>
         <maxsugarblood>20</maxsugarblood>
+        <sugargrowth>0.5</sugargrowth>
         <grid_size>20</grid_size>
         <grid_type>BoundedGrid</grid_type>
     </Parameters>
