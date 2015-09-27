@@ -2,6 +2,7 @@ package block;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AgentBlock extends Block{
 	private double sugarLvl;
@@ -61,7 +62,7 @@ public class AgentBlock extends Block{
 
 
 	public void moveSugar(){
-		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
 		double max=0;
 		Location loc=null;
 		for (int i = 0; i < adjacentSpots.size(); i++) {

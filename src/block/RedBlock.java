@@ -3,50 +3,32 @@ package block;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
-public class RedBlock extends Block {
-	private static double happyPercentage;
-	private Color blockColor = Color.RED;
+
+public class RedBlock extends RedBlueBlock {
+
 
 	@Override
-	public Color getColor() {
-		return blockColor;
+	public Color getStandardBlockColor() {
+		return Color.RED;
 	}
 
 	public RedBlock(double percentage) {
-		super();
-		setColor(getColor());
-		happyPercentage = percentage;
+		super(percentage);
+		setColor(getStandardBlockColor());
+
 	}
 
-	public void act() {
-		boolean happy = happy();
-		if (!happy) {
-			tryMove();
-		}
+
+
+	@Override
+	public boolean sameBlockCheck(Block typeOfBlock) {
+		return typeOfBlock instanceof RedBlock;
 	}
 
-	private boolean happy() {
-		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
-		boolean happy = false;
-		int index = 0;
-		double sameType = 0;
-		while (index < neighbors.size()) {
-			Block typeOfBlock = getGrid().get(neighbors.get(index));
-			if (typeOfBlock instanceof RedBlock) {
-				sameType+=1;
-			}
-			index++;
-		}
-		double samePercentage;
-		if (!(neighbors.size() == 0)) {
-			samePercentage = sameType / neighbors.size();
-			if (samePercentage >= happyPercentage ) {
-				happy = true;
-			}
-		}
-		return happy;
-	}
+
+	@Override
 	public char getChar() {
 		return 'R';
 	}
+
 }

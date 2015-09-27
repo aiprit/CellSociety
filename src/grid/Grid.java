@@ -3,6 +3,7 @@ package grid;
 import block.Location;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Grid<E>
 {
@@ -18,15 +19,15 @@ public interface Grid<E>
 
     E get(Location loc);
 
-    ArrayList<Location> getOccupiedLocations();
+    List<Location> getOccupiedLocations();
 
-    ArrayList<Location> getValidAdjacentLocations(Location loc);
+    List<Location> getValidAdjacentLocations(Location loc);
 
-    ArrayList<Location> getEmptyAdjacentLocations(Location loc);
+    List<Location> getEmptyAdjacentLocations(Location loc);
 
-    ArrayList<Location> getOccupiedAdjacentLocations(Location loc);
+    List<Location> getOccupiedAdjacentLocations(Location loc);
 
-    ArrayList<E> getNeighbors(Location loc);
+    List<E> getNeighbors(Location loc);
 
-	ArrayList<Location> getAllEmptyLocations();
+	List<Location> getAllEmptyLocations();
 }

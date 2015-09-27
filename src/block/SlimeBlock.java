@@ -2,6 +2,7 @@ package block;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javafx.scene.paint.Color;
 
@@ -35,7 +36,7 @@ public class SlimeBlock extends Block {
 	}
 
 	private void sendSignals() {
-		ArrayList<Location> adjacentSpots = getGrid().getEmptyAdjacentLocations(getLocation());
+		List<Location> adjacentSpots = getGrid().getEmptyAdjacentLocations(getLocation());
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block signal = (SignalBlock) getGrid().get(adjacentSpots.get(i));
 			int dir = signal.getDirection();
@@ -45,7 +46,7 @@ public class SlimeBlock extends Block {
 	}
 
 	private void goToSignal(double threshold) {
-		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
 		ArrayList<Double> signals = new ArrayList<Double>();
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block signal = getGrid().get(adjacentSpots.get(i));
