@@ -6,18 +6,24 @@ import java.util.List;
 import javafx.scene.paint.Color;
 
 public class GroundBlock extends Block {
-	protected double foodPheremones = 0;
-	protected double homePheremones = 0;
-	protected double maxPheremoneValue = 100;
-	protected double decreaseRate = 0.999;
-	protected double diffusionRate = 0.01;
+	protected double foodPheremones;
+	protected double homePheremones;
+	protected double maxPheremoneValue;
+	protected double decreaseRate;
+	protected double diffusionRate;
 	private Color blockColor = Color.BROWN;
 
-	public GroundBlock(double food, double home) {
+	public GroundBlock(double food, double home,double max, double decrease,double diffusion) {
 		super();
 		setColor(getColor());
 		foodPheremones =  food;
 		homePheremones = home;
+		maxPheremoneValue = max;
+		decreaseRate = decrease;
+		diffusionRate = diffusion;
+	}
+	public double[] getStaticValues(){
+		return new double[]{maxPheremoneValue,decreaseRate,diffusionRate};
 	}
 
 	public double getFoodPheremones() {
@@ -33,20 +39,27 @@ public class GroundBlock extends Block {
 	}
 
 	public void addPheremones(double home, double food){
-			homePheremones += home;
-			foodPheremones += food;
+		homePheremones += home;
+		foodPheremones += food;
 
 	}
 
-//	public void diffuse(){
-//		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-//		for(Location loc: adjacentSpots){
-//			GroundBlock ground = (GroundBlock) getGrid().get(loc);
-//			ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
-//		}
-//	}
+	public void diffuse(){
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		for(Location loc: adjacentSpots){
+			Block g = getGrid().get(loc);
+			if(g instanceof GroundBlock){
+				GroundBlock ground = (GroundBlock) g;
+				ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
+
+			}
+		}
+	}
 	public void act() {
-//		diffuse();
+		diffuseanddecrease();
+	}
+	public void diffuseanddecrease(){
+		diffuse();
 		if (foodPheremones > 0) {
 			foodPheremones *= decreaseRate;
 		}
@@ -55,6 +68,6 @@ public class GroundBlock extends Block {
 		}
 	}
 	public char getChar(){
-        return 'G';
-    }
+		return 'G';
+	}
 }

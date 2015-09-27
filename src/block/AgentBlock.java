@@ -10,7 +10,7 @@ public class AgentBlock extends SugarBlock{
 	private double vision;
 	private double metabolism;
 
-	public AgentBlock(double sugar, double sugarhi,double max, double meta, double vision){
+	public AgentBlock(double sugar, double sugarhi,double max, int meta, int vision){
 		super(sugar,sugarhi);
 	}
 	@Override
