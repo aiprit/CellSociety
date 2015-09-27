@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import java.util.List;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import block.Block;
 
@@ -18,7 +19,7 @@ import parameter.Parameters;
 
 public class ForagingAntsSim extends AbstractSimulation{
 
-	private Color emptyColor = Color.BROWN;
+    private ResourceBundle myResources;
 	private double max;
 	private double diffusion;
 	private double decrease;
@@ -54,7 +55,7 @@ public class ForagingAntsSim extends AbstractSimulation{
 	}
 
 	public Color getEmptyColor() {
-		return emptyColor;
+		return (Color)myResources.getObject("EmptyAntColor");
 	}
 
 	@Override

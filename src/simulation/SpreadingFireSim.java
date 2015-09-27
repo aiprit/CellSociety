@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SpreadingFireSim extends AbstractSimulation {
 
-	private static Color backColor = Color.YELLOW;
+    private ResourceBundle myResources;
 	private double probCatch;
 
 
@@ -43,7 +44,7 @@ public class SpreadingFireSim extends AbstractSimulation {
 
 	@Override
 	public Color getEmptyColor() {
-		return backColor;
+		return (Color)myResources.getObject("EmptyFireColor");
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package ui;
 
 
+import java.util.ResourceBundle;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -24,14 +26,15 @@ class GridPanel{
 	private int sum2;
 	private Color  col1;
  	private Color  col2;
+	private ResourceBundle myResources;
 
 	public GridPanel(AbstractSimulation sim){
 
-		Canvas = new Canvas(GridWidth,GridHeight);
+		Canvas = new Canvas((int)myResources.getObject("GridPanelWidth"),(int)myResources.getObject("GridPanelHeight"));
 		Background = Canvas.getGraphicsContext2D();
 		theWorld = sim;
-		cellWidth = (double)GridWidth / theWorld.getNumCols();
-		cellHeight = (double) GridHeight / theWorld.getNumRows();
+		cellWidth = (double) (int)myResources.getObject("GridPanelWidth") / theWorld.getNumCols();
+		cellHeight = (double) (int)myResources.getObject("GridPanelHeight") / theWorld.getNumRows();
 		render();
 
 	}
