@@ -7,6 +7,7 @@ public class GroundBlock extends Block {
 	private double homePheremones = 0;
 	private double maxPheremoneValue = 100;
 	private double decreaseRate = 0.9;
+	private double diffusionRate = 0.01;
 	private Color blockColor = Color.BROWN;
 
 	public GroundBlock(double food, double home) {
