@@ -11,8 +11,8 @@ import simulation.AbstractSimulation;
 class GridPanel{
 
 
-	private  static final int GridWidth = 600;
-	private  static final int GridHeight = 600;
+	private  static final int GridWidth = 550;
+	private  static final int GridHeight =550;
 	private Canvas Canvas;
 	private Group Root = new Group();
 	private GraphicsContext Background;

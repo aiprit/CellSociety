@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ChartPanel {
     private  static final int GridWidth = 700;
-    private  static final int GridHeight = 200;
+    private  static final int GridHeight = 150;
     private Canvas Canvas;
     private GraphicsContext Background;
     private double Yone, Ytwo;
