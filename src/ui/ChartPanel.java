@@ -24,14 +24,14 @@ public class ChartPanel {
     private LinkedList<Double> elements1, elements2;
     private Iterator iterator;
     private double counter1, counter2;
+    private double rows;
 
-
-    public ChartPanel(){
+    public ChartPanel(int row){
         Canvas = new Canvas(GridWidth,GridHeight);
         Background = Canvas.getGraphicsContext2D();
         Background.setFill(Color.WHITE);
         Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
-
+        rows = row;
         counter1 = 0;
         counter2 = 0;
         elements1 = new LinkedList<Double>();
@@ -69,7 +69,9 @@ public class ChartPanel {
 
         while(iterator.hasNext()){
             Yone= Ytwo;
-            Ytwo = 100.0 - (double) iterator.next();
+            Ytwo = (double)iterator.next();
+            Ytwo = GridHeight*0.7-Ytwo*GridHeight*0.7/(rows*rows);
+            System.out.println(Ytwo);
             if(color.equals(Color.BLUE)){
                 //System.out.println(Ytwo);
             }

@@ -203,4 +203,7 @@ class GridPanel{
 			public int getSum2(){
 				return sum2;
 			}
+			public int getRows(){
+				return theWorld.getNumRows();
+			}
 		}

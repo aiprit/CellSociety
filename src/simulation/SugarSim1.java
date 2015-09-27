@@ -17,12 +17,17 @@ public class SugarSim1 extends AbstractSimulation{
 	private double sugarhi;
 	private int vision;
 	private int metabolism;
+	private double blood;
+	private double growth;
 	public SugarSim1(Parameters parameter){
 		super(parameter);
 		sugarhi = parameter.get_param_map().get("maxsugar");
-		vision =  parameter.get_param_map().get("vision").intValue;
-		metabolism = parameter.get_param_map().get("metabolism").intValue;
-		reset(sugarhi,parameter.get_param_map().get("agent_fract"));
+		vision =  parameter.get_param_map().get("vision").intValue();
+		metabolism = parameter.get_param_map().get("metabolism").intValue();
+		blood = parameter.get_param_map().get("maxsugarblood");
+		double agent = parameter.get_param_map().get("agent_fract");
+		growth = parameter.get_param_map().get("sugargrowth");
+		reset(sugarhi,agent);
 
 	}
 	@Override
@@ -54,11 +59,11 @@ public class SugarSim1 extends AbstractSimulation{
         }
 		 Collections.shuffle(locs);
 	        for(int i = 0; i < num2; i++){
-	             new AgentBlock(maxsugar,r1.nextInt(metabolism),r1.nextInt(vision)).putSelfInGrid(theWorld, locs.get(i)); */
+	             new AgentBlock(0,maxsugar,growth,blood,r1.nextInt(metabolism),r1.nextInt(vision)).putSelfInGrid(theWorld, locs.get(i));
 	            locs.remove(locs.get(i));
 	        }
-	        for(Location sugar:locs){
-	        	/* new SugarBlock(r1.nextInt(25),maxsugar); */
+	        for(int i = 0; i < locs.size(); i++){
+	        	 new SugarBlock(r1.nextInt(25),maxsugar,growth).putSelfInGrid(theWorld,locs.get(i));
 	        }
 	}
 	@Override
