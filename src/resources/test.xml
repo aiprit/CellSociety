@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<<<<<<< HEAD
 <Fire id="2">
 	<Parameters>
 		<grid_size>20</grid_size>
@@ -8,3 +9,12 @@
 		<percent_tree>.7</percent_tree>
 	</Parameters>
 </Fire>
+=======
+<Segregation id="0">
+<Parameters><grid_size>50</grid_size>
+<happy_percent>.3</happy_percent>
+<percent_blue>.3</percent_blue>
+<percent_red>.3</percent_red>
+<grid_type>WrappedBoundedGrid</grid_type>
+</Parameters></Segregation>
+>>>>>>> robs_branch

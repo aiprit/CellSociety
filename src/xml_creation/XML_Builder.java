@@ -17,7 +17,7 @@ import resources.Parser;
  * Created by Rob on 9/27/15.
  */
 public class XML_Builder {
-    private List<String> choices;
+    private List<String> choices, grid_types;
     private Writer writer;
     private ChoiceDialog<String> dialog;
     private List<Parameters> parameter_options;
@@ -27,6 +27,7 @@ public class XML_Builder {
 
     public XML_Builder(){
         choices = new ArrayList<>();
+        grid_types = new ArrayList<>();
         try {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/resources/test.xml"), "utf-8"));
         } catch (FileNotFoundException e) {
@@ -53,6 +54,11 @@ public class XML_Builder {
         choices.add("Life");
         choices.add("Ants");
 
+        grid_types.add("BoundedGrid");
+        grid_types.add("WrappedBoundedGrid");
+
+
+
     }
 
     private void sim_box() {
@@ -62,9 +68,7 @@ public class XML_Builder {
         dialog.setContentText("Simulation:");
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            System.out.println("Your choice: " + result.get());
-        }
+
 
         result.ifPresent(letter -> write_name(letter));
     }
@@ -74,6 +78,7 @@ public class XML_Builder {
             user_input(param);
             if(parameter.get_param_list().indexOf(param) == parameter.get_param_list().size()-1){
                 try {
+                    set_grid_type();
                     writer.write("</Parameters>");
                     writer.write("</"+sim_name+">");
                 } catch (IOException e) {
@@ -86,6 +91,19 @@ public class XML_Builder {
         }
         return true;
 
+    }
+
+
+    private void set_grid_type(){
+        dialog = new ChoiceDialog<>("", grid_types);
+        dialog.setTitle("Grid Types");
+        dialog.setHeaderText("Please Choose a Grid Type");
+        dialog.setContentText("Grid Type:");
+        // Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+
+
+        result.ifPresent(letter -> write_params(letter, "grid_type"));
     }
 
     private void user_input(String parameter){
