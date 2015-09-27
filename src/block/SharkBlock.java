@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class SharkBlock extends Block {
@@ -61,7 +62,7 @@ public class SharkBlock extends Block {
 
     private void attemptToBreed(){
         if(turnsUntilCanBreed <= 0){
-            ArrayList<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
+            List<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
             if(openSpots.size() > 0){
                 Collections.shuffle(openSpots);
                 SharkBlock newShark = new SharkBlock();
@@ -81,7 +82,7 @@ public class SharkBlock extends Block {
     }
 
     private boolean ate(){
-        ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+        List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
         Collections.shuffle(neighbors);
         boolean eaten = false;
         int index = 0;

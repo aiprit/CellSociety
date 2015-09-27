@@ -2,6 +2,7 @@ package block;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javafx.scene.paint.Color;
 
@@ -60,7 +61,7 @@ public class AntBlock extends Block {
 	}
 
 	private void goToNest() {
-		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
 		ArrayList<Double> ph = new ArrayList<Double>();
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block possibleAnt = getGrid().get(adjacentSpots.get(i));
@@ -82,8 +83,10 @@ public class AntBlock extends Block {
 	}
 
 	private void findFood(){
-		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		ArrayList<Double> ph = new ArrayList<Double>();
+
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Double> ph;
+
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block possibleAnt = getGrid().get(adjacentSpots.get(i));
 			if (possibleAnt instanceof AntBlock || possibleAnt instanceof NestBlock) {
@@ -93,6 +96,7 @@ public class AntBlock extends Block {
 				hasFood = true;
 			}
 		}
+		ph = new ArrayList<>();
 		for (int j = 0; j< adjacentSpots.size();j++) {
 			 GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
 			 ph.add(ground.getFoodPheremones());

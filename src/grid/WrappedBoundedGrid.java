@@ -2,15 +2,16 @@ package grid;
 
 import block.Location;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
     public WrappedBoundedGrid(int rows, int cols){
         super(rows, cols);
     }
     
-    public ArrayList<Location> getValidAdjacentLocations(Location loc)
+    public List<Location> getValidAdjacentLocations(Location loc)
     {
-        ArrayList<Location> locs = new ArrayList<Location>();
+        List<Location> locs = new ArrayList<Location>();
         int d = Location.NORTH;
         for (int i = 0, limit = Location.FULL_CIRCLE / Location.HALF_RIGHT; i < limit; i++) {
             Location neighborLoc = loc.getAdjacentLocation(d);

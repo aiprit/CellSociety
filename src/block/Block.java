@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public abstract class Block
 {
@@ -115,7 +116,7 @@ public abstract class Block
 	}
 
 	public void tryMove() {
-		ArrayList<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
+		List<Location> openSpots = getGrid().getEmptyAdjacentLocations(getLocation());
 		if(openSpots.size() > 0){
 			Collections.shuffle(openSpots);
 			moveTo(openSpots.get(0));

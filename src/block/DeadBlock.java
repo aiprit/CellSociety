@@ -4,6 +4,7 @@ import grid.Grid;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeadBlock extends Block {
 
@@ -28,7 +29,7 @@ public class DeadBlock extends Block {
 	}
 
 	public boolean becomeAlive() {
-		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
 		boolean becomeAlive = false;
 		int numOfAlive = 0;
 		int index = 0;
