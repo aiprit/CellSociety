@@ -71,7 +71,7 @@ public class Graphic_Handler {
 			}
 
 			ui.get_panel().update();
-			chart.chart_handler(ui.get_panel().getSum1());
+			ui.get_chart_panel().chart_handler(ui.get_panel().getSum1(), ui.get_panel().getSum2());
 		}
 
 	}
