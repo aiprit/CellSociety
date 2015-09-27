@@ -1,13 +1,16 @@
 package simulation;
 
 import block.Block;
+import block.FishBlock;
 import block.Location;
+import block.SharkBlock;
 import grid.BoundedGrid;
 import grid.Grid;
-import grid.WrappedBoundedGrid;
+import grid.InfiniteGrid;
 import javafx.scene.paint.Color;
 import parameter.Parameters;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public abstract class AbstractSimulation {
@@ -15,10 +18,31 @@ public abstract class AbstractSimulation {
 	protected Grid<Block> theWorld;
 	private ArrayList<String> param_list;
 
-	public AbstractSimulation(HashMap<String, Double> map) {
-		//Class c = map.get("grid_type").getClass();
-		
-		theWorld = new WrappedBoundedGrid<Block>(map.get("grid_size").intValue(), map.get("grid_size").intValue());
+	public AbstractSimulation(Parameters parameter) {
+		//theWorld = new BoundedGrid<Block>(parameter.get_param_map().get("grid_size").intValue(), parameter.get_param_map().get("grid_size").intValue());
+
+		try {
+			Class c = Class.forName("grid."+parameter.get_grid_type().trim());
+			Class[] cArg = new Class[2]; //Our constructor has 3 arguments
+			cArg[0] = int.class; //First argument is of *object* type Long
+			cArg[1] = int.class; //Second argument is of *object* type String
+			int i = parameter.get_param_map().get("grid_size").intValue();
+
+			try {
+				theWorld = (Grid<Block>) c.getDeclaredConstructor(cArg).newInstance(i, i);
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public ArrayList<String> get_param_list(){
