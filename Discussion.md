@@ -5,3 +5,8 @@ As it was written at the start, it was very inflexible and needed hardcoded valu
 handle the different kinds of shapes, and then have the render function call whatever grid type we are using.  We have not actually implemented these changes, but I now have an idea of how to fix this problem.
 
 Also, we refactored any duplicated code that was simply overlooked in the simulation and block classes.
+
+
+Net IDs: sck13, nrg12
+
+For error corrections, we needed to generalize our objects more.  For instance, we had to change all instances of HashMap to Map.  Also, changed all of the ArrayList calls to just Lists.
