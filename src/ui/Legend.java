@@ -42,7 +42,7 @@ public class Legend {
         }
 
         public void legend_names(String thing1, String thing2){
-            Background.strokeText("Graph Key", 40, 20);
+            Background.strokeText("Lower Graph Key", 25, 20);
             if(thing1.equals("")){
                 thing1="NA";
             }

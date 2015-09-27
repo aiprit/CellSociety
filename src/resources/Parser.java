@@ -111,7 +111,7 @@ public class Parser {
             Element ind_element = (Element) ind_node;
             current_sim_param.set_grid_type(ind_element.getElementsByTagName("grid_type").item(0).getTextContent());
             current_sim_param.set_blue_line(ind_element.getElementsByTagName("blue_line").item(0).getTextContent());
-            current_sim_param.set_organge_line(ind_element.getElementsByTagName("orange_line").item(0).getTextContent());
+            current_sim_param.set_orange_line(ind_element.getElementsByTagName("orange_line").item(0).getTextContent());
         }
 
 
@@ -126,7 +126,7 @@ public class Parser {
     }
 
     public String get_orange(){
-        return current_sim_param.get_organge_line();
+        return current_sim_param.get_orange_line();
     }
 
 

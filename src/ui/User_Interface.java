@@ -39,14 +39,14 @@ public class User_Interface {
     private Canvas graph_canvas;
     private boolean status;
     private double rate;
-    HashMap<String,String> sim_map;
+    HashMap<String, String> sim_map;
     String current_sim;
     private ResourceBundle myResources;
     private ResourceBundle bleh;
-    public static final String DEFAULT_RESOURCE_PACKAGE ="resources/";
+    public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private ComboBox<String> simulation_choices;
 
-    public User_Interface(String property){
+    public User_Interface(String property) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + property);
         status = false;
         control_panel = new VBox();
@@ -61,40 +61,38 @@ public class User_Interface {
 
     }
 
-    private void sim_chooser(){
+    private void sim_chooser() {
 
         sim_map = new HashMap<String, String>();
         sim_map.put(myResources.getString("SimSeg"), myResources.getString("XmlSeg"));
         sim_map.put(myResources.getString("SimPP"), myResources.getString("XmlPP"));
         sim_map.put(myResources.getString("SimFire"), myResources.getString("XmlFire"));
         sim_map.put(myResources.getString("SimGOL"), myResources.getString("XmlGOL"));
-        sim_map.put(myResources.getString("SimAnts"),myResources.getString("XmlAnts"));
-        sim_map.put(myResources.getString("SimSugar"),myResources.getString("XmlSugar"));
+        sim_map.put(myResources.getString("SimAnts"), myResources.getString("XmlAnts"));
+        sim_map.put(myResources.getString("SimSugar"), myResources.getString("XmlSugar"));
     }
 
 
-
-    public void set_up_base_scene(Group basic){
+    public void set_up_base_scene(Group basic) {
         outer_border_set_up();
         control_panel_set_up();
         add_elements_to_pane();
         basic.getChildren().add(outer_format);
     }
 
-    public void outer_border_set_up(){
+    public void outer_border_set_up() {
         outer_format = new BorderPane();
         outer_format.setPrefSize(Graphic_Handler.SCREEN_WIDTH, Graphic_Handler.SCREEN_HEIGHT);
         outer_format.setId("pane");
     }
 
-    public void control_panel_set_up(){
+    public void control_panel_set_up() {
         control_panel = new VBox();
         control_panel.setSpacing(VERTICAL_SPACING);
     }
 
 
-
-    public void add_elements_to_pane(){
+    public void add_elements_to_pane() {
         outer_format.setRight(control_panel);
         outer_format.setLeft(canvas);
         outer_format.setTop(title);
@@ -104,7 +102,7 @@ public class User_Interface {
         init_generic_options();
     }
 
-    private void init_generic_options(){
+    private void init_generic_options() {
         init_custom_button();
         init_simulation_chooser();
         init_start_button();
@@ -114,12 +112,12 @@ public class User_Interface {
 
         init_animation_speed_slider();
 
-        for(Node option: option_list){
+        for (Node option : option_list) {
             control_panel.getChildren().add(option);
         }
     }
 
-    private void init_start_button(){
+    private void init_start_button() {
         Custom_Button start_button = new Custom_Button(myResources.getString("Startbutton"));
         start_button.setOnAction((event) -> start());
         option_list.add(start_button);
@@ -127,30 +125,32 @@ public class User_Interface {
     }
 
 
-    private void init_stop_button(){
+    private void init_stop_button() {
         Custom_Button stop_button = new Custom_Button(myResources.getString("Stopbutton"));
         stop_button.setOnAction((event) -> stop());
         option_list.add(stop_button);
     }
 
-    private void init_step_button(){
+    private void init_step_button() {
         Custom_Button step_button = new Custom_Button(myResources.getString("Stepbutton"));
         step_button.setOnAction((event) -> step());
         option_list.add(step_button);
     }
-    private void init_reset_button(){
+
+    private void init_reset_button() {
         Custom_Button reset_button = new Custom_Button(myResources.getString("Resetbutton"));
         reset_button.setOnAction((event) -> reset());
         option_list.add(reset_button);
     }
-    private void init_custom_button(){
+
+    private void init_custom_button() {
         Custom_Button custom_button = new Custom_Button("Custom Simulation Maker");
         custom_button.setOnAction((event) -> custom());
         custom_button.setId("custom");
         option_list.add(custom_button);
     }
 
-    private void init_animation_speed_slider(){
+    private void init_animation_speed_slider() {
         Label speed = new Label(myResources.getString("SpeedLabel"));
         //speed.s
         Custom_Slider animation_speed_slider = new Custom_Slider(MINIMUM_ANIMATION_SPEED, MAXIMUM_ANIMATION_SPEED, STARTING_ANIMATION_SPEED);
@@ -163,11 +163,11 @@ public class User_Interface {
         option_list.add(animation_speed_slider);
     }
 
-    private void init_simulation_chooser(){
+    private void init_simulation_chooser() {
         simulation_choices = new ComboBox<String>();
 
         simulation_choices.setValue(myResources.getString("SimChoice"));
-        for(String simulation: sim_map.keySet()){
+        for (String simulation : sim_map.keySet()) {
             simulation_choices.getItems().add(simulation);
 
         }
@@ -178,6 +178,27 @@ public class User_Interface {
         });
 
     }
+
+    private void init_simulation_chooser() {
+
+        ComboBox<String> grid_shape_chooser = new ComboBox<String>();
+        grid_shape_chooser.setValue(myResources.getString("SimChoice"));
+        add_to_combo("Rectangle", grid_shape_chooser);
+        add_to_combo("Triangle", grid_shape_chooser);
+        add_to_combo("Hexagon", grid_shape_chooser);
+        option_list.add(grid_shape_chooser);
+        grid_shape_chooser.setOnAction((event) -> {
+            set_shape(grid_shape_chooser.getValue());
+
+        });
+
+    }
+
+    private void add_to_combo(String word, ComboBox combo) {
+        combo.getItems().add(word);
+    }
+
+
 
 
 
@@ -236,6 +257,10 @@ public class User_Interface {
         outer_format.setLeft(canvas);
         info_bar.getChildren().add(graph_canvas);
         info_bar.getChildren().add(legend.get_legend());
+    }
+
+    private void set_shape(String shape){
+        panel.setShapes(shape);
     }
 
     public double change_rate(){

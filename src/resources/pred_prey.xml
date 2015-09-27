@@ -15,8 +15,8 @@
         <standard_starve_time>7</standard_starve_time>
         <grid_size>30</grid_size>
         <grid_type>BoundedGrid</grid_type>
-        <blue_line>Fish</blue_line>
-        <orange_line>Shark</orange_line>
+        <blue_line>Shark</blue_line>
+        <orange_line>Fish</orange_line>
     </Parameters>
 
 
