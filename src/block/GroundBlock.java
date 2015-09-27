@@ -1,13 +1,16 @@
 package block;
 
+
+import java.util.List;
+
 import javafx.scene.paint.Color;
 
 public class GroundBlock extends Block {
-	private double foodPheremones = 0;
-	private double homePheremones = 0;
-	private double maxPheremoneValue = 100;
-	private double decreaseRate = 0.9;
-	private double diffusionRate = 0.01;
+	protected double foodPheremones = 0;
+	protected double homePheremones = 0;
+	protected double maxPheremoneValue = 100;
+	protected double decreaseRate = 0.9;
+	protected double diffusionRate = 0.01;
 	private Color blockColor = Color.BROWN;
 
 	public GroundBlock(double food, double home) {
@@ -29,7 +32,20 @@ public class GroundBlock extends Block {
 		return blockColor;
 	}
 
+	public void addPheremones(double home, double food){
+			homePheremones += home;
+			foodPheremones += food;
+
+	}
+	public void diffuse(){
+		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		for(Location loc: adjacentSpots){
+			GroundBlock ground = (GroundBlock) getGrid().get(loc);
+			ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
+		}
+	}
 	public void act() {
+		diffuse();
 		if (foodPheremones > 0) {
 			foodPheremones *= decreaseRate;
 		}

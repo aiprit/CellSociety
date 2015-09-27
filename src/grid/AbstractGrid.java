@@ -3,20 +3,21 @@ package grid;
 import block.Location;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractGrid<E> implements Grid<E>
 {
-	public ArrayList<E> getNeighbors(Location loc)
+	public List<E> getNeighbors(Location loc)
 	{
-		ArrayList<E> neighbors = new ArrayList<E>();
+		List<E> neighbors = new ArrayList<E>();
 		for (Location neighborLoc : getOccupiedAdjacentLocations(loc))
 			neighbors.add(get(neighborLoc));
 		return neighbors;
 	}
 
-	public ArrayList<Location> getValidAdjacentLocations(Location loc)
+	public List<Location> getValidAdjacentLocations(Location loc)
 	{
-		ArrayList<Location> locs = new ArrayList<Location>();
+		List<Location> locs = new ArrayList<Location>();
 		int d = Location.NORTH;
 		for (int i = 0; i < Location.FULL_CIRCLE / Location.HALF_RIGHT; i++)
 		{
@@ -28,9 +29,9 @@ public abstract class AbstractGrid<E> implements Grid<E>
 		return locs;
 	}
 
-	public ArrayList<Location> getEmptyAdjacentLocations(Location loc)
+	public List<Location> getEmptyAdjacentLocations(Location loc)
 	{
-		ArrayList<Location> locs = new ArrayList<Location>();
+		List<Location> locs = new ArrayList<Location>();
 		for (Location neighborLoc : getValidAdjacentLocations(loc))
 		{
 			if (get(neighborLoc) == null)
@@ -39,9 +40,9 @@ public abstract class AbstractGrid<E> implements Grid<E>
 		return locs;
 	}
 
-	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc)
+	public List<Location> getOccupiedAdjacentLocations(Location loc)
 	{
-		ArrayList<Location> locs = new ArrayList<Location>();
+		List<Location> locs = new ArrayList<Location>();
 		for (Location neighborLoc : getValidAdjacentLocations(loc))
 		{
 			if (get(neighborLoc) != null)
@@ -61,8 +62,8 @@ public abstract class AbstractGrid<E> implements Grid<E>
 		}
 		return s + "}";
 	}
-	public ArrayList<Location> getAllEmptyLocations(){
-		ArrayList<Location> theLocations = new ArrayList<Location>();
+	public List<Location> getAllEmptyLocations(){
+		List<Location> theLocations = new ArrayList<Location>();
 		for (int r = 0; r < getNumRows(); r++)
 		{
 			for (int c = 0; c < getNumCols(); c++)
