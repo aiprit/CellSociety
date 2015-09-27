@@ -50,7 +50,7 @@ public class Location implements Comparable<Location>
     {
         return col;
     }
-
+    
     public Location getAdjacentLocation(int direction)
     {
         int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;

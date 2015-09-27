@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ants id="5">
+    <Information>
+        <simulation_type>Foraging Ants</simulation_type>
+        <name>Foraging Ants</name>
+        <author>Liviu A. Panait</author>
+    </Information>
+
+    <Parameters>
+        <grid_size>20</grid_size>
+    </Parameters>
+
+
+
+</Ants>
