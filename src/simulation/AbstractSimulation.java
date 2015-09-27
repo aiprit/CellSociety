@@ -9,10 +9,7 @@ import grid.Grid;
 import grid.InfiniteGrid;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 public abstract class AbstractSimulation {
 	protected String simulationType;
@@ -28,7 +25,7 @@ public abstract class AbstractSimulation {
 	}
 
 	protected void reset(double fraction1, double fraction2){
-		ArrayList<Location> occupiedCells = theWorld.getOccupiedLocations();
+		List<Location> occupiedCells = theWorld.getOccupiedLocations();
 		for(Location loc : occupiedCells){
 			theWorld.get(loc).removeSelfFromGrid();
 		}
@@ -37,7 +34,7 @@ public abstract class AbstractSimulation {
 	public void loopToPlace(int num, boolean place){
 		int placed = 0;
 		Random r = new Random();
-		ArrayList<Location> locsUsed = new ArrayList<Location>();
+		List<Location> locsUsed = new ArrayList<Location>();
 		while(placed < num){
 			int row = r.nextInt(theWorld.getNumRows());
 			int col = r.nextInt(theWorld.getNumCols());
@@ -73,7 +70,7 @@ public abstract class AbstractSimulation {
 
 
 	public void step(){
-		ArrayList<Location> occupiedLocations = theWorld.getOccupiedLocations();
+		List<Location> occupiedLocations = theWorld.getOccupiedLocations();
 		Collections.shuffle(occupiedLocations);
 		for(Location loc : occupiedLocations){
 			Block a = theWorld.get(loc);

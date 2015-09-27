@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class SpreadingFireSim extends AbstractSimulation {
 
@@ -52,7 +53,7 @@ public class SpreadingFireSim extends AbstractSimulation {
 	
 	@Override
 	public void step() {
-		ArrayList<Location> occupiedLocations = theWorld.getOccupiedLocations();
+		List<Location> occupiedLocations = theWorld.getOccupiedLocations();
 		Collections.shuffle(occupiedLocations);
 		ArrayList<Location> fires = new ArrayList<Location>();
 		for(Location loc : occupiedLocations){
