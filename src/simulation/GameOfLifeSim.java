@@ -10,14 +10,15 @@ import parameter.Parameters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class GameOfLifeSim extends AbstractSimulation {
 
-		private static Color emptyColor = Color.BEIGE;
+	private ResourceBundle myResources;
 
 		@Override
 		public Color getEmptyColor() {
-	        return emptyColor;
+	        return (Color)myResources.getObject("EmptyLifeColor");
 	    }
 		
 		public GameOfLifeSim(Parameters parameter) {

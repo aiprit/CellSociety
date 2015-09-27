@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Rob on 9/26/15.
@@ -15,8 +16,6 @@ import java.util.List;
 
 
 public class ChartPanel {
-    private  static final int GridWidth = 575;
-    private  static final int GridHeight = 150;
     private Canvas Canvas;
     private GraphicsContext Background;
     private double Yone, Ytwo;
@@ -24,11 +23,12 @@ public class ChartPanel {
     private Iterator iterator;
     private double counter1, counter2;
     private double rows;
+    private ResourceBundle myResources;
 
     public ChartPanel(int row){
-        Canvas = new Canvas(GridWidth,GridHeight);
+        Canvas = new Canvas((int)myResources.getObject("ChartPanelGridWidth"),(int)myResources.getObject("ChartPanelGridHeight"));
         Background = Canvas.getGraphicsContext2D();
-        Background.setFill(Color.WHITE);
+        Background.setFill((Color)myResources.getObject("BackgroundColor"));
         Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
         rows = row;
         counter1 = 0;
@@ -48,10 +48,10 @@ public class ChartPanel {
 
         add_to_list(sum1, elements1);
         add_to_list(sum2, elements2);
-        Background.setFill(Color.WHITE);
+        Background.setFill((Color)myResources.getObject("BackgroundColor"));
         Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
-        line_handler(elements1, Color.BLUE, counter1);
-        line_handler(elements2, Color.ORANGE,counter2);
+        line_handler(elements1, (Color) myResources.getObject("GraphColorOne"), counter1);
+        line_handler(elements2, (Color) myResources.getObject("GraphColorTwo"),counter2);
     }
 
     private void line_handler(LinkedList elements, Color color, double counter){
@@ -69,9 +69,9 @@ public class ChartPanel {
         while(iterator.hasNext()){
             Yone= Ytwo;
             Ytwo = (double)iterator.next();
-            Ytwo = GridHeight*0.7-Ytwo*GridHeight*0.7/(rows*rows);
+            Ytwo = (int)myResources.getObject("ChartPanelWidth")*0.7-Ytwo*(int)myResources.getObject("ChartPanelHeight")*0.7/(rows*rows);
             System.out.println(Ytwo);
-            if(color.equals(Color.BLUE)){
+            if(color.equals((Color) myResources.getObject("GraphColorOne"))){
                 //System.out.println(Ytwo);
             }
 

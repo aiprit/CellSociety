@@ -1,9 +1,11 @@
 package block;
 
+import java.util.ResourceBundle;
+
 import javafx.scene.paint.Color;
 
 public class TreeBlock extends Block {
-	private Color blockColor = Color.GREEN;
+	private ResourceBundle myResources;
 
 	public TreeBlock(){
 		super();
@@ -15,7 +17,7 @@ public class TreeBlock extends Block {
 	
 	@Override
 	public Color getColor() {
-		return blockColor;
+		return (Color)myResources.getObject("TreeColor");
 	}
 
 	public void act(){

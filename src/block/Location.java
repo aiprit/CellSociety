@@ -1,39 +1,12 @@
 package block;
 
+import java.util.ResourceBundle;
+
 public class Location implements Comparable<Location>
 {
     private int row; 
     private int col;
-
-    public static final int LEFT = -90;
-  
-    public static final int RIGHT = 90;
-
-    public static final int HALF_LEFT = -45;
-
-    public static final int HALF_RIGHT = 45;
-
-    public static final int FULL_CIRCLE = 360;
-
-    public static final int HALF_CIRCLE = 180;
-
-    public static final int AHEAD = 0;
-
-    public static final int NORTH = 0;
-    
-    public static final int NORTHEAST = 45;
-    
-    public static final int EAST = 90;
-    
-    public static final int SOUTHEAST = 135;
-    
-    public static final int SOUTH = 180;
-   
-    public static final int SOUTHWEST = 225;
-    
-    public static final int WEST = 270;
-    
-    public static final int NORTHWEST = 315;
+    private ResourceBundle myResources;
 
     public Location(int r, int c)
     {
@@ -53,36 +26,36 @@ public class Location implements Comparable<Location>
     
     public Location getAdjacentLocation(int direction)
     {
-        int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;
+        int adjustedDirection = (direction + (int)myResources.getObject("HalfRight") / 2) %(int)myResources.getObject("FullCircle");
         if (adjustedDirection < 0)
-            adjustedDirection += FULL_CIRCLE;
-        adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
+            adjustedDirection += (int)myResources.getObject("FullCircle");
+        adjustedDirection = (adjustedDirection / (int)myResources.getObject("HalfRight")) * (int)myResources.getObject("HalfRight");
         int dc = 0;
         int dr = 0;
-        if (adjustedDirection == EAST)
+        if (adjustedDirection == (int)myResources.getObject("East"))
             dc = 1;
-        else if (adjustedDirection == SOUTHEAST)
+        else if (adjustedDirection == (int)myResources.getObject("SouthEast"))
         {
             dc = 1;
             dr = 1;
         }
-        else if (adjustedDirection == SOUTH)
+        else if (adjustedDirection == (int)myResources.getObject("South"))
             dr = 1;
-        else if (adjustedDirection == SOUTHWEST)
+        else if (adjustedDirection == (int)myResources.getObject("SouthWest"))
         {
             dc = -1;
             dr = 1;
         }
-        else if (adjustedDirection == WEST)
+        else if (adjustedDirection == (int)myResources.getObject("West"))
             dc = -1;
-        else if (adjustedDirection == NORTHWEST)
+        else if (adjustedDirection == (int)myResources.getObject("NorthWest"))
         {
             dc = -1;
             dr = -1;
         }
-        else if (adjustedDirection == NORTH)
+        else if (adjustedDirection == (int)myResources.getObject("North"))
             dr = -1;
-        else if (adjustedDirection == NORTHEAST)
+        else if (adjustedDirection == (int)myResources.getObject("NorthEast"))
         {
             dc = 1;
             dr = -1;
@@ -96,11 +69,11 @@ public class Location implements Comparable<Location>
         int dy = target.getRow() - getRow();
         int angle = (int) Math.toDegrees(Math.atan2(-dy, dx));
 
-        int compassAngle = RIGHT - angle;
-        compassAngle += HALF_RIGHT / 2;
+        int compassAngle = (int)myResources.getObject("Right") - angle;
+        compassAngle += (int)myResources.getObject("HalfRight") / 2;
         if (compassAngle < 0)
-            compassAngle += FULL_CIRCLE;
-        return (compassAngle / HALF_RIGHT) * HALF_RIGHT;
+            compassAngle += (int)myResources.getObject("FullCircle");
+        return (compassAngle / (int)myResources.getObject("HalfRight")) * (int)myResources.getObject("HalfRight");
     }
 
     public boolean equals(Object other)

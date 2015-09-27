@@ -3,12 +3,13 @@ package block;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import grid.Grid;
 import javafx.scene.paint.Color;
 
 public class AgentBlock extends SugarBlock{
-	private Color blockColor = Color.RED;
+	private ResourceBundle myResources;
 	private double bloodSugar;
 	private double vision;
 	private double metabolism;
@@ -77,18 +78,18 @@ public class AgentBlock extends SugarBlock{
 			Checkvision(compass,arr,maxsugar);
 		while(loopnum<vision){
 			if(arr[0]!=null){
-			if(getGrid().isValid(arr[0].getAdjacentLocation(Location.NORTH)))
-				arr[0] = arr[0].getAdjacentLocation(Location.NORTH);}
+			if(getGrid().isValid(arr[0].getAdjacentLocation((int)myResources.getObject("North"))))
+				arr[0] = arr[0].getAdjacentLocation((int)myResources.getObject("North"));}
 			if(arr[1]!=null){
-			if(getGrid().isValid(arr[1].getAdjacentLocation(Location.EAST)))
-				arr[1] = arr[1].getAdjacentLocation(Location.EAST);}
+			if(getGrid().isValid(arr[1].getAdjacentLocation((int)myResources.getObject("East"))))
+				arr[1] = arr[1].getAdjacentLocation((int)myResources.getObject("East"));}
 			if(arr[2]!=null){
-			if(getGrid().isValid(arr[2].getAdjacentLocation(Location.SOUTH)))
-				arr[2] = arr[2].getAdjacentLocation(Location.SOUTH);
+			if(getGrid().isValid(arr[2].getAdjacentLocation((int)myResources.getObject("South"))))
+				arr[2] = arr[2].getAdjacentLocation((int)myResources.getObject("South"));
 			}
 			if(arr[3]!=null){
-			if(getGrid().isValid(arr[3].getAdjacentLocation(Location.WEST))){
-				arr[3] = arr[3].getAdjacentLocation(Location.WEST);
+			if(getGrid().isValid(arr[3].getAdjacentLocation((int)myResources.getObject("West")))){
+				arr[3] = arr[3].getAdjacentLocation((int)myResources.getObject("West"));
 			}}
 				Checkvision(compass,arr,maxsugar);
 				loopnum++;
@@ -98,6 +99,6 @@ public class AgentBlock extends SugarBlock{
 		}
 
 	public Color getColor(){
-		return blockColor;
+		return (Color)myResources.getObject("AgentColor");
 	}
 }

@@ -8,27 +8,25 @@ import parameter.Parameters;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Rob on 9/27/15.
  */
 public class Legend {
 
-
-
-        private  static final int GridWidth = 150;
-        private  static final int GridHeight = 150;
         private javafx.scene.canvas.Canvas Canvas;
         private GraphicsContext Background;
         private double Yone, Ytwo;
         private LinkedList<Double> elements1, elements2;
         private double counter1, counter2;
+        private ResourceBundle myResources;
 
 
         public Legend(String blue, String orange){
-            Canvas = new Canvas(GridWidth,GridHeight);
+            Canvas = new Canvas((int)myResources.getObject("LegendWidth"),(int)myResources.getObject("LegendHeight"));
             Background = Canvas.getGraphicsContext2D();
-            Background.setFill(Color.WHITE);
+            Background.setFill((Color)myResources.getObject("BackgroundColor"));
             Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
             square_color();
             legend_names(blue,orange);
@@ -55,9 +53,9 @@ public class Legend {
         }
 
         private void square_color(){
-            Background.setFill(Color.BLUE);
+            Background.setFill((Color)myResources.getObject("GraphColorOne"));
             Background.fillRect(10, 50, 30, 30);
-            Background.setFill(Color.ORANGE);
+            Background.setFill((Color)myResources.getObject("GraphColorTwo"));
             Background.fillRect(10, 100, 30, 30);
         }
 

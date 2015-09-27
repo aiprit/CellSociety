@@ -11,15 +11,16 @@ import parameter.Parameters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class PredatorPreySim extends AbstractSimulation {
 
-    private Color oceanColor = Color.BLUE; //blue
+	private ResourceBundle myResources;
     private double sharkBreedTime, fishBreedTime, sharkStarveTime;
 
     @Override
     public Color getEmptyColor() {
-        return oceanColor;
+        return (Color)myResources.getObject("EmptyOceanColor");
     }
 
     public PredatorPreySim(Parameters parameter){

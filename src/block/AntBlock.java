@@ -3,13 +3,14 @@ package block;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import grid.Grid;
 import javafx.scene.paint.Color;
 
 public class AntBlock extends GroundBlock {
-	private Color blockColor = Color.BLACK;
-	private boolean hasFood = false;
+	private ResourceBundle myResources;
+	private boolean hasFood=false;
 	private double antLifeTime;
 	private Location locate;
 	private Location locate1;
@@ -21,7 +22,7 @@ public class AntBlock extends GroundBlock {
 
 
 	public Color getColor() {
-		return blockColor;
+		return (Color)myResources.getObject("AntColor");
 	}
 
 	public void act() {

@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.ResourceBundle;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -7,20 +9,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Graphic_Handler {
-	private static final String STYLE_SHEET = "ui/Stylesheet.css";
-	private static final String APPLICATION_NAME = "Cell Society";
-	private static final double STARTING_ANIMATION_SPEED = 0.2;
-	public static final int SCREEN_WIDTH = 1000;
-	public static final int SCREEN_HEIGHT = 800;
+public class Graphic_Handler {	
+	
 	private Stage current_stage;
 	private Scene current_scene;
 	private Group root;
 	private User_Interface ui;
+	private ResourceBundle myResources;
 
-	public static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
-	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+
 	private double rate;
 	Timeline animation;
 
@@ -37,9 +34,9 @@ public class Graphic_Handler {
 
 	public void set_up_scene() {
 		current_scene = scene_creation();
-		root.getStylesheets().add(STYLE_SHEET);
+		root.getStylesheets().add(myResources.getString("StyleSheet"));
 		current_stage.setScene(current_scene);
-		current_stage.setTitle(APPLICATION_NAME);
+		current_stage.setTitle(myResources.getString("ApplicationName"));
 		current_stage.show();
 		ui.set_up_base_scene(root);
 		set_up_timeline();
@@ -49,12 +46,12 @@ public class Graphic_Handler {
 	}
 
 	private void set_up_timeline(){
-		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-				e -> step(SECOND_DELAY));
+		KeyFrame frame = new KeyFrame(Duration.millis((double)myResources.getObject("MillisecondDelay")),
+				e -> step((double)myResources.getObject("SecondDelay")));
 		animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
-		animation.setRate(STARTING_ANIMATION_SPEED);
+		animation.setRate((int)myResources.getObject("StartSpeed"));
 		animation.play();
 	}
 
@@ -91,7 +88,7 @@ public class Graphic_Handler {
 	}
 
 	public Scene scene_creation(){
-		return new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
+		return new Scene(root, (int)myResources.getObject("ScreenWidth"), (int)myResources.getObject("ScreenHeight"));
 	}
 
 

@@ -43,11 +43,10 @@ public class User_Interface {
     String current_sim;
     private ResourceBundle myResources;
     private ResourceBundle bleh;
-    public static final String DEFAULT_RESOURCE_PACKAGE ="resources/";
     private ComboBox<String> simulation_choices;
 
     public User_Interface(String property){
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + property);
+        myResources = ResourceBundle.getBundle(myResources.getString("DefaultResourcePackage") + property);
         status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
@@ -83,13 +82,13 @@ public class User_Interface {
 
     public void outer_border_set_up(){
         outer_format = new BorderPane();
-        outer_format.setPrefSize(Graphic_Handler.SCREEN_WIDTH, Graphic_Handler.SCREEN_HEIGHT);
+        outer_format.setPrefSize((int)myResources.getObject("GridPanelWidth"), (int)myResources.getObject("GridPanelHeight"));
         outer_format.setId("pane");
     }
 
     public void control_panel_set_up(){
         control_panel = new VBox();
-        control_panel.setSpacing(VERTICAL_SPACING);
+        control_panel.setSpacing((int)myResources.getObject("VerticalSpacing"));
     }
 
 
@@ -153,7 +152,8 @@ public class User_Interface {
     private void init_animation_speed_slider(){
         Label speed = new Label(myResources.getString("SpeedLabel"));
         //speed.s
-        Custom_Slider animation_speed_slider = new Custom_Slider(MINIMUM_ANIMATION_SPEED, MAXIMUM_ANIMATION_SPEED, STARTING_ANIMATION_SPEED);
+        Custom_Slider animation_speed_slider = new Custom_Slider((double)myResources.getObject("MinSpeed"),
+        		(int)myResources.getObject("MaxSpeed"), (double)myResources.getObject("StartSpeed"));
         animation_speed_slider.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             rate = newValue.doubleValue();
@@ -216,8 +216,8 @@ public class User_Interface {
         XML_Builder builder = new XML_Builder();
         builder.getD();
         while(builder.check_params());
-        sim_map.put("Custom Simulation","src/resources/test.xml");
-        simulation_choices.setValue("Custom Simulation");
+        sim_map.put(myResources.getString("CustomSim"),myResources.getString("XmlTest"));
+        simulation_choices.setValue(myResources.getString("CustomSim"));
 
 
     }

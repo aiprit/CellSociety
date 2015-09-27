@@ -10,11 +10,12 @@ import parameter.Parameters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class SegregationSim extends AbstractSimulation {
 
-    private static Color emptyColor = Color.BEIGE; //blue
-    private static double happyPercentage;
+	private ResourceBundle myResources;
+	private static double happyPercentage;
 
     public double getHappyPercentage() {
     	return happyPercentage;
@@ -22,7 +23,7 @@ public class SegregationSim extends AbstractSimulation {
 
     @Override
     public Color getEmptyColor() {
-        return emptyColor;
+        return (Color)myResources.getObject("EmptySegColor");
     }
 
     public SegregationSim(Parameters parameter) {

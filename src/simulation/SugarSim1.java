@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import block.AgentBlock;
 import block.Block;
@@ -13,7 +14,7 @@ import javafx.scene.paint.Color;
 import parameter.Parameters;
 
 public class SugarSim1 extends AbstractSimulation{
-	private static Color emptyColor = Color.WHITE;
+	private ResourceBundle myResources;
 	private double sugarhi;
 	private int vision;
 	private int metabolism;
@@ -69,7 +70,7 @@ public class SugarSim1 extends AbstractSimulation{
 	@Override
 	public Color getEmptyColor() {
 		// TODO Auto-generated method stub
-		return emptyColor;
+		return (Color) myResources.getObject("EmptySugarColor");
 	}
 
 }

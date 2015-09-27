@@ -3,12 +3,13 @@ package block;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javafx.scene.paint.Color;
 
 public class NestBlock extends Block {
+	private ResourceBundle myResources;
 	private double lifetime;
-	private Color blockColor = Color.WHITE;
 
 	public NestBlock(double life){
 		super();
@@ -17,7 +18,7 @@ public class NestBlock extends Block {
 	}
 
 	public Color getColor() {
-		return blockColor;
+		return (Color)myResources.getObject("NestColor");
 	}
 
 	public void act() {

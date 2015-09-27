@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 public class SharkBlock extends Block {
+    private ResourceBundle myResources;
     private static int sharkBreedTime = 20;
-    private static int sharkStarveTime = 5;
-    private static Random rand = new Random();
+    private static int sharkStarveTime=4;
+    private Random rand = new Random();
     private int turnsSinceLastAte;
     private int turnsUntilCanBreed;
     private int myBreedTime;
     private int myStarveTime;
-    private Color blockColor = Color.ORANGE;
+
 
     public static void setBreedTime(int newBreedTime){
         sharkBreedTime = newBreedTime;
@@ -35,7 +37,7 @@ public class SharkBlock extends Block {
 
     @Override
     public Color getColor() {
-        return blockColor;
+        return (Color)myResources.getObject("SharkColor");
     }
 
     public SharkBlock(){

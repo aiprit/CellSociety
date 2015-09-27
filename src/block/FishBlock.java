@@ -1,11 +1,13 @@
 package block;
 
+import java.util.ResourceBundle;
+
 import javafx.scene.paint.Color;
 
 public class FishBlock extends Block {
+	private ResourceBundle myResources;
 	private static int fishBreedTime = 4;
 	private int turnsUntilCanBreed;
-	private Color blockColor = Color.GREEN;
 	private int numFish = 0;
 
 	public static void setfishBreedTime(int newfishBreedTime){
@@ -14,7 +16,7 @@ public class FishBlock extends Block {
 
 	@Override
 	public Color getColor() {
-		return blockColor;
+		return (Color)myResources.getObject("FishColor");
 	}
 
 	public static int getfishBreedTime() {
