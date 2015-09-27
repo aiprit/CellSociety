@@ -7,8 +7,11 @@
     </Information>
 
     <Parameters>
-        <happy_percent>.3</happy_percent><percent_blue>.45</percent_blue>
-        <percent_red>.45</percent_red><grid_size>20.0</grid_size>
+        <happy_percent>.3</happy_percent>
+        <percent_blue>.45</percent_blue>
+        <percent_red>.45</percent_red>
+        <grid_size>20.0</grid_size>
+        <grid_type>BoundedGrid</grid_type>
     </Parameters>
 
 

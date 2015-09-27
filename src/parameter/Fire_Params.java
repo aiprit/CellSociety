@@ -23,7 +23,7 @@ public class Fire_Params extends Parameters {
 
 
     public AbstractSimulation get_sim(){
-        return new SpreadingFireSim(init_params);
+        return new SpreadingFireSim(this);
     }
 }
 

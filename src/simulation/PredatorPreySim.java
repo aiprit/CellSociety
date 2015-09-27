@@ -6,6 +6,7 @@ import block.FishBlock;
 import block.Location;
 import block.SharkBlock;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,15 +22,15 @@ public class PredatorPreySim extends AbstractSimulation {
         return oceanColor;
     }
 
-    public PredatorPreySim(HashMap<String, Double> map){
-        super(map);
-        sharkBreedTime = map.get("standard_breed_time_shark");
-        fishBreedTime = map.get("standard_breed_time_fish");
-        sharkStarveTime = map.get("standard_starve_time");
+    public PredatorPreySim(Parameters parameter){
+        super(parameter);
+        sharkBreedTime = parameter.get_param_map().get("standard_breed_time_shark");
+        fishBreedTime = parameter.get_param_map().get("standard_breed_time_fish");
+        sharkStarveTime = parameter.get_param_map().get("standard_starve_time");
        // System.out.println(sharkBreedTime) ;
         //System.out.println(fishBreedTime);
        // System.out.println(sharkStarveTime);
-        reset(map.get("percent_fish"),map.get("percent_sharks"));
+        reset(parameter.get_param_map().get("percent_fish"),parameter.get_param_map().get("percent_sharks"));
     }
 
     @Override

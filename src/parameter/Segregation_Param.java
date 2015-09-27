@@ -23,7 +23,7 @@ public class Segregation_Param extends Parameters {
     }
 
     public AbstractSimulation get_sim(){
-        return new SegregationSim(init_params);
+        return new SegregationSim(this);
     }
 
 }

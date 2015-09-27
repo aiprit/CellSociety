@@ -5,6 +5,7 @@ import block.Block;
 import block.DeadBlock;
 import block.Location;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,9 +20,9 @@ public class GameOfLifeSim extends AbstractSimulation {
 	        return emptyColor;
 	    }
 		
-		public GameOfLifeSim(HashMap<String, Double> map) {
-			super(map);
-			reset(map.get("percent_alive"), map.get("percent_dead"));
+		public GameOfLifeSim(Parameters parameter) {
+			super(parameter);
+			reset(parameter.get_param_map().get("percent_alive"), parameter.get_param_map().get("percent_dead"));
 		}
 		
 		public Block chooseBlock(boolean placeBlock) {
