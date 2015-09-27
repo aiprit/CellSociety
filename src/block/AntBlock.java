@@ -83,13 +83,10 @@ public class AntBlock extends Block {
 	}
 
 	private void findFood(){
-<<<<<<< HEAD
-		ArrayList<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		ArrayList<Double> ph = new ArrayList<Double>();
-=======
+
 		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		ArrayList<Double> ph;
->>>>>>> second_half
+		List<Double> ph;
+
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block possibleAnt = getGrid().get(adjacentSpots.get(i));
 			if (possibleAnt instanceof AntBlock || possibleAnt instanceof NestBlock) {
@@ -99,6 +96,7 @@ public class AntBlock extends Block {
 				hasFood = true;
 			}
 		}
+		ph = new ArrayList<>();
 		for (int j = 0; j< adjacentSpots.size();j++) {
 			 GroundBlock ground = (GroundBlock) getGrid().get(adjacentSpots.get(j));
 			 ph.add(ground.getFoodPheremones());
