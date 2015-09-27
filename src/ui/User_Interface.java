@@ -66,6 +66,7 @@ public class User_Interface {
         sim_map.put(myResources.getString("SimFire"), myResources.getString("XmlFire"));
         sim_map.put(myResources.getString("SimGOL"), myResources.getString("XmlGOL"));
         sim_map.put(myResources.getString("SimAnts"),myResources.getString("XmlAnts"));
+        sim_map.put(myResources.getString("SimSugar"),myResources.getString("XmlSugar"));
     }
 
 
@@ -160,7 +161,23 @@ public class User_Interface {
 
     private void init_simulation_chooser(){
         simulation_choices = new ComboBox<String>();
-        System.out.println(sim_map.size());
+
+        simulation_choices.setValue(myResources.getString("SimChoice"));
+        for(String simulation: sim_map.keySet()){
+            simulation_choices.getItems().add(simulation);
+
+        }
+        option_list.add(simulation_choices);
+        simulation_choices.setOnAction((event) -> {
+            set_sim(simulation_choices.getValue());
+
+        });
+
+    }
+
+    private void init_grid_cell_chooser(){
+        simulation_choices = new ComboBox<String>();
+
         simulation_choices.setValue(myResources.getString("SimChoice"));
         for(String simulation: sim_map.keySet()){
             simulation_choices.getItems().add(simulation);

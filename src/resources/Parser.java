@@ -48,6 +48,7 @@ public class Parser {
         parameter_params.add(new Fire_Params());
         parameter_params.add(new Game_of_Life_Param());
         parameter_params.add(new Ants_Param());
+        parameter_params.add(new Sugar_Param());
 
 
     }
