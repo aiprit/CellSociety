@@ -6,6 +6,7 @@ public class FishBlock extends Block {
 	private static int fishBreedTime = 4;
 	private int turnsUntilCanBreed;
 	private Color blockColor = Color.GREEN;
+	private int numFish = 0;
 
 	public static void setfishBreedTime(int newfishBreedTime){
 		fishBreedTime = newfishBreedTime;
@@ -33,6 +34,7 @@ public class FishBlock extends Block {
 		if(turnsUntilCanBreed <= 0){
 			FishBlock newFish = new FishBlock();
 			newFish.putSelfInGrid(getGrid(), oldLocation);
+
 			turnsUntilCanBreed = fishBreedTime;
 		}
 	}
