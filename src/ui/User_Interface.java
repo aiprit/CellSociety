@@ -226,11 +226,15 @@ public class User_Interface {
         current_sim = key;
         parser = new Parser(sim_map.get(key));
         panel = new GridPanel(parser.parse());
+<<<<<<< HEAD
         chart = new ChartPanel();
         legend = new Legend(parser.get_blue(),parser.get_orange());
         info_bar = new HBox();
         info_bar.setSpacing(250);
         outer_format.setBottom(info_bar);
+=======
+        chart = new ChartPanel(panel.getRows());
+>>>>>>> master
         canvas = panel.getCanvas();
         graph_canvas = chart.get_canvas();
         outer_format.setLeft(canvas);

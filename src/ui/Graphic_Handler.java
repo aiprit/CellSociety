@@ -33,7 +33,10 @@ public class Graphic_Handler {
 		set_up_scene();
 		rate= ui.change_rate();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	}
 
 

@@ -4,28 +4,37 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AgentBlock extends SugarBlock{
+import grid.Grid;
+import javafx.scene.paint.Color;
 
+public class AgentBlock extends SugarBlock{
+	private Color blockColor = Color.RED;
 	private double bloodSugar;
 	private double vision;
 	private double metabolism;
+	private double sugarGrowth;
+	private Location max;
 
-	public AgentBlock(double sugar, double sugarhi,double max, int meta, int vision){
-		super(sugar,sugarhi);
+	public AgentBlock(double sugar, double sugarhi,double growth,double blood, int meta, int vis){
+		super(sugar,sugarhi,growth);
+		bloodSugar = blood;
+		metabolism = meta;
+		vision = vis;
+		sugarGrowth=growth;
 	}
 	@Override
 	public void act() {
 
-		//if(burnSugar()){
-		//	moveSugar();
-		//}
+		if(burnSugar()){
+			moveSugar();
+		}
 	}
 
 	public boolean burnSugar(){
 		bloodSugar -= metabolism;
 		if( bloodSugar <0){
 			removeSelfFromGrid();
-			SugarBlock sugar = new SugarBlock(sugarLvl,maxSugar);
+			SugarBlock sugar = new SugarBlock(sugarLvl,maxSugar,sugarGrowth);
 			sugar.putSelfInGrid(getGrid(),getLocation());
 			return false;
 		}
@@ -36,14 +45,16 @@ public class AgentBlock extends SugarBlock{
 
 	public void moveAgent(Location newLocation){
 		Location loc = getLocation();
+		SugarBlock sugar= (SugarBlock) getGrid().get(newLocation);
+		bloodSugar +=sugar.getSugar();
 		moveTo(newLocation);
-		SugarBlock sug = new SugarBlock(sugarLvl,maxSugar);
-		sug.putSelfInGrid(getGrid(),getLocation());
+		SugarBlock sug = new SugarBlock(sugarLvl,maxSugar,sugarGrowth);
+		sug.putSelfInGrid(getGrid(),loc);
 
 	}
 
-	public void Checkvision(Location[] arr, double maxsugar, Location max){
-		for(Location place:arr){
+	public void Checkvision(List<Location> lst,Location[] arr, double maxsugar){
+		for(Location place:lst){
 			Block block = getGrid().get(place);
 			if(block instanceof SugarBlock){
 				SugarBlock sugarblock = (SugarBlock) block;
@@ -57,19 +68,36 @@ public class AgentBlock extends SugarBlock{
 		public void moveSugar(){
 			List<Location> compass = getGrid().getValidCompassLocations(getLocation());
 			int loopnum = 1;
-			Location max = new Location(0,0);
+			max = new Location(0,0);
 			double maxsugar =0;
 			Location[] arr = new Location[4];
-			Checkvision(arr,maxsugar,max);
+			for(int i=0;i<compass.size();i++){
+				arr[i]=compass.get(i);
+			}
+			Checkvision(compass,arr,maxsugar);
 		while(loopnum<vision){
-				arr[0] = arr[0].getAdjacentLocation(Location.NORTH);
-				arr[1] = arr[1].getAdjacentLocation(Location.EAST);
+			if(arr[0]!=null){
+			if(getGrid().isValid(arr[0].getAdjacentLocation(Location.NORTH)))
+				arr[0] = arr[0].getAdjacentLocation(Location.NORTH);}
+			if(arr[1]!=null){
+			if(getGrid().isValid(arr[1].getAdjacentLocation(Location.EAST)))
+				arr[1] = arr[1].getAdjacentLocation(Location.EAST);}
+			if(arr[2]!=null){
+			if(getGrid().isValid(arr[2].getAdjacentLocation(Location.SOUTH)))
 				arr[2] = arr[2].getAdjacentLocation(Location.SOUTH);
+			}
+			if(arr[3]!=null){
+			if(getGrid().isValid(arr[3].getAdjacentLocation(Location.WEST))){
 				arr[3] = arr[3].getAdjacentLocation(Location.WEST);
-				Checkvision(arr,maxsugar,max);
+			}}
+				Checkvision(compass,arr,maxsugar);
 				loopnum++;
 			}
 		moveAgent(max);
+		max = null;
 		}
 
+	public Color getColor(){
+		return blockColor;
+	}
 }
