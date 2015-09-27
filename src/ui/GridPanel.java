@@ -24,6 +24,7 @@ class GridPanel{
 	private int sum2;
 	private Color  col1;
 	private Color  col2;
+	private String shittyVariable;
 
 	public GridPanel(AbstractSimulation sim){
 
@@ -36,11 +37,6 @@ class GridPanel{
 
 	}
 
-	/*public void reset(int rows, int cols, double fractstate1, double fractstate2, double prob){
-        //theWorld = new SpreadingFireSim(rows, cols,fractstate1,fractstate2,0.5);
-        render();
-    }*/
-
 
 	public void update(){
 		theWorld.step();
@@ -49,12 +45,16 @@ class GridPanel{
 	}
 
 	private void render() {
-		//rectangle();
-		triangle();
-		//hexagon();
+		if(shittyVariable.equals("triangle")){
+			triangle();
+		}
+		if(shittyVariable.equals("rectangle")){
+			rectangle();
+		}
+		if(shittyVariable.equals("hexagon")){
+			hexagon();
+		}
 
-		//System.out.println(sum1);
-		//System.out.println(sum2);
 
 	}
 	private void resetcount(){
@@ -183,4 +183,8 @@ class GridPanel{
 	public int getRows(){
 		return theWorld.getNumRows();
 	}
+	public void setShapes(String str){
+		shittyVariable = str;
+	}
+
 }
