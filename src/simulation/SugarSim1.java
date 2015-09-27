@@ -10,12 +10,13 @@ import block.Block;
 import block.Location;
 import block.SugarBlock;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 public class SugarSim1 extends AbstractSimulation{
 	private static Color emptyColor = Color.WHITE;
 	private double sugarhi;
-	public SugarSim1(HashMap<String, Double> map){
-		super(map);
+	public SugarSim1(Parameters parameter){
+		super(parameter);
 	}
 	@Override
 	public void populateWorld(double maxsugar, double fraction2) {

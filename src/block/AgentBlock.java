@@ -16,9 +16,9 @@ public class AgentBlock extends SugarBlock{
 	@Override
 	public void act() {
 
-		if(burnSugar()){
-			moveSugar();
-		}
+		//if(burnSugar()){
+		//	moveSugar();
+		//}
 	}
 
 	public boolean burnSugar(){

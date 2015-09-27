@@ -20,8 +20,6 @@ public class RedBlock extends RedBlueBlock {
 
 	}
 
-
-
 	@Override
 	public boolean sameBlockCheck(Block typeOfBlock) {
 		return typeOfBlock instanceof RedBlock;

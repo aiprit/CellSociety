@@ -4,11 +4,12 @@ import java.util.HashMap;
 
 import block.Block;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 public class SlimeMoldSim extends AbstractSimulation {
 
-	public SlimeMoldSim(HashMap<String, Double> map) {
-		super(map);
+	public SlimeMoldSim(Parameters parameter) {
+		super(parameter);
 	}
 
 	@Override

@@ -16,8 +16,6 @@ public class AntBlock extends GroundBlock {
 	public AntBlock(double food, double home) {
 		super(food, home);
 		setColor(getColor());
-
-
 	}
 
 
@@ -33,7 +31,7 @@ public class AntBlock extends GroundBlock {
 			else {
 				findFood();
 			}
-			//			diffuse();
+
 			if (foodPheremones > 0) {
 				foodPheremones *= decreaseRate;
 			}
@@ -42,6 +40,7 @@ public class AntBlock extends GroundBlock {
 			}
 			antLifeTime--;
 		}
+
 		else{
 			Grid<Block> a = getGrid();
 			Location loc = getLocation();
@@ -107,7 +106,6 @@ public class AntBlock extends GroundBlock {
 	}
 
 	private void findFood(){
-
 		List<Location> adjacentSpots = getGrid().getValidAdjacentLocations(getLocation());
 		List<Double> ph;
 		List<Integer> samemax =new ArrayList<Integer>();

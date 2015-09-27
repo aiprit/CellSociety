@@ -4,12 +4,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import resources.Parser;
+import xml_creation.XML_Builder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +33,7 @@ public class User_Interface {
     Parser parser;
     private GridPanel panel;
     private Canvas canvas;
+    private Canvas graph_canvas;
     private boolean status;
     private double rate;
     HashMap<String,String> sim_map;
@@ -38,6 +41,7 @@ public class User_Interface {
     private ResourceBundle myResources;
     private ResourceBundle bleh;
     public static final String DEFAULT_RESOURCE_PACKAGE ="resources/";
+    private ComboBox<String> simulation_choices;
 
     public User_Interface(String property){
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + property);
@@ -62,6 +66,7 @@ public class User_Interface {
         sim_map.put(myResources.getString("SimFire"), myResources.getString("XmlFire"));
         sim_map.put(myResources.getString("SimGOL"), myResources.getString("XmlGOL"));
         sim_map.put(myResources.getString("SimAnts"),myResources.getString("XmlAnts"));
+        sim_map.put(myResources.getString("SimSugar"),myResources.getString("XmlSugar"));
     }
 
 
@@ -90,17 +95,20 @@ public class User_Interface {
         outer_format.setRight(control_panel);
         outer_format.setLeft(canvas);
         outer_format.setTop(title);
+        outer_format.setBottom(graph_canvas);
         outer_format.setAlignment(title, Pos.TOP_CENTER);
         outer_format.setAlignment(control_panel, Pos.CENTER_RIGHT);
         init_generic_options();
     }
 
     private void init_generic_options(){
+        init_custom_button();
         init_simulation_chooser();
         init_start_button();
         init_stop_button();
         init_step_button();
         init_reset_button();
+
         init_animation_speed_slider();
 
         for(Node option: option_list){
@@ -132,6 +140,11 @@ public class User_Interface {
         reset_button.setOnAction((event) -> reset());
         option_list.add(reset_button);
     }
+    private void init_custom_button(){
+        Custom_Button custom_button = new Custom_Button("Custom Simulation Maker");
+        custom_button.setOnAction((event) -> custom());
+        option_list.add(custom_button);
+    }
 
     private void init_animation_speed_slider(){
         Label speed = new Label(myResources.getString("SpeedLabel"));
@@ -147,8 +160,8 @@ public class User_Interface {
     }
 
     private void init_simulation_chooser(){
-        ComboBox<String> simulation_choices = new ComboBox<String>();
-        System.out.println(sim_map.size());
+        simulation_choices = new ComboBox<String>();
+
         simulation_choices.setValue(myResources.getString("SimChoice"));
         for(String simulation: sim_map.keySet()){
             simulation_choices.getItems().add(simulation);
@@ -157,6 +170,23 @@ public class User_Interface {
         option_list.add(simulation_choices);
         simulation_choices.setOnAction((event) -> {
             set_sim(simulation_choices.getValue());
+
+        });
+
+    }
+
+    private void init_grid_cell_chooser(){
+        simulation_choices = new ComboBox<String>();
+
+        simulation_choices.setValue(myResources.getString("SimChoice"));
+        for(String simulation: sim_map.keySet()){
+            simulation_choices.getItems().add(simulation);
+
+        }
+        option_list.add(simulation_choices);
+        simulation_choices.setOnAction((event) -> {
+            set_sim(simulation_choices.getValue());
+
         });
 
     }
@@ -166,6 +196,8 @@ public class User_Interface {
     public GridPanel get_panel(){
         return panel;
     }
+
+    public ChartPanel get_chart_panel(){return chart;}
 
 
     public boolean get_status(){
@@ -183,11 +215,22 @@ public class User_Interface {
     private void step(){
 
         panel.update();
+        chart.chart_handler(panel.getSum1(), panel.getSum2());
 
     }
 
     private void reset(){
         set_sim(current_sim);
+    }
+
+    private void custom(){
+        XML_Builder builder = new XML_Builder();
+        builder.getD();
+        while(builder.check_params());
+        sim_map.put("Custom Simulation","src/resources/test.xml");
+        simulation_choices.setValue("Custom Simulation");
+
+
     }
 
     private void set_sim(String key){
@@ -197,7 +240,9 @@ public class User_Interface {
         panel = new GridPanel(parser.parse());
         chart = new ChartPanel();
         canvas = panel.getCanvas();
+        graph_canvas = chart.get_canvas();
         outer_format.setLeft(canvas);
+        outer_format.setBottom(graph_canvas);
     }
 
     public double change_rate(){

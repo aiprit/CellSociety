@@ -37,6 +37,7 @@ public class GroundBlock extends Block {
 			foodPheremones += food;
 
 	}
+
 //	public void diffuse(){
 //		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
 //		for(Location loc: adjacentSpots){

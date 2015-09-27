@@ -14,6 +14,7 @@
         <standard_breed_time_fish>4</standard_breed_time_fish>
         <standard_starve_time>7</standard_starve_time>
         <grid_size>10</grid_size>
+        <grid_type>BoundedGrid</grid_type>
     </Parameters>
 
 

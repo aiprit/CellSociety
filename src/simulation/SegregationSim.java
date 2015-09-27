@@ -5,6 +5,7 @@ import block.BlueBlock;
 import block.Location;
 import block.RedBlock;
 import javafx.scene.paint.Color;
+import parameter.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,10 +25,10 @@ public class SegregationSim extends AbstractSimulation {
         return emptyColor;
     }
 
-    public SegregationSim(HashMap<String, Double> map) {
-        super(map);
-    	happyPercentage = map.get("happy_percent");
-        reset(map.get("percent_blue"), map.get("percent_red") );
+    public SegregationSim(Parameters parameter) {
+        super(parameter);
+    	happyPercentage = parameter.get_param_map().get("happy_percent");
+        reset(parameter.get_param_map().get("percent_blue"), parameter.get_param_map().get("percent_red") );
     }
 
     public Block chooseBlock(boolean placeBlock) {

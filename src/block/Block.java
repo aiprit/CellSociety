@@ -75,7 +75,6 @@ public abstract class Block
 			throw new IllegalStateException(
 					"The grid contains a different Block at location "
 							+ location + ".");
-
 		grid.remove(location);
 	}
 

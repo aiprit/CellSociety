@@ -16,11 +16,15 @@ public class Ants_Param extends Parameters {
     }
 
     public void fill_param_array(){
-
+        list_of_parameters.add("ant_life");
+        list_of_parameters.add("max_pheremones");
+        list_of_parameters.add("diffusion_rate");
+        list_of_parameters.add("decrease_rate");
+        
     }
 
 
     public AbstractSimulation get_sim(){
-        return new ForagingAntsSim(init_params);
+        return new ForagingAntsSim(this);
     }
 }

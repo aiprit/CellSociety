@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Predator-Prey id="1">
+<Parameters><grid_size>50</grid_size>
+<percent_sharks>.1</percent_sharks>
+<percent_fish>.8</percent_fish>
+<standard_breed_time_shark>20</standard_breed_time_shark>
+<standard_breed_time_fish>5</standard_breed_time_fish>
+<standard_starve_time>20</standard_starve_time>
+    <grid_type>BoundedGrid</grid_type>
+</Parameters></Predator-Prey>
