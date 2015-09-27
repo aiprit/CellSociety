@@ -1,14 +1,11 @@
-<<<<<<< HEAD
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Ants id="4">
         
         
     <Information><author>Liviu A. Panait</author><name>Foraging Ants</name><simulation_type>Foraging Ants</simulation_type></Information>
-=======
-<?xml version="1.0" encoding="UTF-8"?><Ants id="4">
 
->>>>>>> origin/master
 
     <Information><author>Liviu A. Panait</author><name>Foraging Ants</name><simulation_type>Foraging Ants</simulation_type></Information>
     <Parameters>
