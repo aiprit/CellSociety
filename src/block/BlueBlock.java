@@ -2,6 +2,8 @@ package block;
 
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BlueBlock extends RedBlueBlock {
 
@@ -27,5 +29,14 @@ public class BlueBlock extends RedBlueBlock {
 	public char getChar() {
 		return 'B';
 	}
+
+	public void tryMove() {
+				List<Location> openSpots = getGrid().getAllEmptyLocations();
+				if(openSpots.size() > 0){
+					Collections.shuffle(openSpots);
+					moveTo(openSpots.get(0));
+				}
+
+}
 
 }

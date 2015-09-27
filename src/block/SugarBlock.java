@@ -3,14 +3,13 @@ package block;
 import javafx.scene.paint.Color;
 
 public class SugarBlock extends Block{
-
-	private double sugarLvl;
-	private double maxSugar;
+	protected double sugarLvl;
+	protected double maxSugar =4;
 	Color blockColor;
-	public SugarBlock(double sugarl, double sugarhi){
+	public SugarBlock(double sugarl){
 		super();
 		sugarLvl = sugarl;
-		maxSugar = sugarhi;
+
 	}
 	public Color getColor() {
 		if(sugarLvl >= maxSugar*2/3){
