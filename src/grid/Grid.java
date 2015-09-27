@@ -30,4 +30,6 @@ public interface Grid<E>
     List<E> getNeighbors(Location loc);
 
 	List<Location> getAllEmptyLocations();
+
+	List<Location> getValidCompassLocations(Location location);
 }
