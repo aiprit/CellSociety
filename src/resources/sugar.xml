@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sugar id="5">
+    <Information>
+        <simulation_type>Sugar</simulation_type>
+        <name>SugarScape</name>
+        <author>Joshua M. Epstein & Robert Axtell</author>
+    </Information>
+
+    <Parameters>
+        <vision>6</vision>
+        <metabolism>4</metabolism>
+        <maxsugar>4</maxsugar>
+        <maxsugarblood>20</maxsugarblood>
+        <grid_size>20</grid_size>
+    </Parameters>
+
+
+
+</Sugar>

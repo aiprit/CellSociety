@@ -130,6 +130,8 @@ public class AntBlock extends GroundBlock {
 				ph.add(ground1.getFoodPheremones());
 			}
 		}
+		if(adjacentSpots.size() ==0)
+			return;
 		double max = Collections.max(ph);
 		for(int l = 0; l < ph.size(); l++){
 			if(max == ph.get(l))

@@ -4,11 +4,12 @@ import javafx.scene.paint.Color;
 
 public class SugarBlock extends Block{
 	protected double sugarLvl;
-	protected double maxSugar =4;
+	protected double maxSugar;
 	Color blockColor;
-	public SugarBlock(double sugarl){
+	public SugarBlock(double sugarl,double max){
 		super();
 		sugarLvl = sugarl;
+		maxSugar = max;
 
 	}
 	public Color getColor() {

@@ -77,8 +77,6 @@ public abstract class Block
 							+ location + ".");
 
 		grid.remove(location);
-		grid = null;
-		location = null;
 	}
 
 	public void moveTo(Location newLocation)

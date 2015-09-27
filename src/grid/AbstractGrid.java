@@ -29,6 +29,25 @@ public abstract class AbstractGrid<E> implements Grid<E>
 		return locs;
 	}
 
+	public List<Location> getValidCompassLocations(Location loc)
+	{
+		List<Location> locs = new ArrayList<Location>();
+		int d = Location.NORTH;
+		for (int i = 0; i < Location.FULL_CIRCLE / Location.RIGHT; i++)
+		{
+			Location neighborLoc = loc.getAdjacentLocation(d);
+			if (isValid(neighborLoc))
+				locs.add(neighborLoc);
+			d = d + Location.RIGHT;
+		}
+		return locs;
+	}
+
+
+
+
+
+
 	public List<Location> getEmptyAdjacentLocations(Location loc)
 	{
 		List<Location> locs = new ArrayList<Location>();
