@@ -51,6 +51,7 @@ class GridPanel extends JPanel{
 	}
 
 	private void render() {
+		/*
 		for(int r = 0; r < theWorld.getNumRows(); r++){
 			for(int c = 0; c < theWorld.getNumCols(); c++){
 				Color col = theWorld.getColor(r, c);
@@ -64,8 +65,9 @@ class GridPanel extends JPanel{
 				}
 			}
 		}
+		*/
 		
-		/*
+
 		for(int r = 0; r < theWorld.getNumRows(); r++){
 			double a = 0;
 			for(int c = 0; c < theWorld.getNumCols(); c++){
@@ -133,7 +135,7 @@ class GridPanel extends JPanel{
 				a+=0.5;
 			}
 		}
-		*/
+		
 	}
 
 

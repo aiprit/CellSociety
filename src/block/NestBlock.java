@@ -2,6 +2,7 @@ package block;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javafx.scene.paint.Color;
 
@@ -19,7 +20,7 @@ public class NestBlock extends Block {
 	}
 
 	public void act() {
-		ArrayList<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
 		Collections.shuffle(neighbors);
 		for (int i = 0; i < neighbors.size(); i++) {
 			Block possibleAnt = getGrid().get(neighbors.get(i));
