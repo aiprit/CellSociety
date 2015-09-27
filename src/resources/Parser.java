@@ -14,6 +14,7 @@ import org.xml.sax.SAXException;
 import parameter.*;
 
 import java.io.*;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,6 +28,11 @@ public class Parser {
     private Map<String, Double> parameter_map;
     private int simulation_number;
 
+
+    public Parser(){
+        param_array_maker();
+        simulation_names = new ArrayList<String>();
+    }
     public Parser(String file_name){
         param_array_maker();
         simulation_names = new ArrayList<String>();
@@ -36,14 +42,19 @@ public class Parser {
     }
 
     private void param_array_maker(){
-        parameter_params = new ArrayList<Parameters>();
+        parameter_params = new ArrayList<>();
         parameter_params.add(new Segregation_Param());
         parameter_params.add(new Pred_Prey_Param());
         parameter_params.add(new Fire_Params());
         parameter_params.add(new Game_of_Life_Param());
         parameter_params.add(new Ants_Param());
+        parameter_params.add(new Sugar_Param());
 
 
+    }
+
+    public List<Parameters> get_param_list(){
+        return parameter_params;
     }
 
     public void document_reader_setup(File xml_file){

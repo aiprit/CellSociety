@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Ants id="4">
-    <Information><author>Liviu A. Panait</author><name>Foraging Ants</name><simulation_type>Foraging Ants</simulation_type></Information>
+    <Information>
+        <author>Liviu A. Panait</author>
+        <name>Foraging Ants</name>
+        <simulation_type>Foraging Ants</simulation_type>
+    </Information>
     <Parameters>
+        <ant_life>30</ant_life>
+        <max_pheremones>100</max_pheremones>
+        <diffusion_rate>0.001</diffusion_rate>
+        <decrease_rate>0.999</decrease_rate>
         <grid_size>20</grid_size>
         <grid_type>BoundedGrid</grid_type>
     </Parameters>
