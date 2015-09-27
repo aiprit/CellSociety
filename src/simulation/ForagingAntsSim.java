@@ -3,6 +3,7 @@ package simulation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import block.Block;
@@ -18,7 +19,7 @@ public class ForagingAntsSim extends AbstractSimulation{
 
 	public ForagingAntsSim(HashMap<String, Double> map) {
 		super(map);
-
+		reset(1,1);
 	}
 
 	@Override
@@ -54,6 +55,35 @@ public class ForagingAntsSim extends AbstractSimulation{
 		return null;
 	}
 
+	@Override
+	public void step() {
+		List<Location> occupiedLocations = theWorld.getOccupiedLocations();
+		Collections.shuffle(occupiedLocations);
+		ArrayList<Location> list = new ArrayList<Location>();
+		for(Location loc : occupiedLocations){
+			Block a = theWorld.get(loc);
+			// in case eaten
+			if(a.getChar() == 'A'||a.getChar() == 'H')
+				list.add(loc);
+
+		}
+		for (Location loca: list) {
+			Block a = theWorld.get(loca);
+			a.act();
+		}
+//		occupiedLocations = theWorld.getOccupiedLocations();
+//		list = new ArrayList<Location>();
+//		for(Location loc : occupiedLocations){
+//			Block a = theWorld.get(loc);
+//			if(a.getChar() == 'G'){
+//				list.add(loc);
+//			}
+//		}
+//		for (Location loca: list) {
+//			Block a = theWorld.get(loca);
+//			a.act();
+//		}
+	}
 	@Override
 	public void populateDefinite(int num1, int num2) {
 		// TODO Auto-generated method stub

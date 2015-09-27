@@ -69,8 +69,9 @@ public abstract class AbstractGrid<E> implements Grid<E>
 			for (int c = 0; c < getNumCols(); c++)
 			{
 				Location loc = new Location(r, c);
-				if (get(loc) == null)
+				if (get(loc) == null){
 					theLocations.add(loc);
+				}
 			}
 		}
 		return theLocations;

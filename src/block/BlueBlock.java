@@ -23,7 +23,7 @@ public class BlueBlock extends RedBlueBlock {
 
 	@Override
 	public boolean sameBlockCheck(Block typeOfBlock) {
-		return typeOfBlock instanceof RedBlock;
+		return typeOfBlock instanceof BlueBlock;
 	}
 
 	public char getChar() {

@@ -18,4 +18,7 @@ public class FoodBlock extends Block{
 		// TODO Auto-generated method stub
 
 	}
+	public char getChar(){
+        return 'F';
+    }
 }
