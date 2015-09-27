@@ -73,6 +73,8 @@ public class AntBlock extends GroundBlock {
 			GroundBlock ground = (GroundBlock) getGrid().get(grounds.get(j));
 			ph.add(ground.getHomePheremones());
 		}
+		if(grounds.size() ==0)
+			return;
 		double max = Collections.max(ph);
 		for(int l = 0; l < ph.size(); l++){
 			if(max == ph.get(l))

@@ -22,23 +22,23 @@ public class AgentBlock extends SugarBlock{
 		}
 	}
 
-	public boolean burnSugar(){
-		bloodSugar -= metabolism;
-		if( bloodSugar <0){
-			removeSelfFromGrid();
-			grid.put(location,new SugarBlock(sugarLvl));
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
+//	public boolean burnSugar(){
+//		bloodSugar -= metabolism;
+//		if( bloodSugar <0){
+//			removeSelfFromGrid();
+//			grid.put(location,new SugarBlock(sugarLvl));
+//			return false;
+//		}
+//		else{
+//			return true;
+//		}
+//	}
 
-	public void moveAgent(Location newLocation){
-		moveTo(newLocation);
-		grid.put(location, new SugarBlock(sugarLvl));
-
-	}
+//	public void moveAgent(Location newLocation){
+//		moveTo(newLocation);
+//		grid.put(location, new SugarBlock(sugarLvl));
+//
+//	}
 
 
 
