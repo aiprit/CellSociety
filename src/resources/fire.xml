@@ -12,8 +12,8 @@
         <percent_tree>.9</percent_tree>
         <grid_size>20</grid_size>
         <grid_type>BoundedGrid</grid_type>
-        <blue_line>Fire</blue_line>
-        <orange_line>Tree</orange_line>
+        <blue_line>Tree</blue_line>
+        <orange_line>Fire</orange_line>
     </Parameters>
 
 

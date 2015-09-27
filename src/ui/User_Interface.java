@@ -105,6 +105,7 @@ public class User_Interface {
     private void init_generic_options() {
         init_custom_button();
         init_simulation_chooser();
+        init_shape_chooser();
         init_start_button();
         init_stop_button();
         init_step_button();
@@ -179,7 +180,7 @@ public class User_Interface {
 
     }
 
-    private void init_simulation_chooser() {
+    private void init_shape_chooser() {
 
         ComboBox<String> grid_shape_chooser = new ComboBox<String>();
         grid_shape_chooser.setValue(myResources.getString("SimChoice"));
