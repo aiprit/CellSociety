@@ -24,23 +24,4 @@ public class InfiniteGrid<E> extends BoundedGrid<E>{
 		  }
 		  return locs;
 	}
-	
-	@SuppressWarnings("unchecked")
-	public E get(Location loc, E obj) {
-		return (E) occupantArray[loc.getRow()][loc.getCol()];
-	}
-	
-	@Override 
-	public E put(Location loc, E obj) {
-		E oldOccupant = get(loc);
-		occupantArray[loc.getRow()][loc.getCol()] = obj;
-		return oldOccupant;
-	}
-	
-	@Override
-	public E remove(Location loc) {
-		E r = get(loc);
-		occupantArray[loc.getRow()][loc.getCol()] = null;
-		return r;
-	}
 }
