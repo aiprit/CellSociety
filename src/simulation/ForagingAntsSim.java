@@ -6,10 +6,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 import block.Block;
+import block.BlueBlock;
 import block.FoodBlock;
 import block.GroundBlock;
 import block.Location;
 import block.NestBlock;
+import block.RedBlock;
 import javafx.scene.paint.Color;
 
 public class ForagingAntsSim extends AbstractSimulation{
@@ -18,7 +20,7 @@ public class ForagingAntsSim extends AbstractSimulation{
 
 	public ForagingAntsSim(HashMap<String, Double> map) {
 		super(map);
-
+		reset(0,0);
 	}
 
 	@Override
