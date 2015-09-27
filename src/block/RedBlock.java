@@ -32,12 +32,6 @@ public class RedBlock extends RedBlueBlock {
 	public char getChar() {
 		return 'R';
 	}
-	public void tryMove() {
-				List<Location> openSpots = getGrid().getAllEmptyLocations();
-				if(openSpots.size() > 0){
-					Collections.shuffle(openSpots);
-					moveTo(openSpots.get(0));
-				}
-			}
+
 
 }
