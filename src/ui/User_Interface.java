@@ -45,6 +45,7 @@ public class User_Interface {
     private ResourceBundle bleh;
     public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
     private ComboBox<String> simulation_choices;
+    private ComboBox<String> grid_shape_chooser;
 
     public User_Interface(String property) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + property);
@@ -182,7 +183,7 @@ public class User_Interface {
 
     private void init_shape_chooser() {
 
-        ComboBox<String> grid_shape_chooser = new ComboBox<String>();
+        grid_shape_chooser = new ComboBox<String>();
         grid_shape_chooser.setValue(myResources.getString("SimChoice"));
         add_to_combo("Rectangle", grid_shape_chooser);
         add_to_combo("Triangle", grid_shape_chooser);
@@ -245,6 +246,7 @@ public class User_Interface {
     }
 
     private void set_sim(String key){
+
         current_sim = key;
         parser = new Parser(sim_map.get(key));
         panel = new GridPanel(parser.parse());
@@ -258,6 +260,7 @@ public class User_Interface {
         outer_format.setLeft(canvas);
         info_bar.getChildren().add(graph_canvas);
         info_bar.getChildren().add(legend.get_legend());
+        grid_shape_chooser.setValue("Rectangle");
     }
 
     private void set_shape(String shape){
