@@ -1,8 +1,7 @@
 package ui;
 
 
-import javafx.scene.Group;
-import javafx.scene.Scene;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -16,7 +15,7 @@ import java.util.List;
 
 
 public class ChartPanel {
-    private  static final int GridWidth = 700;
+    private  static final int GridWidth = 575;
     private  static final int GridHeight = 150;
     private Canvas Canvas;
     private GraphicsContext Background;
@@ -52,7 +51,7 @@ public class ChartPanel {
         Background.setFill(Color.WHITE);
         Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
         line_handler(elements1, Color.BLUE, counter1);
-        line_handler(elements2, Color.PINK,counter2);
+        line_handler(elements2, Color.ORANGE,counter2);
     }
 
     private void line_handler(LinkedList elements, Color color, double counter){

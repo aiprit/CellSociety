@@ -12,6 +12,8 @@
         <percent_red>.45</percent_red>
         <grid_size>20.0</grid_size>
         <grid_type>BoundedGrid</grid_type>
+        <blue_line>Race 1</blue_line>
+        <orange_line>Race 2</orange_line>
     </Parameters>
 
 
