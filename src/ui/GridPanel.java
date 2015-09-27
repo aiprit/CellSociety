@@ -52,8 +52,8 @@ class GridPanel{
 			//triangle();
 		//hexagon();
 		rectangle();
-		System.out.println(sum1);
-		System.out.println(sum2);
+		//System.out.println(sum1);
+		//System.out.println(sum2);
 	}
 	private void resetcount(){
 		sum1 = 0;
