@@ -37,6 +37,7 @@ public class GroundBlock extends Block {
 			foodPheremones += food;
 
 	}
+	/*
 	public void diffuse(){
 		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
 		for(Location loc: adjacentSpots){
@@ -44,8 +45,9 @@ public class GroundBlock extends Block {
 			ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
 		}
 	}
+	*/
 	public void act() {
-		diffuse();
+		//diffuse();
 		if (foodPheremones > 0) {
 			foodPheremones *= decreaseRate;
 		}

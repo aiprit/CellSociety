@@ -14,8 +14,6 @@ public class AntBlock extends GroundBlock {
 	public AntBlock(double food, double home) {
 		super(food, home);
 		setColor(getColor());
-
-
 	}
 
 	public double getFoodPheremones() {
@@ -38,7 +36,7 @@ public class AntBlock extends GroundBlock {
 			else {
 				findFood();
 			}
-			diffuse();
+			//diffuse();
 			if (foodPheremones > 0) {
 				foodPheremones *= decreaseRate;
 			}
@@ -47,12 +45,13 @@ public class AntBlock extends GroundBlock {
 			}
 			antLifeTime--;
 		}
-		removeSelfFromGrid();
+		else
+			removeSelfFromGrid();
 	}
 
 	private void goToNest() {
-		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		ArrayList<Double> ph = new ArrayList<Double>();
+		List<Location> adjacentSpots = getGrid().getValidAdjacentLocations(getLocation());
+		List<Double> ph = new ArrayList<Double>();
 		for (int i = 0; i < adjacentSpots.size(); i++) {
 			Block possibleAnt = getGrid().get(adjacentSpots.get(i));
 			if (possibleAnt instanceof AntBlock	|| possibleAnt instanceof FoodBlock) {
@@ -73,8 +72,7 @@ public class AntBlock extends GroundBlock {
 	}
 
 	private void findFood(){
-
-		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+		List<Location> adjacentSpots = getGrid().getValidAdjacentLocations(getLocation());
 		List<Double> ph;
 
 		for (int i = 0; i < adjacentSpots.size(); i++) {

@@ -75,10 +75,7 @@ public abstract class Block
 			throw new IllegalStateException(
 					"The grid contains a different Block at location "
 							+ location + ".");
-
 		grid.remove(location);
-		grid = null;
-		location = null;
 	}
 
 	public void moveTo(Location newLocation)

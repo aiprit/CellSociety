@@ -4,7 +4,7 @@ import block.Location;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoundedGrid<E> extends AbstractGrid<E>
+public class BoundedGrid<E> extends RectTriGrid<E>
 {
     protected Object[][] occupantArray; // the array storing the grid elements
 

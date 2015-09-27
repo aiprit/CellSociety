@@ -12,9 +12,7 @@ import java.util.List;
 abstract public class RedBlueBlock extends Block{
     protected static double happyPercentage;
 
-
     abstract public Color getStandardBlockColor();
-
 
     public RedBlueBlock(double percentage) {
         super();

@@ -1,12 +1,8 @@
 package block;
 
-import grid.Grid;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class DeadBlock extends Block {
+public class DeadBlock extends AliveDeadBlock {
 
 	public static Color getStandardDeadBlockColor() {
 		return Color.DARKSLATEGRAY;
@@ -15,35 +11,6 @@ public class DeadBlock extends Block {
 	public DeadBlock() {
 		super();
 		setColor(getStandardDeadBlockColor());
-	}
-
-	public void act() {
-		boolean becomeAlive = becomeAlive();
-		Location loc = getLocation();
-		if (becomeAlive) {
-			Grid<Block> g_blocks = getGrid();
-			removeSelfFromGrid();
-			AliveBlock newAliveBlock = new AliveBlock();
-			newAliveBlock.putSelfInGrid(g_blocks, loc);
-		}
-	}
-
-	public boolean becomeAlive() {
-		List<Location> neighbors = getGrid().getOccupiedAdjacentLocations(getLocation());
-		boolean becomeAlive = false;
-		int numOfAlive = 0;
-		int index = 0;
-		while (index < neighbors.size()) {
-			Block typeOfBlock = getGrid().get(neighbors.get(index));
-			if (typeOfBlock instanceof AliveBlock) {
-				numOfAlive +=1;
-			}
-			index++;
-		}
-		if (numOfAlive == 3) {
-			becomeAlive = true;
-		}
-		return becomeAlive;
 	}
 	
 	public char getChar() {
