@@ -71,7 +71,6 @@ public class ChartPanel {
             Yone= Ytwo;
             Ytwo = (double)iterator.next();
             Ytwo = GridHeight*0.7-Ytwo*GridHeight*0.7/(rows*rows);
-            System.out.println(Ytwo);
             if(color.equals(Color.BLUE)){
                 //System.out.println(Ytwo);
             }
