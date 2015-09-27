@@ -65,37 +65,30 @@ public class AgentBlock extends SugarBlock{
 			}
 		}
 	}
-		public void moveSugar(){
-			List<Location> compass = getGrid().getValidCompassLocations(getLocation());
-			int loopnum = 1;
-			max = new Location(0,0);
-			double maxsugar =0;
-			Location[] arr = new Location[4];
-			for(int i=0;i<compass.size();i++){
-				arr[i]=compass.get(i);
+	public void moveSugar(){
+		List<Location> compass = getGrid().getValidCompassLocations(getLocation());
+		int loopnum = 1;
+		max = new Location(0,0);
+		double maxsugar =0;
+		Location[] arr = new Location[4];
+		int[] dir = new int[]{Location.NORTH,Location.EAST,Location.SOUTH,Location.WEST};
+		for(int i=0;i<compass.size();i++){
+			arr[i]=compass.get(i);
+		}
+		Checkvision(compass,arr,maxsugar);
+		while(loopnum<vision){
+			for(int j=0;j<dir.length;j++){
+				if(arr[j]!=null){
+					if(getGrid().isValid(arr[j].getAdjacentLocation(dir[j])))
+						arr[j] = arr[j].getAdjacentLocation(dir[j]);
+				}
 			}
 			Checkvision(compass,arr,maxsugar);
-		while(loopnum<vision){
-			if(arr[0]!=null){
-			if(getGrid().isValid(arr[0].getAdjacentLocation(Location.NORTH)))
-				arr[0] = arr[0].getAdjacentLocation(Location.NORTH);}
-			if(arr[1]!=null){
-			if(getGrid().isValid(arr[1].getAdjacentLocation(Location.EAST)))
-				arr[1] = arr[1].getAdjacentLocation(Location.EAST);}
-			if(arr[2]!=null){
-			if(getGrid().isValid(arr[2].getAdjacentLocation(Location.SOUTH)))
-				arr[2] = arr[2].getAdjacentLocation(Location.SOUTH);
-			}
-			if(arr[3]!=null){
-			if(getGrid().isValid(arr[3].getAdjacentLocation(Location.WEST))){
-				arr[3] = arr[3].getAdjacentLocation(Location.WEST);
-			}}
-				Checkvision(compass,arr,maxsugar);
-				loopnum++;
-			}
+			loopnum++;
+		}
 		moveAgent(max);
 		max = null;
-		}
+	}
 
 	public Color getColor(){
 		return blockColor;
