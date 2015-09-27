@@ -2,6 +2,7 @@ package grid;
 
 import block.Location;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BoundedGrid<E> extends AbstractGrid<E>
 {
@@ -32,9 +33,9 @@ public class BoundedGrid<E> extends AbstractGrid<E>
                 && 0 <= loc.getCol() && loc.getCol() < getNumCols();
     }
 
-    public ArrayList<Location> getOccupiedLocations()
+    public List<Location> getOccupiedLocations()
     {
-        ArrayList<Location> theLocations = new ArrayList<Location>();
+        List<Location> theLocations = new ArrayList<Location>();
         for (int r = 0; r < getNumRows(); r++)
         {
             for (int c = 0; c < getNumCols(); c++)

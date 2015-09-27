@@ -3,16 +3,17 @@ package block;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
-public class BlueBlock extends Block {
-	private static double happyPercentage;
-	private Color blockColor = Color.BLUE;
+public class BlueBlock extends RedBlueBlock {
+
+
 
 	@Override
-	public Color getColor() {
-		return blockColor;
+	public Color getStandardBlockColor() {
+		return Color.BLUE;
 	}
 
 	public BlueBlock(double percentage) {
+<<<<<<< HEAD
 		super();
 		setColor(getColor());
 		happyPercentage = percentage;
@@ -45,9 +46,23 @@ public class BlueBlock extends Block {
 			}
 		}
 		return happy;
+=======
+		super(percentage);
+		setColor(getStandardBlockColor());
+
+	}
+
+	@Override
+	public boolean sameBlockCheck(Block typeOfBlock) {
+		return typeOfBlock instanceof RedBlock;
+>>>>>>> robs_branch
 	}
 
 	public char getChar() {
 		return 'B';
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> robs_branch
 }
