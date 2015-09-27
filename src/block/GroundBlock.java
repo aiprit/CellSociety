@@ -9,7 +9,7 @@ public class GroundBlock extends Block {
 	protected double foodPheremones = 0;
 	protected double homePheremones = 0;
 	protected double maxPheremoneValue = 100;
-	protected double decreaseRate = 0.9;
+	protected double decreaseRate = 0.999;
 	protected double diffusionRate = 0.01;
 	private Color blockColor = Color.BROWN;
 
@@ -37,17 +37,16 @@ public class GroundBlock extends Block {
 			foodPheremones += food;
 
 	}
-	/*
-	public void diffuse(){
-		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
-		for(Location loc: adjacentSpots){
-			GroundBlock ground = (GroundBlock) getGrid().get(loc);
-			ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
-		}
-	}
-	*/
+
+//	public void diffuse(){
+//		List<Location> adjacentSpots = getGrid().getOccupiedAdjacentLocations(getLocation());
+//		for(Location loc: adjacentSpots){
+//			GroundBlock ground = (GroundBlock) getGrid().get(loc);
+//			ground.addPheremones(homePheremones*diffusionRate,foodPheremones*diffusionRate);
+//		}
+//	}
 	public void act() {
-		//diffuse();
+//		diffuse();
 		if (foodPheremones > 0) {
 			foodPheremones *= decreaseRate;
 		}
@@ -55,5 +54,7 @@ public class GroundBlock extends Block {
 			homePheremones *= decreaseRate;
 		}
 	}
-
+	public char getChar(){
+        return 'G';
+    }
 }
