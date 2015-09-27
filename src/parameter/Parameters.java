@@ -49,11 +49,11 @@ abstract public class Parameters {
         return blue_line;
     }
 
-    public void set_organge_line(String blue_line) {
+    public void set_orange_line(String blue_line) {
         this.orange_line = blue_line;
     }
 
-    public String get_organge_line() {
+    public String get_orange_line() {
         return orange_line;
     }
 
