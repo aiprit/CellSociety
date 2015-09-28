@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Segregation id="0">
+<Fire id="2">
 <Parameters><grid_size>50</grid_size>
-<happy_percent>.4</happy_percent>
-<percent_blue>.3</percent_blue>
-<percent_red>.6</percent_red>
+<probability_catch>.2</probability_catch>
+<percent_fire>.2</percent_fire>
+<percent_tree>.7</percent_tree>
 <grid_type>BoundedGrid</grid_type>
-<blue_line></blue_line><orange_line></orange_line></Parameters></Segregation>
+<blue_line></blue_line><orange_line></orange_line></Parameters></Fire>
