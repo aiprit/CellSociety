@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 
 public class NestBlock extends Block {
 	private double lifetime;
-	private Color blockColor = Color.WHITE;
 
 	public NestBlock(double life){
 		super();
@@ -17,7 +16,7 @@ public class NestBlock extends Block {
 	}
 
 	public Color getColor() {
-		return blockColor;
+		return Color.WHITE;
 	}
 
 	public void act() {

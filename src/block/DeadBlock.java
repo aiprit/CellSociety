@@ -3,8 +3,8 @@ package block;
 import javafx.scene.paint.Color;
 
 public class DeadBlock extends AliveDeadBlock {
-
-	public static Color getStandardDeadBlockColor() {
+	
+	public Color getStandardDeadBlockColor() {
 		return Color.DARKSLATEGRAY;
 	}
 

@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Rob on 9/26/15.
@@ -15,8 +16,7 @@ import java.util.List;
 
 
 public class ChartPanel {
-    private  static final int GridWidth = 575;
-    private  static final int GridHeight = 150;
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
     private Canvas Canvas;
     private GraphicsContext Background;
     private double Yone, Ytwo;
@@ -26,7 +26,7 @@ public class ChartPanel {
     private double rows;
 
     public ChartPanel(int row){
-        Canvas = new Canvas(GridWidth,GridHeight);
+        Canvas = new Canvas(Integer.parseInt(myResources.getString("ChartWidth")),Integer.parseInt(myResources.getString("ChartHeight")));
         Background = Canvas.getGraphicsContext2D();
         Background.setFill(Color.WHITE);
         Background.fillRect(0, 0, Canvas.getWidth(), Canvas.getHeight());
@@ -69,7 +69,7 @@ public class ChartPanel {
         while(iterator.hasNext()){
             Yone= Ytwo;
             Ytwo = (double)iterator.next();
-            Ytwo = GridHeight*0.7-Ytwo*GridHeight*0.7/(rows*rows);
+            Ytwo = Integer.parseInt(myResources.getString("ChartHeight"))*0.7-Ytwo*Integer.parseInt(myResources.getString("ChartHeight"))*0.7/(rows*rows);
             if(color.equals(Color.BLUE)){
                 //System.out.println(Ytwo);
             }
