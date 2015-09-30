@@ -13,11 +13,10 @@ import java.util.HashMap;
 
 public class GameOfLifeSim extends AbstractSimulation {
 
-		private static Color emptyColor = Color.BEIGE;
 
 		@Override
 		public Color getEmptyColor() {
-	        return emptyColor;
+	        return Color.BEIGE;
 	    }
 		
 		public GameOfLifeSim(Parameters parameter) {

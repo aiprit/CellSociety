@@ -3,10 +3,8 @@ package block;
 import javafx.scene.paint.Color;
 
 public class FishBlock extends Block {
-	private static int fishBreedTime = 4;
+	private static int fishBreedTime;
 	private int turnsUntilCanBreed;
-	private Color blockColor = Color.GREEN;
-	private int numFish = 0;
 
 	public static void setfishBreedTime(int newfishBreedTime){
 		fishBreedTime = newfishBreedTime;
@@ -14,7 +12,7 @@ public class FishBlock extends Block {
 
 	@Override
 	public Color getColor() {
-		return blockColor;
+		return Color.GREEN;
 	}
 
 	public static int getfishBreedTime() {

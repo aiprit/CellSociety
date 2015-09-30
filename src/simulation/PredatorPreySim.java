@@ -14,12 +14,11 @@ import java.util.HashMap;
 
 public class PredatorPreySim extends AbstractSimulation {
 
-    private Color oceanColor = Color.BLUE; //blue
     private double sharkBreedTime, fishBreedTime, sharkStarveTime;
 
     @Override
     public Color getEmptyColor() {
-        return oceanColor;
+        return Color.BLUE;
     }
 
     public PredatorPreySim(Parameters parameter){

@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class SegregationSim extends AbstractSimulation {
 
-    private static Color emptyColor = Color.BEIGE; //blue
     private static double happyPercentage;
 
     public double getHappyPercentage() {
@@ -22,7 +21,7 @@ public class SegregationSim extends AbstractSimulation {
 
     @Override
     public Color getEmptyColor() {
-        return emptyColor;
+        return Color.BEIGE;
     }
 
     public SegregationSim(Parameters parameter) {

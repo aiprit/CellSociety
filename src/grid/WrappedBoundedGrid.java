@@ -3,8 +3,10 @@ package grid;
 import block.Location;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
     public WrappedBoundedGrid(int rows, int cols){
         super(rows, cols);
     }
@@ -12,8 +14,9 @@ public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
     public List<Location> getValidAdjacentLocations(Location loc)
     {
         List<Location> locs = new ArrayList<Location>();
-        int d = Location.NORTH;
-        for (int i = 0, limit = Location.FULL_CIRCLE / Location.HALF_RIGHT; i < limit; i++) {
+        int d = Integer.parseInt(myResources.getString("North"));
+        for (int i = 0, limit = Integer.parseInt(myResources.getString("FullCircle")) 
+        		/ Integer.parseInt(myResources.getString("HalfRight")); i < limit; i++) {
             Location neighborLoc = loc.getAdjacentLocation(d);
             if (!isValid(neighborLoc)){
                 // perform wrap around
@@ -27,7 +30,7 @@ public class WrappedBoundedGrid<E> extends BoundedGrid<E> {
                 
             }
             locs.add(neighborLoc);
-            d = d + Location.HALF_RIGHT;
+            d = d + Integer.parseInt(myResources.getString("HalfRight"));
         }
         return locs;
     }

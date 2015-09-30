@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import parameter.Parameters;
 
 public class SugarSim1 extends AbstractSimulation{
-	private static Color emptyColor = Color.WHITE;
 	private double sugarhi;
 	private int vision;
 	private int metabolism;
@@ -69,7 +68,7 @@ public class SugarSim1 extends AbstractSimulation{
 	@Override
 	public Color getEmptyColor() {
 		// TODO Auto-generated method stub
-		return emptyColor;
+		return Color.WHITE;
 	}
 
 }

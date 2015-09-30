@@ -1,6 +1,8 @@
 package ui;
 
 
+import java.util.ResourceBundle;
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -9,10 +11,7 @@ import javafx.scene.paint.Color;
 import simulation.AbstractSimulation;
 
 class GridPanel{
-
-
-	private  static final int GridWidth = 550;
-	private  static final int GridHeight =550;
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
 	private Canvas Canvas;
 	private Group Root = new Group();
 	private GraphicsContext Background;
@@ -28,11 +27,11 @@ class GridPanel{
 
 	public GridPanel(AbstractSimulation sim){
 
-		Canvas = new Canvas(GridWidth,GridHeight);
+		Canvas = new Canvas(Integer.parseInt(myResources.getString("GridPanelWidth")),Integer.parseInt(myResources.getString("GridPanelHeight")));
 		Background = Canvas.getGraphicsContext2D();
 		theWorld = sim;
-		cellWidth = (double)GridWidth / theWorld.getNumCols();
-		cellHeight = (double) GridHeight / theWorld.getNumRows();
+		cellWidth = (double)Integer.parseInt(myResources.getString("GridPanelWidth")) / theWorld.getNumCols();
+		cellHeight = (double) Integer.parseInt(myResources.getString("GridPanelHeight")) / theWorld.getNumRows();
 		render();
 
 	}
@@ -47,16 +46,16 @@ class GridPanel{
 	private void render() {
 		Background.setFill(Color.BLACK);
 		if(shittyVariable== null || shittyVariable.equals("Rectangle")){
-			Background.fillRect(0,0,GridWidth,GridHeight);
+			Background.fillRect(0,0,Integer.parseInt(myResources.getString("GridPanelWidth")),Integer.parseInt(myResources.getString("GridPanelHeight")));
 			rectangle();
 		}
 		else if(shittyVariable.equals("Triangle")){
 
-			Background.fillRect(0,0,GridWidth,GridHeight);
+			Background.fillRect(0,0,Integer.parseInt(myResources.getString("GridPanelWidth")),Integer.parseInt(myResources.getString("GridPanelHeight")));
 			triangle();
 		}
 		else if(shittyVariable.equals("Hexagon")){
-			Background.fillRect(0,0,GridWidth,GridHeight);
+			Background.fillRect(0,0,Integer.parseInt(myResources.getString("GridPanelWidth")),Integer.parseInt(myResources.getString("GridPanelHeight")));
 			hexagon();
 		}
 

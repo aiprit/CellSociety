@@ -1,10 +1,12 @@
 package block;
 
 import java.util.List;
+import java.util.ResourceBundle;
+
 import javafx.scene.paint.Color;
 
 public class AgentBlock extends SugarBlock{
-	private Color blockColor = Color.RED;
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
 	private double bloodSugar;
 	private double vision;
 	private double metabolism;
@@ -67,7 +69,8 @@ public class AgentBlock extends SugarBlock{
 		max = new Location(0,0);
 		double maxsugar =0;
 		Location[] arr = new Location[4];
-		int[] dir = new int[]{Location.NORTH,Location.EAST,Location.SOUTH,Location.WEST};
+		int[] dir = new int[]{Integer.parseInt(myResources.getString("North")),Integer.parseInt(myResources.getString("East")),
+				Integer.parseInt(myResources.getString("South")),Integer.parseInt(myResources.getString("West"))};
 		for(int i=0;i<compass.size();i++){
 			arr[i]=compass.get(i);
 		}
@@ -87,6 +90,6 @@ public class AgentBlock extends SugarBlock{
 	}
 
 	public Color getColor(){
-		return blockColor;
+		return Color.RED;
 	}
 }

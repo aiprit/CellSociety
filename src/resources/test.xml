@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Fire id="2">
+<Predator-Prey id="1">
 <Parameters><grid_size>50</grid_size>
-<probability_catch>.2</probability_catch>
-<percent_fire>.2</percent_fire>
-<percent_tree>.7</percent_tree>
+<percent_sharks>0.1</percent_sharks>
+<percent_fish>0.5</percent_fish>
+<standard_breed_time_shark>15</standard_breed_time_shark>
+<standard_breed_time_fish>5</standard_breed_time_fish>
+<standard_starve_time>5</standard_starve_time>
 <grid_type>BoundedGrid</grid_type>
-<blue_line></blue_line><orange_line></orange_line></Parameters></Fire>
+<blue_line></blue_line><orange_line></orange_line></Parameters></Predator-Prey>

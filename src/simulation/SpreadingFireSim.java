@@ -14,7 +14,6 @@ import java.util.List;
 
 public class SpreadingFireSim extends AbstractSimulation {
 
-	private static Color backColor = Color.YELLOW;
 	private double probCatch;
 
 
@@ -43,7 +42,7 @@ public class SpreadingFireSim extends AbstractSimulation {
 
 	@Override
 	public Color getEmptyColor() {
-		return backColor;
+		return Color.YELLOW;
 	}
 
 	@Override

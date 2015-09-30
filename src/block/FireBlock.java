@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class FireBlock extends Block {
 	private double probCatch;
-	private Color blockColor = Color.RED;
 
 	public FireBlock(double prob){
 		super();
@@ -37,6 +36,6 @@ public class FireBlock extends Block {
 
 	@Override
 	public Color getColor() {
-		return blockColor;
+		return Color.RED;
 	}
 }

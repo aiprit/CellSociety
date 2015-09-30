@@ -18,7 +18,6 @@ import parameter.Parameters;
 
 public class ForagingAntsSim extends AbstractSimulation{
 
-	private Color emptyColor = Color.BROWN;
 	private double max;
 	private double diffusion;
 	private double decrease;
@@ -54,7 +53,7 @@ public class ForagingAntsSim extends AbstractSimulation{
 	}
 
 	public Color getEmptyColor() {
-		return emptyColor;
+		return Color.BROWN;
 	}
 
 	@Override
