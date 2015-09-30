@@ -1,3 +1,5 @@
+//This entire class is part of my masterpiece.
+//Nick Groszewski
 package simulation;
 
 import block.Block;
@@ -15,8 +17,6 @@ public abstract class AbstractSimulation {
 	private ArrayList<String> param_list;
 
 	public AbstractSimulation(Parameters parameter) {
-		//theWorld = new BoundedGrid<Block>(parameter.get_param_map().get("grid_size").intValue(), parameter.get_param_map().get("grid_size").intValue());
-
 		try {
 			Class c = Class.forName("grid."+parameter.get_grid_type().trim());
 			Class[] cArg = new Class[2]; //Our constructor has 3 arguments
@@ -77,7 +77,6 @@ public abstract class AbstractSimulation {
 	public void populateWorld(double fraction1, double fraction2) {
 		double totalFractionCreatures = fraction1 + fraction2;
 		if(totalFractionCreatures > 1) {
-			// too many creatures. scale each
 			fraction1 = fraction1 / totalFractionCreatures;
 			fraction2= fraction2 / totalFractionCreatures;
 		}

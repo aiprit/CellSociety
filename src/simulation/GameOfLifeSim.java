@@ -1,3 +1,5 @@
+//This entire file is part of my masterpiece.
+//Nick Groszewski
 package simulation;
 
 import block.AliveBlock;
