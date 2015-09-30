@@ -11,8 +11,7 @@ public class Ants_Param extends Parameters {
 
     public Ants_Param(){
         super();
-        fill_param_array();
-        fill_map();
+
     }
 
     public void fill_param_array(){
@@ -24,7 +23,7 @@ public class Ants_Param extends Parameters {
     }
 
 
-    public AbstractSimulation get_sim(){
+    protected AbstractSimulation get_sim(){
         return new ForagingAntsSim(this);
     }
 }

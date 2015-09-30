@@ -10,8 +10,7 @@ public class Fire_Params extends Parameters {
 
     public Fire_Params(){
         super();
-        fill_param_array();
-        fill_map();
+
     }
 
     public void fill_param_array(){
@@ -22,7 +21,7 @@ public class Fire_Params extends Parameters {
     }
 
 
-    public AbstractSimulation get_sim(){
+    protected AbstractSimulation get_sim(){
         return new SpreadingFireSim(this);
     }
 }

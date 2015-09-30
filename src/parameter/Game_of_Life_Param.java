@@ -9,8 +9,6 @@ import simulation.GameOfLifeSim;
 public class Game_of_Life_Param extends Parameters {
     public Game_of_Life_Param(){
         super();
-        fill_param_array();
-        fill_map();
     }
 
     public void fill_param_array(){
@@ -19,7 +17,7 @@ public class Game_of_Life_Param extends Parameters {
 
     }
 
-    public AbstractSimulation get_sim(){
+    protected AbstractSimulation get_sim(){
         return new GameOfLifeSim(this);
     }
 }

@@ -11,8 +11,7 @@ public class Pred_Prey_Param extends Parameters {
 
     public Pred_Prey_Param(){
         super();
-        fill_param_array();
-        fill_map();
+
     }
 
     public void fill_param_array(){
@@ -23,7 +22,7 @@ public class Pred_Prey_Param extends Parameters {
         list_of_parameters.add("standard_starve_time");
     }
 
-    public AbstractSimulation get_sim(){
+    protected AbstractSimulation get_sim(){
         return new PredatorPreySim(this);
     }
 

@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// Rob Martorano
+
 package parameter;
 
 import simulation.AbstractSimulation;
@@ -9,24 +12,25 @@ abstract public class Parameters {
     protected ArrayList<String> list_of_parameters;
     protected HashMap<String, Double> init_params;
     protected String grid_type;
-    String simulation_type;
-
     String blue_line;
-
     String orange_line;
+
+    //Variables not currently used but could be useful in future
+    String simulation_type;
     String name;
     String author;
-    double grid_size;
 
     public Parameters(){
         init_params = new HashMap<String, Double>();
         list_of_parameters = new ArrayList<String>();
         list_of_parameters.add("grid_size");
+        fill_param_array();
+        fill_map();
 
 
     }
 
-    public ArrayList<String> get_param_list(){
+    protected ArrayList<String> get_param_list(){
         return list_of_parameters;
     }
 
@@ -37,25 +41,28 @@ abstract public class Parameters {
     public String get_grid_type(){
         return grid_type;
     }
-    public void set_grid_type(String s){
-        grid_type = s;
-    }
 
-    public void set_blue_line(String blue_line) {
-        this.blue_line = blue_line;
+    protected void set_grid_type(String s){
+        this.grid_type = s;
     }
 
     public String get_blue_line() {
         return blue_line;
     }
 
-    public void set_orange_line(String blue_line) {
-        this.orange_line = blue_line;
+    protected void set_blue_line(String blue_line) {
+        this.blue_line = blue_line;
     }
 
     public String get_orange_line() {
         return orange_line;
     }
+
+    protected void set_orange_line(String blue_line) {
+        this.orange_line = blue_line;
+    }
+
+
 
     abstract protected void fill_param_array();
 
@@ -65,6 +72,6 @@ abstract public class Parameters {
         }
     }
 
-    abstract public AbstractSimulation get_sim();
+    abstract protected AbstractSimulation get_sim();
 
 }

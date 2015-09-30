@@ -10,8 +10,7 @@ public class Segregation_Param extends Parameters {
 
     public Segregation_Param(){
         super();
-        fill_param_array();
-        fill_map();
+
     }
 
 
@@ -22,7 +21,7 @@ public class Segregation_Param extends Parameters {
 
     }
 
-    public AbstractSimulation get_sim(){
+    protected AbstractSimulation get_sim(){
         return new SegregationSim(this);
     }
 
