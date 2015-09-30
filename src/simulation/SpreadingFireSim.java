@@ -1,5 +1,6 @@
+//This entire file is part of my masterpiece.
+//Parit Burintrathikul
 package simulation;
-
 import block.Block;
 import block.FireBlock;
 import block.Location;
@@ -9,7 +10,6 @@ import parameter.Parameters;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 public class SpreadingFireSim extends AbstractSimulation {
@@ -50,7 +50,7 @@ public class SpreadingFireSim extends AbstractSimulation {
 		Block result= placeBlock ? new TreeBlock():new FireBlock(probCatch);
 		return result;
 	}
-	
+
 	@Override
 	public void step() {
 		List<Location> occupiedLocations = theWorld.getOccupiedLocations();

@@ -1,5 +1,6 @@
+//This entire file is part of my masterpiece.
+//Parit Burintrathikul
 package simulation;
-
 import block.Block;
 import block.Location;
 import grid.Grid;
@@ -15,7 +16,6 @@ public abstract class AbstractSimulation {
 	private ArrayList<String> param_list;
 
 	public AbstractSimulation(Parameters parameter) {
-		//theWorld = new BoundedGrid<Block>(parameter.get_param_map().get("grid_size").intValue(), parameter.get_param_map().get("grid_size").intValue());
 
 		try {
 			Class c = Class.forName("grid."+parameter.get_grid_type().trim());
@@ -66,7 +66,7 @@ public abstract class AbstractSimulation {
 				result.putSelfInGrid(theWorld, loc);
 				locsUsed.add(loc);
 			}
-		} 
+		}
 	}
 	public abstract Block chooseBlock(boolean placeBlock);
 
