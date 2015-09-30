@@ -79,6 +79,8 @@ public class XML_Builder {
             if(parameter.get_param_list().indexOf(param) == parameter.get_param_list().size()-1){
                 try {
                     set_grid_type();
+                    writer.write("<blue_line></blue_line>");
+                   writer.write("<orange_line></orange_line>");
                     writer.write("</Parameters>");
                     writer.write("</"+sim_name+">");
                 } catch (IOException e) {

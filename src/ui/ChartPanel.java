@@ -79,7 +79,7 @@ public class ChartPanel {
             thing +=2;
             counter++;
         }
-        if(counter>300){
+        if(counter>250){
             elements.removeFirst();
         }
 
