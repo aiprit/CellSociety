@@ -3,7 +3,6 @@ package block;
 import javafx.scene.paint.Color;
 
 public class TreeBlock extends Block {
-	private Color blockColor = Color.GREEN;
 
 	public TreeBlock(){
 		super();
@@ -15,7 +14,7 @@ public class TreeBlock extends Block {
 	
 	@Override
 	public Color getColor() {
-		return blockColor;
+		return Color.GREEN;
 	}
 
 	public void act(){

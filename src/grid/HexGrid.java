@@ -2,10 +2,12 @@ package grid;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+
 import block.HexagonLocation;
 
 public abstract class HexGrid<E> implements Grid<E>{
-	
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
 	public List<E> getNeighbors(HexagonLocation loc) {
 		List<E> neighbors = new ArrayList<E>();
 		for (HexagonLocation neighborLoc : getOccupiedAdjacentLocations(loc))
@@ -16,13 +18,14 @@ public abstract class HexGrid<E> implements Grid<E>{
 	public List<HexagonLocation> getValidAdjacentLocations(HexagonLocation loc)
 	{
 		List<HexagonLocation> locs = new ArrayList<HexagonLocation>();
-		int d = HexagonLocation.NORTH;
-		for (int i = 0; i < HexagonLocation.FULL_CIRCLE / HexagonLocation.HALF_RIGHT; i++)
+		int d = Integer.parseInt(myResources.getString("North"));
+		for (int i = 0; i < Integer.parseInt(myResources.getString("FullCircle")) 
+			/ Integer.parseInt(myResources.getString("HalfRight")); i++)
 		{
 			HexagonLocation neighborLoc = (HexagonLocation) loc.getAdjacentLocation(d);
 			if (isValid(neighborLoc))
 				locs.add(neighborLoc);
-			d = d + HexagonLocation.HALF_RIGHT;
+			d = d + Integer.parseInt(myResources.getString("HalfRight"));
 		}
 		return locs;
 	}

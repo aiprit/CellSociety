@@ -1,9 +1,10 @@
 package block;
+
 import javafx.scene.paint.Color;
 
 public class AliveBlock extends AliveDeadBlock {
-
-	public static Color getStandardAliveBlockColor() {
+	
+	public Color getStandardAliveBlockColor() {
 		return Color.MEDIUMSLATEBLUE;
 	}
 

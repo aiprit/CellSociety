@@ -6,9 +6,11 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public abstract class Block
 {
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
 	private Grid<Block> grid;
 	protected Location location;
 	private int direction;
@@ -16,7 +18,7 @@ public abstract class Block
 
 	public Block()
 	{
-		direction = Location.NORTH;
+		direction = Integer.parseInt(myResources.getString("North"));
 		grid = null;
 		location = null;
 	}
@@ -37,9 +39,9 @@ public abstract class Block
 
 	public void setDirection(int newDirection)
 	{
-		direction = newDirection % Location.FULL_CIRCLE;
+		direction = newDirection % Integer.parseInt(myResources.getString("FullCircle"));
 		if (direction < 0)
-			direction += Location.FULL_CIRCLE;
+			direction += Integer.parseInt(myResources.getString("FullCircle"));
 	}
 
 	public Grid<Block> getGrid()

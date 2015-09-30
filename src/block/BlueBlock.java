@@ -7,8 +7,6 @@ import java.util.List;
 
 public class BlueBlock extends RedBlueBlock {
 
-
-
 	@Override
 	public Color getStandardBlockColor() {
 		return Color.BLUE;

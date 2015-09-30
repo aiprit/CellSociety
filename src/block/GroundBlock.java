@@ -11,7 +11,6 @@ public class GroundBlock extends Block {
 	protected double maxPheremoneValue;
 	protected double decreaseRate;
 	protected double diffusionRate;
-	private Color blockColor = Color.BROWN;
 
 	public GroundBlock(double food, double home,double max, double decrease,double diffusion) {
 		super();
@@ -35,7 +34,7 @@ public class GroundBlock extends Block {
 	}
 
 	public Color getColor() {
-		return blockColor;
+		return Color.BROWN;
 	}
 
 	public void addPheremones(double home, double food){

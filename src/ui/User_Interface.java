@@ -20,10 +20,6 @@ import java.util.ResourceBundle;
 
 
 public class User_Interface {
-    private static final double STARTING_ANIMATION_SPEED = 0.2;
-    private static final int MAXIMUM_ANIMATION_SPEED = 1;
-    private static final double MINIMUM_ANIMATION_SPEED = 0.01;
-    private static final int VERTICAL_SPACING = 15;
     private Group basic_scene;
     private BorderPane outer_format;
     protected VBox control_panel;
@@ -41,14 +37,13 @@ public class User_Interface {
     private double rate;
     HashMap<String, String> sim_map;
     String current_sim;
-    private ResourceBundle myResources;
     private ResourceBundle bleh;
-    public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+	private ResourceBundle myResources = ResourceBundle.getBundle("resources/english");
     private ComboBox<String> simulation_choices;
     private ComboBox<String> grid_shape_chooser;
 
-    public User_Interface(String property) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + property);
+    public User_Interface() {
+
         status = false;
         control_panel = new VBox();
         grid_view = new GridPane();
@@ -83,13 +78,14 @@ public class User_Interface {
 
     public void outer_border_set_up() {
         outer_format = new BorderPane();
-        outer_format.setPrefSize(Graphic_Handler.SCREEN_WIDTH, Graphic_Handler.SCREEN_HEIGHT);
+        outer_format.setPrefSize(Integer.parseInt(myResources.getString("ScreenWidth")),
+        		Integer.parseInt(myResources.getString("ScreenHeight")));
         outer_format.setId("pane");
     }
 
     public void control_panel_set_up() {
         control_panel = new VBox();
-        control_panel.setSpacing(VERTICAL_SPACING);
+        control_panel.setSpacing(Integer.parseInt(myResources.getString("VerticalSpacing")));
     }
 
 
@@ -155,7 +151,8 @@ public class User_Interface {
     private void init_animation_speed_slider() {
         Label speed = new Label(myResources.getString("SpeedLabel"));
         //speed.s
-        Custom_Slider animation_speed_slider = new Custom_Slider(MINIMUM_ANIMATION_SPEED, MAXIMUM_ANIMATION_SPEED, STARTING_ANIMATION_SPEED);
+        Custom_Slider animation_speed_slider = new Custom_Slider(Double.parseDouble(myResources.getString("MinSpeed")),
+        		Integer.parseInt(myResources.getString("MaxSpeed")), Double.parseDouble(myResources.getString("StartSpeed")));
         animation_speed_slider.valueProperty().addListener((observable, oldValue, newValue) -> {
 
             rate = newValue.doubleValue();

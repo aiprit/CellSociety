@@ -4,13 +4,12 @@ import javafx.scene.paint.Color;
 
 public class FoodBlock extends Block{
 
-	private Color blockColor = Color.MAGENTA;
 	public FoodBlock(){
 		super();
 	}
 
 	public Color getColor() {
-		return blockColor;
+		return Color.MAGENTA;
 	}
 
 	@Override
