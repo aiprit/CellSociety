@@ -61,7 +61,7 @@
 
 
 
-Configuration API
+# Configuration API
 
 ### Parameters
     Constructor Parameters()
@@ -92,7 +92,7 @@ Configuration API
 
 
 
-Visualization API
+# Visualization API
 
 
 ### Graphic_Handler
